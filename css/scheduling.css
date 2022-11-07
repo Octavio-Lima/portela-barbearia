@@ -1,0 +1,150 @@
+/* ||  GERAL */
+
+* {
+    font-family: 'Saira Extra Condensed', sans-serif;
+    margin: 0px;
+    border: 0px;
+    padding: 0px;
+}
+
+body {
+    background-color: #000;
+    background-image: url("/img/bg.jpg");
+    background-size: cover;
+    height: 100vh;
+}
+
+.container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* ||  UTILITIES */
+
+.hidden {
+    display: none;
+}
+
+/* || HEADER */
+
+header {
+    display: flex;
+    flex-direction: column;
+}
+
+#brand {
+    margin: 30px auto 40px;
+    width: 220px;
+}
+
+h3 { /* Slogan */
+    font-size: 22px;
+    color: #fff;
+    font-weight: 100;
+    margin: 0px;
+}
+
+h1 { /* Agendamento */
+    font-size: 30px;
+    color: #fff;
+    margin: 25px 0px 5px;
+}
+
+/* || SELECIONAR TRABALHADOR */
+.select-worker-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.worker-img {
+    margin: 15px 10px 0px 10px;
+    width: 110px;
+    clip-path: circle(55px at center);
+}
+
+h2 { /* Nome do Profissional */
+    color: #fff;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.links-container {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.button-link {
+    border: 5px solid #fff;
+    color: #fff;
+    background-color: #00000000;
+    border-radius: 50px;
+    width: clamp(170px, 250px, 300px);
+    margin: 0px auto 15px auto;
+    font-weight: bold;
+    font-size: 20px;
+    text-decoration: none;
+    box-shadow: 0 0 10px #fff;
+}
+
+
+/* || FOOTER AND LINKS */
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    margin: 15px;
+}
+
+.fa {
+    color: #fff;
+    text-decoration: none;
+    margin: 0px 10px;
+}
+
+
+/* || AGENDAMENTO */
+
+
+/* Informações do Cliente */
+.client-info {
+    padding: 20px;
+    text-align: left;
+}
+
+.client-info h3 {
+    text-align: center;
+    font-size: 12px;
+}
+
+.client-info p {
+    background-color: #f7f7f7;
+    font-size: 12px;
+    padding-left: 20px;
+    margin: 5px;
+}
+
+/* Informações do Cliente Final */
+.client-info-overview {
+    flex-direction: column;
+    text-align: left;
+}
+
+.finish-scheduling .fa,.finish-scheduling p, .finish-scheduling h1 {
+    color: #000 !important; 
+}
+
+.client-info-overview {
+    display: flex;
+}
+.client-img {
+    margin: 15px 10px 0px 10px;
+    width: 40px;
+    height: 40px;
+    clip-path: circle(20px at center);
+}

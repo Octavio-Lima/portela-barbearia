@@ -1,0 +1,71 @@
+/* || VARIAVEIS*/
+:root {
+    --logo-size: 100px;
+}
+
+/* || GERAL */
+* {
+    font-family: 'Saira Extra Condensed', sans-serif;
+}
+
+body {
+    background-image: url("/img/bg.jpg");
+    background-size: cover;
+    margin: 0;
+    background-color: #000;
+}
+
+.container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-bg { /* Container e Gradient da logo */
+    background-image: radial-gradient(circle closest-side ,#fff, #fff, #ffffff00);
+    margin: 20px auto 0px auto;
+    width: calc(var(--logo-size) + 30px); /* Tamanho da logo + 30px para o gradient aparecer por trás */
+    height: calc(var(--logo-size) + 30px);/* Tamanho da logo + 30px para o gradient aparecer por trás */
+}
+
+img {
+    margin: 15px 0 0px 0;
+    width: var(--logo-size);
+    clip-path: circle(calc(var(--logo-size) / 2) at center);
+}
+
+h1 {
+    font-size: 30px;
+    color: #fff;
+    margin: 30px auto;
+}
+
+a { /* Botões de link da tela principal*/
+    /* Decoração do Texto*/
+    color: #fff;
+    font-weight: bold;
+    font-size: 25px;
+    text-decoration: none;
+
+    /* Decoração do Botão*/
+    width: 250px;
+    height: 15px;
+    background-color: #00000000;
+    border-radius: 50px;
+    border: 7px solid #fff;
+    box-shadow: 0 0 15px #fff;
+    margin: 0px auto 15px auto;
+    padding-bottom: 35px;
+}
+
+p {
+    font-family: Arial;
+    position: absolute;
+    bottom: 20px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    font-size: 20px;
+    left: calc(50% - 87.5px);
+}
