@@ -1,10 +1,11 @@
 /* ||  GERAL */
 
 * {
-    font-family: 'Saira Extra Condensed', sans-serif;
-    margin: 0px;
-    border: 0px;
-    padding: 0px;
+  font-family: 'Saira Extra Condensed', sans-serif;
+  margin: 0px;
+  border: 0px;
+  padding: 0px;
+  user-select: none
 }
 
 body {
@@ -12,19 +13,17 @@ body {
     background-image: url("/img/bg.jpg");
     background-size: cover;
     height: 100vh;
-}
 
-.container {
-    text-align: center;
     display: flex;
-    flex-direction: column;
     justify-content: center;
+    flex-direction: column;
+    text-align: center;
 }
 
 /* ||  UTILITIES */
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 /* || HEADER */
@@ -35,7 +34,7 @@ header {
 }
 
 #brand {
-    margin: 30px auto 40px;
+    margin: 30px auto 30px;
     width: 220px;
 }
 
@@ -44,14 +43,12 @@ h3 { /* Slogan */
     color: #fff;
     font-weight: 100;
     margin: 0px;
-    user-select: none
 }
 
 h1 { /* Agendamento */
     font-size: 30px;
     color: #fff;
-    margin: 25px 0px 5px;
-    user-select: none
+    margin: 15px 0px 5px;
 }
 
 .blur-overlay {
@@ -76,9 +73,14 @@ h1 { /* Agendamento */
     margin: 15px 10px 0px 10px;
     width: 110px;
     clip-path: circle(55px at center);
+    pointer-events: none;
 }
 
 .selected-worker {
+    z-index: 10;
+}
+
+.avoid-blur {
     z-index: 10;
 }
 
@@ -86,7 +88,6 @@ h2 { /* Nome do Profissional */
     color: #fff;
     font-weight: bold;
     font-size: 22px;
-    user-select: none
 }
 
 .links-container {
@@ -112,14 +113,14 @@ h2 { /* Nome do Profissional */
 
 /* || FOOTER AND LINKS */
 
-.footer-links {
+footer {
     display: flex;
     justify-content: center;
     font-size: 30px;
     margin: 15px;
 }
 
-.fa {
+footer .fa {
     color: #fff;
     text-decoration: none;
     margin: 0px 10px;
@@ -128,32 +129,13 @@ h2 { /* Nome do Profissional */
 
 /* || AGENDAMENTO */
 
-
-/* Informações do Cliente */
-.client-info {
-    padding: 20px;
-    text-align: left;
-}
-
-.client-info h3 {
-    text-align: center;
-    font-size: 12px;
-}
-
-.client-info p {
-    background-color: #f7f7f7;
-    font-size: 12px;
-    padding-left: 20px;
-    margin: 5px;
-}
-
 /* Informações do Cliente Final */
 .client-info-overview {
     flex-direction: column;
     text-align: left;
 }
 
-.finish-scheduling .fa,.finish-scheduling p, .finish-scheduling h1 {
+#finish-overview-window .fa,#overview-window p, #finish-overview-window h1 {
     color: #000 !important; 
 }
 
