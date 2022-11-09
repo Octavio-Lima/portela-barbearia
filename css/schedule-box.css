@@ -5,6 +5,7 @@
     font-weight: bold;
     padding: 10px;
     text-align: center;
+    margin-bottom: 5px;
 }
 
 /* || AGENDAMENTO */
@@ -12,36 +13,44 @@
 #appointment-window {
     position: absolute;
     left: 50%;
-    bottom: 40px;
+    bottom: 20px;
     transform: translate(-50%);
     background-color: #fff;
     border-radius: 15px;
-    width: clamp(260px, 50%, 520px);
-    height: clamp(150px, 30%, 300px);
+    min-width: clamp(260px, 50%, 520px);
+    height: clamp(150px, 210px, 300px);
 }
 
-/* CALENDARIO */
+/* Calendario */
 
 #calendar-table {
     width: 100%;
     height: 100%;
+    font-weight: bold;
+    padding-bottom: 10px;
 }
 
-th {
-    padding-top: 5px;
-    font-size: 10px;
-    font-weight: bold;
+#calendar-table th {
+    font-size: 16px;
     color: rgb(104, 104, 104);
 }
 
-td {
+#calendar-table td {
     color: #000;
-    font-size: 10px;
-    font-weight: bold;
+    font-size: 12px;
 }
 
 #calendar-table td:first-child, #calendar-table td:last-child{ /* Alterado Sabado e Domingo para Vermelho*/
     color: #f00;
+}
+
+.unavailable input {
+  pointer-events: none;
+  opacity:0.2;
+}
+
+.unavailable span {
+  color: #f00;
 }
 
 /* INFORMAÇÕES DO CLIENTE */
@@ -66,15 +75,55 @@ td {
     margin: 5px;
 }
 
-
-
-
-
-.unavailable input {
-    pointer-events: none;
-    opacity:0.2;
+input[type=number] {
+    appearance: textfield;
 }
 
-.unavailable span {
-    color: #f00;
+
+/* Horarios disponiveis */
+
+#available-schedule-table table{
+  margin: 0 auto;
+}
+
+#available-schedule-table td, #available-schedule-table span {
+  padding: 2px 5px;
+  min-width: 10px;
+}
+
+/* Lista de Serviços e Produtos */
+
+.service-window {
+    height: 100%;
+}
+
+.service-container {
+    overflow-x: scroll;
+    height: 150px;
+}
+
+
+/* Resumo das Informações */
+#overview-window {
+  margin: 25px 50px;
+}
+
+#client-info-overview {
+  display: flex;
+  text-align: left;
+}
+
+.client-img {
+  margin: 0px 10px 0px 0px;
+  width: 40px;
+  height: 40px;
+  clip-path: circle(20px at center);
+}
+
+#overview-window table {
+    width: 100%;
+}
+
+#clint-instagram {
+    text-align: right;
 }

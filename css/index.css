@@ -5,11 +5,12 @@
 
 /* || GERAL */
 * {
-    font-family: 'Saira Extra Condensed', sans-serif;
+  font-family: 'Antonio', sans-serif;
+  user-select: none
 }
 
 body {
-    background-image: url("/img/bg.jpg");
+    background-image: url("/img/bg.png");
     background-size: cover;
     margin: 0;
     background-color: #000;
@@ -40,7 +41,7 @@ h1 {
     margin: 30px auto;
 }
 
-a { /* Botões de link da tela principal*/
+.container a { /* Botões de link da tela principal*/
     /* Decoração do Texto*/
     color: #fff;
     font-weight: bold;
@@ -49,7 +50,7 @@ a { /* Botões de link da tela principal*/
 
     /* Decoração do Botão*/
     width: 250px;
-    height: 15px;
+    height: 5px;
     background-color: #00000000;
     border-radius: 50px;
     border: 7px solid #fff;
@@ -58,7 +59,8 @@ a { /* Botões de link da tela principal*/
     padding-bottom: 35px;
 }
 
-p {
+/* Footer */
+footer a {
     font-family: Arial;
     position: absolute;
     bottom: 20px;
@@ -68,4 +70,5 @@ p {
     color: #fff;
     font-size: 20px;
     left: calc(50% - 87.5px);
+    text-decoration: none;
 }

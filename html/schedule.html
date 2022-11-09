@@ -1,54 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portela Barbearia</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portela Barbearia</title>
     
-  <!-- CSS -->
-  <link rel="stylesheet" href="../css/schedule-box.css"> <!-- Schedule Box CSS -->
-  <link rel="stylesheet" href="../css/schedule.css"> <!-- Maing Page CSS -->
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/schedule-box.css"> <!-- Schedule Box CSS -->
+    <link rel="stylesheet" href="../css/schedule.css"> <!-- Maing Page CSS -->
 
-  <!-- Scripts -->
-  <script src="/js/schedule.js" defer></script>
+      <!-- Scripts -->
+    <script src="/js/schedule.js" defer></script>
 
-  <!-- Fontes -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Saira+Extra+Condensed:wght@100;700&display=swap" rel="stylesheet"> 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Antonio:wght@100;400;700&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-  <header>
-    <img src = "../img/logo-a.svg" alt="Portela's Barbearia Logo" id="brand"/> 
-    <h3>O CABELO É A MOLDURA DO ROSTO, CUIDE BEM DELE.</h3>
-    <h1>AGENDAMENTO:</h1>
-  </header>
-  <main>
-    <div class="select-worker-container">
-      <div class="worker">
-        <img src = "../img/worker/worker0.png" class="worker-img" alt="Trabalhador"/> 
-        <h2>Teste 1</h2>
-      </div>
-        <div class="worker">
-          <img src = "../img/worker/worker1.png" class="worker-img" alt="Trabalhador"/> 
-          <h2>Teste 2</h2>
-      </div>        
-    </div>
-    <div class="links-container">
-      <a href="https://g.co/kgs/ZuPVoq" target="_blank" class="button-link">LOCALIZAÇÃO</a>
-      <a href="https://g.page/r/CRlyE4HO9XUpEBM/review" target="_blank" class="button-link">AVALIE NOSSO SERVIÇO</a>
-      <a href="#" class="button-link">SOBRE NÓS</a>
-    </div>
-  </main>
-  <footer>
-    <a href="https://instagram.com/portelasbarbearia?igshid=YmMyMTA2M2Y%3D" target="_blank" class="fa fa-instagram"></a>
-    <a href="http://tiny.cc/portelasbarbearia" class="fa fa-whatsapp" target="_blank"></a>
-    <a href="#" class="fa fa-spotify"></a>
-  </footer>
-  <section class="avoid-blur " id="appointment-window">
-    <div class="" id="calendar-window">
+    <header>
+        <img src = "../img/logo-a.svg" alt="Portela's Barbearia Logo" id="brand-logo"/> 
+        <h3>O CABELO É A MOLDURA DO ROSTO, CUIDE BEM DELE.</h3>
+        <h1>AGENDAMENTO:</h1>
+    </header>
+
+    <!---->
+    <main>
+        <div class="select-worker-container">
+            <div class="worker">
+                <img src = "../img/worker/worker0.jpg" class="worker-img" alt="Trabalhador"/> 
+                <h2>JOÃO PEDRO</h2>
+            </div>
+            <div class="worker">
+                <img src = "../img/worker/worker1.jpg" class="worker-img" alt="Trabalhador"/> 
+                <h2>LÚCIO</h2>
+            </div>        
+        </div>
+        <div class="links-container">
+            <a href="https://g.co/kgs/ZuPVoq" target="_blank" class="button-link">LOCALIZAÇÃO</a>
+            <a href="https://g.page/r/CRlyE4HO9XUpEBM/review" target="_blank" class="button-link">AVALIE NOSSO SERVIÇO</a>
+            <a href="/html/about-us.html" class="button-link">SOBRE NÓS</a>
+        </div>
+    </main>
+
+    <!---->
+    <footer>
+        <a href="https://instagram.com/portelasbarbearia?igshid=YmMyMTA2M2Y%3D" target="_blank" class="fa fa-instagram"></a>
+        <a href="http://tiny.cc/portelasbarbearia" class="fa fa-whatsapp" target="_blank"></a>
+        <a href="#" class="fa fa-spotify"></a>
+    </footer>
+    
+    <!-- JANELAS DE HORARIOS & SERVIÇOS -->
+  <section id="appointment-window" class="hidden">
+    <section class="" id="calendar-window">
       <h3 class="calendar-title">NOVEMBRO</h3>
       <table id="calendar-table">
         <tbody>
@@ -108,45 +114,47 @@
           </tr>
         </tbody>
       </table>
-    </div>
-    <div class="hidden" id="client-info-window">
+    </section>
+    <section class="hidden" id="client-info-window">
       <h3>PREENCHA ABAIXO PARA AGENDAR SEU HORÁRIO</h3>
       <input type="text" id="input-client-name" placeholder="NOME COMPLETO">
       <input type="number" id="" placeholder="CEL. (31)90000-0000">
       <input type="text" id="" placeholder="EMAIL">
       <input type="text" id="" placeholder="INSTAGRAM">
       <button type="submit" id="confirm-client-info-btn">CONFIRMAR</button>
-    </div>
-    <div class="hidden" id="schedule-window">
+    </section>
+    <section class="hidden" id="schedule-window">
       <h3 class="calendar-title">8 NOVEMBRO, 2022</h3>
       <p>HORÁRIOS DISPONIVEIS</p>
-      <div class="container text-center">
+      <div id="available-schedule-table">
         <tbody>
           <table>
             <tr>
-              <td> <input type="radio" name="radio-schedule"><span>09:00</span></td>
-              <td> <input type="radio" name="radio-schedule"><span>12:00</span></td>
-              <td> <input type="radio" name="radio-schedule"><span>15:00</span></td>
-              <td> <input type="radio" name="radio-schedule"><span>18:00</span></td>
+              <td class=""> <input type="radio" name="radio-schedule"><span>09:00</span></td>
+              <td class=""> <input type="radio" name="radio-schedule"><span>12:00</span></td>
+              <td class=""> <input type="radio" name="radio-schedule"><span>15:00</span></td>
+              <td class=""> <input type="radio" name="radio-schedule"><span>18:00</span></td>
             </tr>
             <tr>
               <td class="unavailable"> <input type="radio" name="radio-schedule"><span>10:00</span></td>
-              <td> <input type="radio" name="radio-schedule"><span>13:00</span></td>
+              <td class=""> <input type="radio" name="radio-schedule"><span>13:00</span></td>
               <td class="unavailable"> <input type="radio" name="radio-schedule"><span>16:00</span></td>
               <td class="unavailable"> <input type="radio" name="radio-schedule"><span>19:00</span></td>
             </tr>
             <tr>
-              <td> <input type="radio" name="radio-schedule"><span>11:00</span></td>
-              <td> <input type="radio" name="radio-schedule"><span>12:00</span></td>
-              <td> <input type="radio" name="radio-schedule"><span>17:00</span></td>
+              <td class=""> <input type="radio" name="radio-schedule"><span>11:00</span></td>
+              <td class=""> <input type="radio" name="radio-schedule"><span>12:00</span></td>
+              <td class=""> <input type="radio" name="radio-schedule"><span>17:00</span></td>
               <td class="unavailable"> <input type="radio" name="radio-schedule"><span>20:00</span></td>
             </tr>
           </table>
         </tbody>
       </div>
       <button type="submit" id="confirm-schedule-btn">CONFIRMAR</button>
-    </div>
-    <div class="hidden" id="service-window">
+    </section>
+
+    <!-- LISTA DE SERVIÇOS E PRODUTOS -->
+    <section class="hidden" id="service-window">
       <h3>8 NOVEMBRO, 2022</h3>
       <p>SELECIONE SERVIÇO E/OU PRODUTO</p>
       <div class="service-container">
@@ -167,20 +175,65 @@
               <td>SOBRANCELHA</td>
               <td>R$10,00</td>
             </tr>
+            <tr>
+              <td><input type="checkbox" id=""></td>
+              <td>SOBRANCELHA</td>
+              <td>R$10,00</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" id=""></td>
+              <td>SOBRANCELHA</td>
+              <td>R$10,00</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" id=""></td>
+              <td>SOBRANCELHA</td>
+              <td>R$10,00</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" id=""></td>
+              <td>SOBRANCELHA</td>
+              <td>R$10,00</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" id=""></td>
+              <td>SOBRANCELHA</td>
+              <td>R$10,00</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" id=""></td>
+              <td>SOBRANCELHA</td>
+              <td>R$10,00</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" id=""></td>
+              <td>SOBRANCELHA</td>
+              <td>R$10,00</td>
+            </tr>
           </tbody>
         </table>
       </div>
       <button type="submit" id="confirm-service-btn">CONFIRMAR</button>
-    </div>
-    <div class="hidden" id="overview-window">
-            <div class="client-info-overview">
-                <img src = "../img/worker/worker0.png" class="client-img" alt="Trabalhador"/>
-                <h3 style="font-size: 15px;">NOME COMPLETO DO CLIENTE</h3>
-                <p>(31) 90000-0000</p>
-                <p style="margin-left: auto;" >@INSTAGRAMCLIENTE</p>
-            </div>
-            <h1>8 NOVEMBRO, 2022- 18H00</h3>
-    </div>
+    </section>
+
+
+    <section class="hidden" id="overview-window">
+      <div id="client-info-overview">
+        <img src = "../img/user.jpg" class="client-img" alt="Trabalhador"/>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>NOME COMPLETO DO CLIENTE</td>
+                    </tr>
+                    <tr>
+                        <td>(31) 90000-0000</td>
+                        <td id="clint-instagram">@INSTAGRAMCLIENTE</td>
+                    </tr>
+                </tbody>
+            </table>
+      </div>
+      <h1>8 NOVEMBRO, 2022- 18H00</h3>
+    </section>
   </section>
   <div class="blur-overlay hidden"></div>
 </body>
