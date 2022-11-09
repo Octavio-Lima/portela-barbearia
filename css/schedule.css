@@ -1,3 +1,9 @@
+/* || VARIAVEIS*/
+:root {
+    --logo-size: 70vw;
+    --worker-pic-size: 30vw;
+}
+
 /* ||  GERAL */
 
 * {
@@ -23,7 +29,7 @@ body {
     display: none !important;
 }
 
-#appointment-window, .selected-worker { /* Remover o Filtro de blur dos elementos informados */
+#appointment-window, .selected-worker { /* Remover o Filtro de blur dos elementos com essas classes e ID */
   z-index: 10;
 }
 
@@ -43,29 +49,30 @@ body {
 header {
     display: flex;
     flex-direction: column;
-    margin: 0 5% 0;
 }
 
 #brand-logo {
-    margin: 30px auto 30px;
-    width: 220px;
+    width: var(--logo-size);
+    margin: calc(var(--logo-size) / 6) auto 3%;
 }
 
 header h3 { /* Slogan */
-    font-size: 22px;
+    font-size: 5vw;
     color: #fff;
     font-weight: 100;
-    margin: 0px;
+    margin: 3% auto 3%;
+
 }
 
 header h1 { /* Agendamento */
-    font-size: 30px;
+    font-size: 6vw;
     color: #fff;
-    margin: 15px 0px 5px;
+    margin: 3% auto 3%;
 }
 
 
 /* || SELECIONAR TRABALHADOR */
+
 .select-worker-container {
     display: flex;
     flex-wrap: wrap;
@@ -73,52 +80,57 @@ header h1 { /* Agendamento */
 }
 
 .worker-img {
-    margin: 15px 10px 0px 10px;
-    width: 110px;
-    clip-path: circle(55px at center);
+    margin: 3% 2vw 5%;
+    width: var(--worker-pic-size);
+    clip-path: circle(calc(var(--worker-pic-size) / 2) at center);
     pointer-events: none;
 }
 
 h2 { /* Nome do Profissional */
     color: #fff;
     font-weight: bold;
-    font-size: 22px;
+    font-size: 4vw;
 }
 
 .links-container {
-    margin-top: 15px;
+    margin-top: 6%;
     display: flex;
     flex-direction: column;
 }
 
-
-.button-link {
-    border: 5px solid #fff;
-    color: #fff;
+button { /* Botões de link da tela principal*/
+    width: 50%;
+    height: 10vw;
     background-color: #00000000;
     border-radius: 50px;
-    width: clamp(170px, 250px, 300px);
-    margin: 0px auto 15px auto;
-    font-weight: bold;
-    font-size: 20px;
-    text-decoration: none;
-    box-shadow: 0 0 10px #fff;
+    border: 7px solid #fff;
+    box-shadow: 0 0 15px #fff;
+    margin: 0 auto 3% auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+.button-link {/* Decoração do Texto do botão*/
+    color: #fff;
+    font-weight: bold;
+    font-size: 5vw;
+    text-decoration: none;
+}
 
 /* || FOOTER AND LINKS */
 
 footer {
     display: flex;
     justify-content: center;
-    font-size: 30px;
-    margin: 15px;
+    font-size: 7vw;
+    margin: 1%;
 }
 
 footer .fa {
     color: #fff;
     text-decoration: none;
-    margin: 0px 10px;
+    margin: 0px 1%;
 }
 
 
