@@ -1,6 +1,7 @@
 /* || VARIAVEIS*/
 :root {
-    --logo-size: 100px;
+    --logo-size: 30vw;
+    --gradient-width: 30px;
 }
 
 /* || GERAL */
@@ -14,6 +15,8 @@ body {
     background-size: cover;
     margin: 0;
     background-color: #000;
+
+    height: 100vh;
 }
 
 .container {
@@ -22,53 +25,60 @@ body {
     flex-direction: column;
 }
 
+/* || HEADER */
+
 .logo-bg { /* Container e Gradient da logo */
     background-image: radial-gradient(circle closest-side ,#fff, #fff, #ffffff00);
-    margin: 20px auto 0px auto;
-    width: calc(var(--logo-size) + 30px); /* Tamanho da logo + 30px para o gradient aparecer por trás */
-    height: calc(var(--logo-size) + 30px);/* Tamanho da logo + 30px para o gradient aparecer por trás */
+    margin: 10% auto 0 auto;
+    width: calc(var(--logo-size) + var(--gradient-width)); /* Tamanho da logo + grossura do gradiente para o efeito aparecer por trás */
+    height: calc(var(--logo-size) + var(--gradient-width));/* Tamanho da logo + grossura do gradiente para o efeito aparecer por trás */
 }
 
 img {
-    margin: 15px 0 0px 0;
+    margin: calc(var(--gradient-width) / 2) 0 0 0;
     width: var(--logo-size);
     clip-path: circle(calc(var(--logo-size) / 2) at center);
 }
 
 h1 {
-    font-size: 30px;
+    font-size: 9vw;
     color: #fff;
-    margin: 30px auto;
+    margin: 8% auto;
 }
 
-.container a { /* Botões de link da tela principal*/
-    /* Decoração do Texto*/
-    color: #fff;
-    font-weight: bold;
-    font-size: 25px;
-    text-decoration: none;
+/* || AREA PRINCIPAL, BOTÕES*/
 
-    /* Decoração do Botão*/
-    width: 250px;
-    height: 5px;
+button { /* Botões de link da tela principal*/
+    width: 80%;
+    height: 10vw;
     background-color: #00000000;
     border-radius: 50px;
     border: 7px solid #fff;
     box-shadow: 0 0 15px #fff;
-    margin: 0px auto 15px auto;
-    padding-bottom: 35px;
+    margin: 0px auto 5% auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Footer */
+.container a {/* Decoração do Texto do botão*/
+    color: #fff;
+    font-weight: bold;
+    font-size: 5vw;
+    text-decoration: none;
+}
+
+/* || FOOTER, INSTAGRAM */
+
 footer a {
     font-family: Arial;
     position: absolute;
-    bottom: 20px;
+    bottom: 3%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     color: #fff;
-    font-size: 20px;
-    left: calc(50% - 87.5px);
+    font-size: 5vw;
+    left: calc(50% - 22vw);
     text-decoration: none;
 }
