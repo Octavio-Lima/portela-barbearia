@@ -11,7 +11,6 @@
     margin: 0;
     border: 0;
     padding: 0;
-    user-select: none
 }
   
 body {
@@ -21,21 +20,18 @@ body {
 
 /* || LOGO || */
 
-header {
-    display: flex;
-}
-
 #brand {
+    display: flex;
     margin: 6% auto 6%;
     width: var(--logo-size);
 }
 
-h1 {
+h1 { /* TITULO DA PAGINA */
     font-family: 'Abril Fatface', cursive;
     font-size: 4vw;
 }
 
-p {
+p { /* PARAGRAFO DA PAGINA*/
     font-size: 3vw;
     margin: 5% 0;
 }
@@ -90,21 +86,21 @@ text-align: left;
     flex-direction: column;
 }
 
-.page-header-container {
+.page-title {
     display: flex;
     align-items: center;
     flex-direction: row;
     margin-right: -12.5%;
 }
 
-.page-header-container h1 {
+.page-title h1 {
     width: fit-content;
     white-space: nowrap;
     margin-right: 6%;
 }
 
-/*///*/
-.page-number-container {
+/*    */
+.page-number {
     margin-top: 5%;
     display: flex;
     align-items:baseline;
@@ -112,6 +108,45 @@ text-align: left;
     margin-left: -20%;
 }
 
-.page-number-container p {
+.page-number p {
     margin-left: 3%;
+}
+
+
+
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+
+    body{
+        background-color: #800;
+    }
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+
+    body{
+        background-color: #080;
+    }
+    
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+    body{
+        background-color: #008;
+    }
+
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
+    body{
+        background-color: #880;
+    }
+
 }

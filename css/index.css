@@ -2,6 +2,13 @@
 :root {
     --logo-size: 30vw;
     --gradient-width: 30px;
+
+    --logo-size-medium: 180px;
+    --gradient-width-medium: 40px;
+
+    
+    --logo-size-desktop: 128px;
+    --gradient-width-desktop: 40px;
 }
 
 /* || GERAL */
@@ -11,18 +18,15 @@
 }
 
 body {
+    background-color: #000;
     background-image: url("/img/bg.png");
     background-size: cover;
     margin: 0;
-    background-color: #000;
 
     height: 100vh;
-}
-
-.container {
-    text-align: center;
     display: flex;
     flex-direction: column;
+    text-align: center;
 }
 
 /* || HEADER */
@@ -49,8 +53,8 @@ h1 {
 /* || AREA PRINCIPAL, BOTÕES*/
 
 button { /* Botões de link da tela principal*/
-    width: 80%;
-    height: 10vw;
+    width: 75%;
+    height: 14vw;
     background-color: #00000000;
     border-radius: 50px;
     border: 7px solid #fff;
@@ -61,24 +65,222 @@ button { /* Botões de link da tela principal*/
     align-items: center;
 }
 
-.container a {/* Decoração do Texto do botão*/
+main a {/* Decoração do Texto do botão*/
     color: #fff;
     font-weight: bold;
     font-size: 5vw;
     text-decoration: none;
+    width: 100%;
 }
 
 /* || FOOTER, INSTAGRAM */
+.footer-space { background-color: #f000; flex-grow: 1; }
 
-footer a {
+footer a { /*  Font  */
     font-family: Arial;
-    position: absolute;
-    bottom: 3%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
+    font-weight: 100;
     color: #fff;
     font-size: 5vw;
-    left: calc(50% - 22vw);
     text-decoration: none;
+    margin: 15px auto 30px;
+
+    display: flex;
+    justify-content: center;
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+
+    body{
+        background-color: #800;
+    }
+
+    /* || HEADER */
+
+    .logo-bg { /* Container e Gradient da logo */
+        margin: 20px auto 0 auto;
+        width: calc(var(--logo-size-medium) + var(--gradient-width-medium)); /* Tamanho da logo + grossura do gradiente para o efeito aparecer por trás */
+        height: calc(var(--logo-size-medium) + var(--gradient-width-medium));/* Tamanho da logo + grossura do gradiente para o efeito aparecer por trás */
+    }
+
+    img {
+        margin: calc(var(--gradient-width-medium) / 2) 0 0 0;
+        width: var(--logo-size-medium);
+        height: var(--logo-size-medium);
+        clip-path: circle(calc(var(--logo-size-medium) / 2) at center);
+    }
+
+    h1 {
+        font-size: 60px;
+        margin: 15px auto 40px;
+    }
+
+    /* || AREA PRINCIPAL, BOTÕES*/
+
+    button { /* Botões de link da tela principal*/
+        width: 500px;
+        height: 80px;
+        border-radius: 50px;
+        border: 7px solid #fff;
+        box-shadow: 0 0 15px #fff;
+        margin: 0px auto 20px auto;
+    }
+
+    main a {/* Decoração do Texto do botão*/
+        font-size: 40px;
+    }
+
+    /* || FOOTER, INSTAGRAM */
+
+    footer a { /*  Font  */
+        font-size: 30px;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+
+    body{
+        background-color: #080;
+    }
+    
+    /* || HEADER */
+
+    .logo-bg { /* Container e Gradient da logo */
+        margin: 20px auto 0 auto;
+        width: calc(var(--logo-size-medium) + var(--gradient-width-medium)); /* Tamanho da logo + grossura do gradiente para o efeito aparecer por trás */
+        height: calc(var(--logo-size-medium) + var(--gradient-width-medium));/* Tamanho da logo + grossura do gradiente para o efeito aparecer por trás */
+    }
+
+    img {
+        margin: calc(var(--gradient-width-medium) / 2) 0 0 0;
+        width: var(--logo-size-medium);
+        height: var(--logo-size-medium);
+        clip-path: circle(calc(var(--logo-size-medium) / 2) at center);
+    }
+
+    h1 {
+        font-size: 60px;
+        margin: 15px auto 40px;
+    }
+
+    /* || AREA PRINCIPAL, BOTÕES*/
+
+    button { /* Botões de link da tela principal*/
+        width: 600px;
+        height: 90px;
+        border-radius: 50px;
+        border: 7px solid #fff;
+        box-shadow: 0 0 15px #fff;
+        margin: 0px auto 20px auto;
+    }
+
+    main a {/* Decoração do Texto do botão*/
+        font-size: 45px;
+    }
+
+    /* || FOOTER, INSTAGRAM */
+
+    footer a { /*  Font  */
+        font-size: 40px;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+    body{
+        background-color: #008;
+    }
+
+    /* || HEADER */
+
+    .logo-bg { /* Container e Gradient da logo */
+        background-image: radial-gradient(circle closest-side ,#fff, #fff, #ffffff00);
+        margin: 50px auto 0 auto;
+        width: calc(var(--logo-size-desktop) + var(--gradient-width-desktop)); /* Tamanho da logo + grossura do gradiente para o efeito aparecer por trás */
+        height: calc(var(--logo-size-desktop) + var(--gradient-width-desktop));/* Tamanho da logo + grossura do gradiente para o efeito aparecer por trás */
+    }
+
+    img {
+        margin: calc(var(--gradient-width-desktop) / 2) 0 0 0;
+        width: var(--logo-size-desktop);
+        height: var(--logo-size-desktop);
+        clip-path: circle(calc(var(--logo-size-desktop) / 2) at center);
+    }
+
+    h1 {
+        font-size: 40px;
+        margin: 15px auto 40px;
+    }
+
+    /* || AREA PRINCIPAL, BOTÕES*/
+
+    button { /* Botões de link da tela principal*/
+        width: 256px;
+        height: 50px;
+        border-radius: 50px;
+        border: 7px solid #fff;
+        box-shadow: 0 0 15px #fff;
+        margin: 0px auto 20px auto;
+    }
+
+    main a {/* Decoração do Texto do botão*/
+        font-size: 25px;
+    }
+
+    /* || FOOTER, INSTAGRAM */
+
+    footer a { /*  Font  */
+        font-size: 20px;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    
+    body{
+        background-color: #880;
+    }
+
+    /* || HEADER */
+
+    .logo-bg { /* Container e Gradient da logo */
+        margin: 20px auto 0 auto;
+        width: calc(var(--logo-size-desktop) + var(--gradient-width-desktop)); /* Tamanho da logo + grossura do gradiente para o efeito aparecer por trás */
+        height: calc(var(--logo-size-desktop) + var(--gradient-width-desktop));/* Tamanho da logo + grossura do gradiente para o efeito aparecer por trás */
+    }
+
+    img {
+        margin: calc(var(--gradient-width-desktop) / 2) 0 0 0;
+        width: var(--logo-size-desktop);
+        height: var(--logo-size-desktop);
+        clip-path: circle(calc(var(--logo-size-desktop) / 2) at center);
+    }
+
+    h1 {
+        font-size: 40px;
+        margin: 15px auto 30px;
+    }
+
+    /* || AREA PRINCIPAL, BOTÕES*/
+
+    button { /* Botões de link da tela principal*/
+        width: 256px;
+        height: 40px;
+        border-radius: 50px;
+        border: 7px solid #fff;
+        box-shadow: 0 0 15px #fff;
+        margin: 0px auto 20px auto;
+    }
+
+    main a {/* Decoração do Texto do botão*/
+        font-size: 20px;
+    }
+
+    /* || FOOTER, INSTAGRAM */
+
+    footer a { /*  Font  */
+        font-size: 20px;
+    }
 }
