@@ -105,3 +105,22 @@ function resetWindowPage() {
   serviceWindow.classList.add("hidden");
   overviewWindow.classList.add("hidden");
 }
+
+serviceWindow.addEventListener("click", (e) => {
+    targetEl = e.target;
+    parentEl = targetEl.closest("tr");
+    checkbox = targetEl.closest("input");
+
+
+    if (parentEl !== null){
+        let checkbox = parentEl.querySelector("input");
+
+        if (parentEl.classList.contains("selected")) {
+            checkbox.checked = false;
+            parentEl.classList.remove("selected");
+        } else {
+            checkbox.checked = true;
+            parentEl.classList.add("selected");
+        }
+    }
+})

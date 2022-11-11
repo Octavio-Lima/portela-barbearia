@@ -46,6 +46,8 @@
     </main>
 
     <!---->
+    <div style="flex-grow: 1; "></div>
+
     <footer>
         <a href="https://instagram.com/portelasbarbearia?igshid=YmMyMTA2M2Y%3D" target="_blank" class="fa fa-instagram"></a>
         <a href="http://tiny.cc/portelasbarbearia" class="fa fa-whatsapp" target="_blank"></a>
@@ -115,126 +117,115 @@
                 </tbody>
             </table>
         </section>
-    <section class="hidden" id="client-info-window">
-        <h3>PREENCHA ABAIXO PARA AGENDAR SEU HORÁRIO</h3>
-        <input type="text" id="input-client-name" placeholder="NOME COMPLETO">
-        <input type="number" id="" placeholder="CEL. (31)90000-0000">
-        <input type="text" id="" placeholder="EMAIL">
-        <input type="text" id="" placeholder="INSTAGRAM">
-        <button type="submit" id="confirm-client-info-btn">CONFIRMAR</button>
-    </section>
-    <section class="hidden" id="schedule-window">
-        <h3 class="calendar-title">8 NOVEMBRO, 2022</h3>
-        <p>HORÁRIOS DISPONIVEIS</p>
-        <div id="available-schedule-table">
-            <tbody>
-                <table>
-                    <tr>
-                        <td class=""> <input type="radio" name="radio-schedule"><span>09:00</span></td>
-                        <td class=""> <input type="radio" name="radio-schedule"><span>12:00</span></td>
-                        <td class=""> <input type="radio" name="radio-schedule"><span>15:00</span></td>
-                        <td class=""> <input type="radio" name="radio-schedule"><span>18:00</span></td>
-                    </tr>
-                    <tr>
-                        <td class="unavailable"> <input type="radio" name="radio-schedule"><span>10:00</span></td>
-                        <td class=""> <input type="radio" name="radio-schedule"><span>13:00</span></td>
-                        <td class="unavailable"> <input type="radio" name="radio-schedule"><span>16:00</span></td>
-                        <td class="unavailable"> <input type="radio" name="radio-schedule"><span>19:00</span></td>
-                    </tr>
-                    <tr>
-                        <td class=""> <input type="radio" name="radio-schedule"><span>11:00</span></td>
-                        <td class=""> <input type="radio" name="radio-schedule"><span>12:00</span></td>
-                        <td class=""> <input type="radio" name="radio-schedule"><span>17:00</span></td>
-                        <td class="unavailable"> <input type="radio" name="radio-schedule"><span>20:00</span></td>
-                    </tr>
-                </table>
-            </tbody>
-        </div>
-        <button type="submit" id="confirm-schedule-btn">CONFIRMAR</button>
-    </section>
+        <section class="hidden" id="client-info-window">
+            <h3>PREENCHA ABAIXO PARA AGENDAR SEU HORÁRIO</h3>
+            <input type="text" id="input-client-name" placeholder="NOME COMPLETO">
+            <input type="number" id="" placeholder="CEL. (31)90000-0000">
+            <input type="text" id="" placeholder="EMAIL">
+            <input type="text" id="" placeholder="INSTAGRAM">
+            <button type="submit" id="confirm-client-info-btn">CONFIRMAR</button>
+        </section>
+        <section class="hidden" id="schedule-window">
+            <h3 class="calendar-title">8 NOVEMBRO, 2022</h3>
+            <p>HORÁRIOS DISPONIVEIS</p>
+            <div id="available-schedule-table">
+                <tbody>
+                    <table>
+                        <tr>
+                            <td class=""> <input type="radio" name="radio-schedule"><span>09:00</span></td>
+                            <td class=""> <input type="radio" name="radio-schedule"><span>12:00</span></td>
+                            <td class=""> <input type="radio" name="radio-schedule"><span>15:00</span></td>
+                            <td class=""> <input type="radio" name="radio-schedule"><span>18:00</span></td>
+                        </tr>
+                        <tr>
+                            <td class="unavailable"> <input type="radio" name="radio-schedule"><span>10:00</span></td>
+                            <td class=""> <input type="radio" name="radio-schedule"><span>13:00</span></td>
+                            <td class="unavailable"> <input type="radio" name="radio-schedule"><span>16:00</span></td>
+                            <td class="unavailable"> <input type="radio" name="radio-schedule"><span>19:00</span></td>
+                        </tr>
+                        <tr>
+                            <td class=""> <input type="radio" name="radio-schedule"><span>11:00</span></td>
+                            <td class=""> <input type="radio" name="radio-schedule"><span>12:00</span></td>
+                            <td class=""> <input type="radio" name="radio-schedule"><span>17:00</span></td>
+                            <td class="unavailable"> <input type="radio" name="radio-schedule"><span>20:00</span></td>
+                        </tr>
+                    </table>
+                </tbody>
+            </div>
+            <button type="submit" id="confirm-schedule-btn">CONFIRMAR</button>
+        </section>
 
     <!--  LISTA DE SERVIÇOS E PRODUTOS  -->
-    <section class="" id="service-window">
-      <h3 class="calendar-title">8 NOVEMBRO, 2022</h3>
-      <p>SELECIONE SERVIÇO E/OU PRODUTO</p>
-      <div class="service-container">
-        <table>
-          <tbody>
-            <tr>
-              <td><input type="checkbox" id=""></td>
-              <td>CORTE</td>
-              <td>R$25,00</td>
-            </tr>
-            <tr>
-              <td><input type="checkbox" id=""></td>
-              <td>BARBOTERAPIA</td>
-              <td>R$25,00</td>
-            </tr>
-            <tr>
-              <td><input type="checkbox" id=""></td>
-              <td>SOBRANCELHA</td>
-              <td>R$10,00</td>
-            </tr>
-            <tr>
-              <td><input type="checkbox" id=""></td>
-              <td>SOBRANCELHA</td>
-              <td>R$10,00</td>
-            </tr>
-            <tr>
-              <td><input type="checkbox" id=""></td>
-              <td>SOBRANCELHA</td>
-              <td>R$10,00</td>
-            </tr>
-            <tr>
-              <td><input type="checkbox" id=""></td>
-              <td>SOBRANCELHA</td>
-              <td>R$10,00</td>
-            </tr>
-            <tr>
-              <td><input type="checkbox" id=""></td>
-              <td>SOBRANCELHA</td>
-              <td>R$10,00</td>
-            </tr>
-            <tr>
-              <td><input type="checkbox" id=""></td>
-              <td>SOBRANCELHA</td>
-              <td>R$10,00</td>
-            </tr>
-            <tr>
-              <td><input type="checkbox" id=""></td>
-              <td>SOBRANCELHA</td>
-              <td>R$10,00</td>
-            </tr>
-            <tr>
-              <td><input type="checkbox" id=""></td>
-              <td>SOBRANCELHA</td>
-              <td>R$10,00</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <button type="submit" id="confirm-service-btn">CONFIRMAR</button>
-    </section>
-
-    <!--  INFORMAÇÕES DO CLIENTE  -->
-    <section class="hidden" id="overview-window">
-      <div id="client-info-overview">
-        <img src = "../img/user.jpg" class="client-img" alt="Trabalhador"/>
+        <section class="" id="service-window">
+        <h3 class="calendar-title">8 NOVEMBRO, 2022</h3>
+        <p>SELECIONE SERVIÇO E/OU PRODUTO</p>
+        <div class="service-container" style="overflow-x: scroll;">
             <table>
                 <tbody>
                     <tr>
-                        <td id="nome-cliente">NOME COMPLETO DO CLIENTE</td>
+                        <td><input type="checkbox" id=""></td>
+                        <td>CORTE</td>
+                        <td>R$25,00</td>
                     </tr>
                     <tr>
-                        <td>(31) 90000-0000</td>
-                        <td id="clint-instagram">@INSTAGRAMCLIENTE</td>
+                        <td><input type="checkbox" id=""></td>
+                        <td>BARBOTERAPIA</td>
+                        <td>R$25,00</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" id=""></td>
+                        <td>SOBRANCELHA</td>
+                        <td>R$10,00</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" id=""></td>
+                        <td>SOBRANCELHA</td>
+                        <td>R$10,00</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" id=""></td>
+                        <td>SOBRANCELHA</td>
+                        <td>R$10,00</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" id=""></td>
+                        <td>SOBRANCELHA</td>
+                        <td>R$10,00</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" id=""></td>
+                        <td>SOBRANCELHA</td>
+                        <td>R$10,00</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" id=""></td>
+                        <td>SOBRANCELHA</td>
+                        <td>R$10,00</td>
                     </tr>
                 </tbody>
             </table>
-      </div>
-      <h1>8 NOVEMBRO, 2022- 18H00</h3>
-    </section>
-  </section>
-  <div class="blur-overlay hidden"></div>
+        </div>
+        <button type="submit" id="confirm-service-btn">CONFIRMAR</button>
+        </section>
+
+    <!--  RESUMO, INFORMAÇÕES DO CLIENTE  -->
+        <section class="hidden" id="overview-window">
+            <div class="client-info-overview">
+                <img src = "../img/user.jpg" id="client-img" alt="Cliente"/>
+                <div style="display: flex; flex-direction: column;">
+                    <h3>NOME COMPLETO DO CLIENTE</h3>
+                    <div style="display: flex; flex-direction: row;">
+                        <p>(31) 90000-0000</p>
+                        <span style="flex-grow: 1;"></span> <!-- Spacer -->
+                        <p id="client-instagram">@INSTAGRAMCLIENTE</p>
+                    </div>
+                </div>
+            </div>
+            <h1>8 NOVEMBRO, 2022- 18H00</h3>
+        </section>
+</section>
+
+    <!--  Blur Overlay  -->
+    <div class="blur-overlay hidden"></div>
 </body>
 </html>
