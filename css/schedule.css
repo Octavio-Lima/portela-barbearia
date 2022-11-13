@@ -102,7 +102,7 @@ h2 { /* Nome do Profissional */
     align-items: center;
 }
 
-button { /* Botões de link da tela principal*/
+.links-container button { /* Botões de link da tela principal*/
     width: 50%;
     height: 10vw;
     background-color: #00000000;
@@ -179,7 +179,7 @@ footer .fa {
         margin-top: 6%;
     }
 
-    button { /* Botões de link da tela principal*/
+    .links-container button { /* Botões de link da tela principal*/
         width: 50%;
         height: 10vw;
         border: 7px solid #fff;
@@ -241,7 +241,7 @@ footer .fa {
         margin-top: 6%;
     }
 
-    button { /* Botões de link da tela principal*/
+    .links-container button { /* Botões de link da tela principal*/
         width: 50%;
         height: 8vw;
         border: 7px solid #fff;
@@ -302,7 +302,7 @@ footer .fa {
         margin-top: 20px;
     }
 
-    button { /* Botões de link da tela principal*/
+    .links-container button { /* Botões de link da tela principal*/
         width: 300px;
         height: 50px;
         border-radius: 50px;
@@ -357,14 +357,14 @@ footer .fa {
     }
 
     h2 { /* Nome do Profissional */
-        font-size: 20px;
+        font-size: 20px;    
     }
 
     .links-container {
         margin-top: 20px;
     }
 
-    button { /* Botões de link da tela principal*/
+    .links-container  button { /* Botões de link da tela principal*/
         width: 240px;
         height: 40px;
         border-radius: 50px;

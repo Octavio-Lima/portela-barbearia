@@ -1,38 +1,31 @@
-:root {
-    --client-img-size: 10vw;
-}
- 
-/* || TEXT FORMATING */
-.calendar-title {
-    border-bottom: 2px solid rgb(85, 85, 85);
-    color: #000;
-    font-size: 4vw;
-    font-weight: bold;
-    padding: 3%;
-    text-align: center;
-}
-
 /* || JANELA DE AGENDAMENTO */
 
 #appointment-window {
-    position: absolute;
-    left: 50%;
-    bottom: 30%;
-    transform: translate(-50%);
     background-color: #fff;
     border-radius: 8vw;
     width: 70vw;
-    height: 40vw;
+    height: 50vw;
+    margin: 4% auto 4%;
 }
 
-#appointment-window button {
-    background-color: #0000;
-    border: none;
-    box-shadow: none;
-    margin: 0 auto;
+.window-container {
+    width: 100%;
+    height: 100%;
+}
+
+#appointment-window button { /* Botão da janela de agendamentos */
+    background-color: #fff;
+    margin: 4% auto;
+    font-size: 3vw;
 }
 
 /* Calendario */
+
+#calendar-window {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
 
 #calendar-table {
     width: 100%;
@@ -43,7 +36,7 @@
 
 #calendar-table th {
     font-size: 3vw;
-    color: rgb(104, 104, 104);
+    color: #686868;
 }
 
 #calendar-table td {
@@ -59,20 +52,20 @@
 #client-info-window {
     display: flex;
     flex-direction: column;
-    padding: 20px;
-    text-align: left;
+    height: 100%;
 }
 
-#client-info-window h3 {
+#client-info-window h3 { /* Titulo da pagina */
     text-align: center;
     font-size: 3vw;
     color: #000;
     font-weight: bold;
-    margin-bottom: 3%;
+    margin: 3% 0%;
 }
 
 #client-info-window input {
     background-color: #f7f7f7;
+    text-align: left;
     font-size: 2.8vw;
     padding-left: 4%;
     margin: 1% 4%;
@@ -84,6 +77,22 @@ input[type=number] {
 
 
 /* Horarios disponiveis */
+
+/* || TEXT FORMATING */
+.calendar-title {
+    border-bottom: 2px solid rgb(85, 85, 85);
+    color: #000;
+    font-size: 4vw;
+    font-weight: bold;
+    padding: 3%;
+    text-align: center;
+}
+
+#schedule-window {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
 
 #schedule-window p {
     font-size: 3vw;
@@ -119,10 +128,12 @@ input[type=number] {
 
 #service-window {
     height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .service-container {
-    height: 40%;
+    flex-grow: 1;
 }
 
 #service-window table {
@@ -154,10 +165,20 @@ input[type=number] {
 /* || RESUMO, INFORMAÇÕES DO CLIENTE */
 
 #overview-window { /*  Container da janela */
-    margin: 8% 3%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+#client-img {
+    margin: 0px 10px 0px 0px;
+    width: 128;
+    height: 8vw;
+    clip-path: circle(calc(8vw / 2) at center);
 }
 
 .client-info-overview {
+    margin-top: 8%;
     display: flex;    
     flex-direction: row;
     justify-content: center;
@@ -178,12 +199,6 @@ input[type=number] {
     font-size: 4vw;
 }
 
-#client-img {
-    margin: 0px 10px 0px 0px;
-    width: 128;
-    height: 8vw;
-    clip-path: circle(calc(8vw / 2) at center);
-}
 
 
 
@@ -210,6 +225,107 @@ input[type=number] {
     body{
         background-color: #008;
     }
+    
+    /* || JANELA DE AGENDAMENTO */
+
+    #appointment-window {
+        border-radius: 30px;
+        width: 300px;
+        height: 200px;
+        margin: 16px auto 16px;
+    }
+
+    #appointment-window button { /* Botão da janela de agendamentos */
+        margin: 8px auto;
+        font-size: 14px;
+    }
+
+    /* Calendario */
+
+    #calendar-table th {
+        font-size: 12px;
+    }
+
+    #calendar-table {
+        padding-bottom: 0px;
+    }
+
+    #calendar-table td {
+        font-size: 12px;
+    }
+
+    /* INFORMAÇÕES DO CLIENTE */
+    #client-info-window h3 { /* Titulo da pagina */
+        font-size: 14px;
+        margin: 10px 0;
+    }
+
+    #client-info-window input {
+        font-size: 14px;
+        padding-left: 10px;
+        margin: 2px 16px;
+    }
+
+
+    /* Horarios disponiveis */
+
+    /* || TEXT FORMATING */
+    .calendar-title {
+        font-size: 20px;
+        padding: 8px;
+    }
+
+    #schedule-window p {
+        font-size: 16px;
+        margin: 5px;
+    }
+
+    #schedule-window span {
+        font-size: 14px;
+    }
+
+    /* || LISTA DE SERVIÇOS E PRODUTOS */
+
+    #service-window table {
+        padding: 0 10px;
+    }
+
+    #service-window p {
+        font-size: 20px;
+        margin: 5px;
+    }
+
+    #service-window td {
+        padding-left: 5px;
+        font-size: 16px;
+    }
+
+    /* || RESUMO, INFORMAÇÕES DO CLIENTE */
+
+    #client-img {
+        margin: 0px 10px 0px 0px;
+        width: 40px;
+        height: 40px;
+        clip-path: circle(20px at center);
+    }
+
+    .client-info-overview {
+        margin-top: 10px;
+    }
+
+    #overview-window h3 { /* Nome completo do cliente */
+        font-size: 20px;
+    }
+
+    #overview-window p { /* numero e instagram do cliente */
+        font-size: 16px;
+        padding-right: 5px;
+    }
+
+    #overview-window h1 { /* data do serviço */
+        margin-top: 5%;
+        font-size: 20px;
+    }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
@@ -218,97 +334,92 @@ input[type=number] {
     body{
         background-color: #880;
     }
-
-    /* || TEXT FORMATING */
-    .calendar-title {
-        font-size: 20px;
-        padding: 10px;
-        margin-bottom: 5px;
-    }
-
+    
     /* || JANELA DE AGENDAMENTO */
 
     #appointment-window {
-        position: absolute;
-        left: 50%;
-        bottom: 30px;
-        transform: translate(-50%);
-        border-radius: 20px;
+        border-radius: 30px;
         width: 300px;
         height: 200px;
+        margin: 16px auto 16px;
+    }
+
+    #appointment-window button { /* Botão da janela de agendamentos */
+        margin: 8px auto;
+        font-size: 14px;
     }
 
     /* Calendario */
 
-    #calendar-table th, #calendar-table td {
-        font-size: 15px;
+    #calendar-table th {
+        font-size: 12px;
+    }
+
+    #calendar-table {
+        padding-bottom: 0px;
+    }
+
+    #calendar-table td {
+        font-size: 12px;
     }
 
     /* INFORMAÇÕES DO CLIENTE */
-    #client-info-window {
-        display: flex;
-        flex-direction: column;
-        padding: 20px;
-        text-align: left;
-    }
-
-    #client-info-window h3 { /* Titulo da Janela */ 
-        font-size: 15px;
-        margin-bottom: 8px;
+    #client-info-window h3 { /* Titulo da pagina */
+        font-size: 14px;
+        margin: 10px 0;
     }
 
     #client-info-window input {
-        font-size: 15px;
+        font-size: 14px;
         padding-left: 10px;
-        margin: 2px 2px;
+        margin: 2px 16px;
     }
+
 
     /* Horarios disponiveis */
 
+    /* || TEXT FORMATING */
+    .calendar-title {
+        font-size: 20px;
+        padding: 8px;
+    }
+
     #schedule-window p {
         font-size: 16px;
-        margin: 6px;
+        margin: 5px;
     }
 
     #schedule-window span {
-        font-size: 15px;
+        font-size: 14px;
     }
 
+    /* || LISTA DE SERVIÇOS E PRODUTOS */
 
-    #available-schedule-table td, #available-schedule-table span { /* Formatação do texto e horario */
-    padding: 2px 5px;
-    min-width: 10px;
-    }
-
-    /* Lista de Serviços e Produtos */
-
-    .service-container {
-        height: 40%;
-    }
-
-    .service-container table {
-        padding: 0 5%;
+    #service-window table {
+        padding: 0 10px;
     }
 
     #service-window p {
-        font-size: 15px;
+        font-size: 20px;
+        margin: 5px;
     }
 
     #service-window td {
-        font-size: 14px;
+        padding-left: 5px;
+        font-size: 16px;
     }
 
     /* || RESUMO, INFORMAÇÕES DO CLIENTE */
 
-    #overview-window { /*  Container da janela */
-        margin: 8% 3%;
+    #client-img {
+        margin: 0px 10px 0px 0px;
+        width: 40px;
+        height: 40px;
+        clip-path: circle(20px at center);
     }
 
     .client-info-overview {
-        display: flex;    
-        flex-direction: row;
-        justify-content: center;
-        text-align: left;
+        margin-top: 10px;
     }
 
     #overview-window h3 { /* Nome completo do cliente */
@@ -316,19 +427,12 @@ input[type=number] {
     }
 
     #overview-window p { /* numero e instagram do cliente */
-        font-size: 15px;
+        font-size: 16px;
         padding-right: 5px;
     }
 
     #overview-window h1 { /* data do serviço */
         margin-top: 5%;
         font-size: 20px;
-    }
-
-    #client-img {
-        margin: 0px 10px 0px 0px;
-        width: 40px;
-        height: 40px;
-        clip-path: circle(calc(40px / 2) at center);
     }
 }
