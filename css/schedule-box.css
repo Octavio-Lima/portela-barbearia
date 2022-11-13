@@ -19,6 +19,10 @@
     font-size: 3vw;
 }
 
+#appointment-window button:hover { /* Botão da janela de agendamentos */
+    color: #146df3;
+}
+
 /* Calendario */
 
 #calendar-window {
@@ -217,6 +221,32 @@ input[type=number] {
     body{
         background-color: #080;
     }
+
+    /* || JANELA DE AGENDAMENTO */
+
+    #appointment-window {
+        border-radius: 8vw;
+        width: 70vw;
+        height: 50vw;
+        margin: 4% auto 4%;
+    }
+
+    /* INFORMAÇÕES DO CLIENTE */
+
+    #client-info-window h3 { /* Titulo da pagina */
+        font-size: 3.5vw;
+    }
+
+    #client-info-window input {
+        font-size: 3vw;
+    }
+
+    /* Horarios disponiveis */
+
+    #schedule-window p {
+        font-size: 4vw;
+    }
+
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
@@ -436,3 +466,12 @@ input[type=number] {
         font-size: 20px;
     }
 }
+
+
+/* || TEST SCREEN SIZES */
+h5 { width: fit-content; position: absolute; border: 2px solid #fff; padding: 6px; color: #fff; top: 0; left: 0; display: none; }
+@media only screen and (max-width: 599px)  { h5 { background-color: #000; } } /* Very Small devices (Under 599px) */
+@media only screen and (min-width: 600px)  { h5 { background-color: #a00; } } /* Small devices (Over 600px) */
+@media only screen and (min-width: 768px)  { h5 { background-color: #0a0; } } /* Medium devices (Over 768px) */
+@media only screen and (min-width: 992px)  { h5 { background-color: #00a; } } /* Large devices (Over 992px) */
+@media only screen and (min-width: 1200px) { h5 { background-color: #aa0; } } /* Extra large devices (Over 1200px) */

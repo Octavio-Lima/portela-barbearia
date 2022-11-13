@@ -16,7 +16,7 @@
 
 body {
     background-color: #000;
-    /* background-image: url("/img/bg.png"); */
+    background-image: url("/img/bg.png");
     background-size: cover;
     height: 100vh;
 
@@ -132,6 +132,10 @@ footer .fa {
     margin: 4% 1% 8%;
 }
 
+a:hover {/* Decoração do Texto do botão*/
+    color: rgb(20, 109, 243);
+}
+
 
 /* || AGENDAMENTO */
 
@@ -139,11 +143,6 @@ footer .fa {
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
-
-    body{
-        background-color: #800;
-    }
-
     /* || HEADER */
 
     #brand-logo {
@@ -201,11 +200,6 @@ footer .fa {
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-
-    body{
-        background-color: #080;
-    }
-
     /* || HEADER */
 
     #brand-logo {
@@ -263,11 +257,6 @@ footer .fa {
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-
-    body{
-        background-color: #008;
-    }
-
     /* || HEADER */
 
     #brand-logo {
@@ -325,11 +314,6 @@ footer .fa {
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-    
-    body{
-        background-color: #880;
-    }
-
     /* || HEADER */
 
     #brand-logo {
@@ -384,3 +368,12 @@ footer .fa {
         text-decoration: none;
     }
 }
+
+
+/* || TEST SCREEN SIZES */
+h5 { width: fit-content; position: absolute; border: 2px solid #fff; padding: 6px; color: #fff; top: 0; left: 0; display: none; }
+@media only screen and (max-width: 599px)  { h5 { background-color: #000; } } /* Very Small devices (Under 599px) */
+@media only screen and (min-width: 600px)  { h5 { background-color: #a00; } } /* Small devices (Over 600px) */
+@media only screen and (min-width: 768px)  { h5 { background-color: #0a0; } } /* Medium devices (Over 768px) */
+@media only screen and (min-width: 992px)  { h5 { background-color: #00a; } } /* Large devices (Over 992px) */
+@media only screen and (min-width: 1200px) { h5 { background-color: #aa0; } } /* Extra large devices (Over 1200px) */
