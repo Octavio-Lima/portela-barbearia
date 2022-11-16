@@ -88,8 +88,8 @@ serviceWindow.addEventListener("click", (e) => {
 const windowPages = [ // Agrupar todas as janelas em uma array só
     calendarWindow,
     clientInfoWindow,
-    scheduleWindow,
     serviceWindow,
+    scheduleWindow,
     overviewWindow
 ]
 
@@ -99,8 +99,8 @@ appointmentWindow.addEventListener("click", (e) => {
 
     if (buttonID == "pick-day-btn") { switchBetweenWindows(1); }
     if (buttonID == "confirm-client-info-btn") { switchBetweenWindows(2); }
-    if (buttonID == "confirm-schedule-btn") { switchBetweenWindows(3); }
-    if (buttonID == "confirm-service-btn") { switchBetweenWindows(4); }
+    if (buttonID == "confirm-service-btn") { switchBetweenWindows(3); }
+    if (buttonID == "confirm-schedule-btn") { switchBetweenWindows(4); }
     if (buttonID == "finish-scheduling") { selectWorker(currentWorkerSel); }
 })
 

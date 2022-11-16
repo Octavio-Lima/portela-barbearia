@@ -1,0 +1,195 @@
+/* || GERAL */
+
+* {
+    font-family: helvetica;
+}
+
+body, tbody {
+    margin: 0;
+    border: 0;
+    padding: 0;
+
+    background-color: #000;
+    color: #fff;
+}
+
+.hidden {
+    display: none;
+}
+
+/* || CABEÇALHO */
+
+header {
+    background-color: #0000;
+    position: absolute;
+    top: 0;
+    height: 100px;
+    width: 100%;
+    border-bottom: 2px #fff solid;
+}
+
+.header-elements {
+    padding: 15px;
+}
+
+.date-config-element{
+    display: flex;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+header h3{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.header-input {
+    margin: auto 15px auto 5px;
+    width: 110px;
+}
+
+/* Corpo */
+main {
+    position: absolute;
+    top: 100px;
+    bottom: 80px;
+    width: 100%;
+    overflow-x: scroll;
+}
+
+
+/* Tables */
+
+table {
+    width: 100%;
+    position: relative;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+/* Table Rows*/
+
+#header-row {
+    position: sticky;
+    top: 0;
+    background-color: #000000;
+    border-top: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+}
+
+tr { width: 100%; height: 50px; }
+th { vertical-align: middle; text-align: left; }
+tr:nth-child(even):not(.selected) { background-color: #2e2e2e; }
+th:first-child{ width: calc(40% + 260px); }
+th:nth-child(2), th:nth-child(3), th:nth-child(4), th:nth-child(5) { width: 10%; }
+th:nth-child(6), th:last-child{ width: 130px; }
+
+/* Rodapé */
+
+footer {
+    background-color: #0000;
+    border-top: 2px solid #fff;
+    position: absolute;
+    bottom: 0;
+    height: 80px;
+    width: 100%;
+}
+
+
+.block-bg-elements {
+    width: 100%;
+    height: 100%;
+    background-color: #000000b3;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.taskbar-buttons {
+    border-style: none;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #000;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 1%;
+    margin: 1% 1% 0% 1%;
+}
+
+.taskbar-buttons:hover {
+    border-style: none;
+    border-radius: 5px;
+    background-color: #99c9ff;
+    color: #000;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 1%;
+    margin: 1% 1% 0% 1%;
+}
+
+.taskbar-buttons:active {
+    background-color: #05004e;  
+    color: #fff;
+}
+
+tr:hover:not(#header-row):not(.selected) {
+    background-color: #99c9ff;
+}
+
+.selected {
+    color: #fff;
+    background-color: #0059be;  
+}
+
+/* Caixas de Dialogo */
+.del-entry-diag-box {
+    border-radius: 10px;
+    background-color: #fff;
+    position: absolute;
+    width: 350px;
+    height: 100px;
+    top: 80px;
+    right: calc(50% - 150px);
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.diag-box-button {
+    font-size: 15px;
+    font-weight: bold;
+    background-color: #fff;
+    color: #000;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100px;
+    border: 2px solid #0059be;
+}
+
+#confirm-del-button:hover {
+    background-color: #ff0000;
+    border: 2px solid #ff0000;
+    color: #fff;
+}
+
+#confirm-add-entry-button:hover {
+    background-color: #00c000;
+    border: 2px solid #00c000;
+    color: #fff;
+}
+
+#cancel-button:hover {
+    background-color: #0059be;
+    color: #fff;
+}
+
+.add-entry-diag-box{
+    background-color: #fff;
+    border-radius: 10px;
+    position: absolute;
+    width: 900px;
+    height: 300px;
+    top: 80px;
+    right: calc(50% - 450px);
+    padding: 10px;
+}
