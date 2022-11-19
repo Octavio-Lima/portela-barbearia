@@ -1,39 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portela Barbearia</title>
-  
-  <!-- CSS -->
-  <link rel="stylesheet" href="css/index.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portela Barbearia</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/schedule-box.css"> <!-- Schedule Box CSS -->
+    <link rel="stylesheet" href="css/index.css"> <!-- Maing Page CSS -->
 
-  <!-- Fontes -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Antonio:wght@100;400;700&display=swap" rel="stylesheet"> 
+      <!-- Scripts -->
+    <script src="js/index.js" defer></script>
+
+      <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Antonio:wght@100;400;700&display=swap" rel="stylesheet"> 
+    <script src="https://kit.fontawesome.com/0d15831467.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="logo-bg">
-        <img src = "img/logo.svg" alt="Portela's Barbearia Logo"/>
-    </div>
-    <div class="title">
-        <h1>PORTELA'S BARBEARIA</h1>
-    </div>
+    <header>
+        <img src = "../img/logo-a.svg" alt="Portela's Barbearia Logo" id="brand-logo"/> 
+        <h3>O CABELO É A MOLDURA DO ROSTO, CUIDE BEM DELE.</h3>
+        <h1>AGENDAMENTO:</h1>
+    </header>
+
+    <!---->
     <main>
-        <button><a href="/html/about-us.html">SOBRE NÓS</a></button>
-        <button><a href="/html/schedule.html">AGENDAMENTO</a></button>
-        <button><a href="https://g.co/kgs/ZuPVoq" target="_blank">LOCALIZAÇÃO</a></button>
-        <button><a href="https://g.page/r/CRlyE4HO9XUpEBM/review" target="_blank">AVALIE NOSSO SERVIÇO</a></button>
+        <div class="select-worker-container">
+            <div class="worker">
+                <img src = "../img/worker/worker0.jpg" class="worker-img" alt="Trabalhador"/> 
+                <h2>JOÃO PEDRO</h2>
+            </div>
+            <div class="worker">
+                <img src = "../img/worker/worker1.jpg" class="worker-img" alt="Trabalhador"/> 
+                <h2>LÚCIO</h2>
+            </div>        
+        </div>
+        <div class="links-container">
+            <button><a href="https://g.co/kgs/ZuPVoq" target="_blank" class="button-link">LOCALIZAÇÃO</a></button>
+            <button><a href="https://g.page/r/CRlyE4HO9XUpEBM/review" target="_blank" class="button-link">AVALIE NOSSO SERVIÇO</a></button>
+            <button><a href="/html/about-us.html" class="button-link">SOBRE NÓS</a></button>
+        </div>
     </main>
-    
-    <!-- Instagram -->
-    <div class="footer-space"></div>
-    
+
+    <!---->
+    <div id="footer-spacer" style="flex-grow: 1;"></div>
+
     <footer>
-        <a href="https://instagram.com/portelasbarbearia?igshid=YmMyMTA2M2Y%3D" target="_blank">@portelasbarbearia</a>
+        <a href="https://instagram.com/portelasbarbearia?igshid=YmMyMTA2M2Y%3D" target="_blank" class="fa fa-instagram"></a>
+        <a href="http://tiny.cc/portelasbarbearia" class="fa fa-whatsapp" target="_blank"></a>
+        <a href="#" class="fa fa-spotify"></a>
     </footer>
+    
+    <!-- JANELAS DE HORARIOS & SERVIÇOS -->
+    <section id="appointment-window" class="hidden">
+        <div class="window-container">
+        
+        <!--  CALENDARIO  -->
+            <section class="" id="calendar-window">
+                <div class="calendar-pick-month-container calendar-title">
+                    <button class="fa-solid fa-angle-double-left select-month-arrow" id="previous-month"></button>
+                    <h3 id="calendar-month-name">MÊS</h3>
+                    <button class="fa-solid fa-angle-double-right select-month-arrow" id="next-month"></button>
+                </div>
+                <table id="calendar-table">
+                    <tbody>
+                        <tr>
+                            <th>D</th>
+                            <th>S</th>
+                            <th>T</th>
+                            <th>Q</th>
+                            <th>Q</th>
+                            <th>S</th>
+                            <th>S</th>
+                        </tr>
+                        <tr>
+                            <td class="calendar-pick-day">0</td>
+                            <td class="calendar-pick-day">0</td>
+                            <td class="calendar-pick-day">0</td>
+                            <td class="calendar-pick-day">0</td>
+                            <td class="calendar-pick-day">0</td>
+                            <td class="calendar-pick-day">0</td>
+                            <td class="calendar-pick-day">0</td>
+                        </tr>
+                        <tr>
+                            <td class="calendar-pick-day">0</td>
+                            <td class="calendar-pick-day">0</td>
+                            <td class="calendar-pick-day">0</td>
+                            <td class="calendar-pick-day">0</td>
+                            <td class="calendar-pick-day">0</td>
+                            <td class="calendar-pick-day">0</td>
+                            <td class="calendar-pick-day">0</td>
+                        </tr>
+                        <tr>
+                            <td class="calendar-pick-day">0</td>
+                            <td class="calendar-pick-day">0</td>
+                            <td class="calendar-pick-day">0</td>
+                            <td class="calendar-pick-day">0</td>
+                            <td class="calendar-pick-day">0</td>
+                            <td class="calendar-pick-day">0</td>
+                            <td class="calendar-pick-day">0</td>
+                        </tr>
+                        <tr>
+                            <td class="calendar-pick-day">0</td>
+                            <td class="calendar-pick-day">0</td>
+                            <td class="calendar-pick-day">0</td>
+                            <td class="calendar-pick-day">0</td>
+                            <td class="calendar-pick-day">0</td>
+                            <td class="calendar-pick-day">0</td>
+                            <td class="calendar-pick-day">0</td>
+                        </tr>
+                        <tr>
+                            <td class="calendar-pick-day">0</td>
+                            <td class="calendar-pick-day">0</td>
+                            <td class="calendar-pick-day">0</td>
+                            <td class="calendar-pick-day">0</td>
+                            <td class="calendar-pick-day">0</td>
+                            <td class="calendar-pick-day">0</td>
+                            <td class="calendar-pick-day">0</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!--  CONFIRM BUTTON  -->
+                <div style="flex-grow: 1;"></div>
+                <button type="submit" id="pick-day-btn">CONFIRMAR</button>
+            </section>
+
+        <!--  INFORMAÇÕES DO CLIENTE  -->
+            <section class="hidden" id="client-info-window">
+                <h3>PREENCHA ABAIXO PARA AGENDAR SEU HORÁRIO</h3>
+                <input type="text" id="input-client-name" placeholder="NOME COMPLETO">
+                <input type="text" id="input-client-phone" placeholder="CEL. (31)90000-0000">
+                <input type="text" id="input-client-email" placeholder="EMAIL">
+                <input type="text" id="input-client-instagram" placeholder="INSTAGRAM">
+                <!--  CONFIRM BUTTON  -->
+                <div style="flex-grow: 1;"></div>
+                <button type="submit" id="confirm-client-info-btn">CONFIRMAR</button>
+            </section>
+
+        <!--  LISTA DE SERVIÇOS E PRODUTOS  -->
+            <section class="hidden" id="service-window">
+            <h3 class="calendar-title" id="service-title">DIA MES, ANO</h3>
+            <p>SELECIONE SERVIÇO E/OU PRODUTO</p>
+            <div class="service-container" style="overflow-x: scroll;">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td><input type="checkbox" id=""></td>
+                            <td>CORTE</td>
+                            <td>R$25,00</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" id=""></td>
+                            <td>BARBOTERAPIA</td>
+                            <td>R$25,00</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" id=""></td>
+                            <td>SOBRANCELHA</td>
+                            <td>R$10,00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--  CONFIRM BUTTON  -->
+            <button type="submit" id="confirm-service-btn">CONFIRMAR</button>
+            </section>
+
+        <!--  AGENDAR HORARIO  -->
+            <section class="hidden" id="schedule-window">
+            <h3 class="calendar-title" id="schedule-title">8 NOVEMBRO, 2022</h3>
+            <p>HORÁRIOS DISPONIVEIS</p>
+            <div id="available-schedule-table">
+                <tbody>
+                    <table>
+                        <tr>
+                            <td class=""> <input type="radio" name="radio-schedule"><span>09:00</span></td>
+                            <td class=""> <input type="radio" name="radio-schedule"><span>12:00</span></td>
+                            <td class=""> <input type="radio" name="radio-schedule"><span>15:00</span></td>
+                            <td class=""> <input type="radio" name="radio-schedule"><span>18:00</span></td>
+                        </tr>
+                        <tr>
+                            <td class="unavailable"> <input type="radio" name="radio-schedule"><span>10:00</span></td>
+                            <td class=""> <input type="radio" name="radio-schedule"><span>13:00</span></td>
+                            <td class="unavailable"> <input type="radio" name="radio-schedule"><span>16:00</span></td>
+                            <td class="unavailable"> <input type="radio" name="radio-schedule"><span>19:00</span></td>
+                        </tr>
+                        <tr>
+                            <td class=""> <input type="radio" name="radio-schedule"><span>11:00</span></td>
+                            <td class=""> <input type="radio" name="radio-schedule"><span>12:00</span></td>
+                            <td class=""> <input type="radio" name="radio-schedule"><span>17:00</span></td>
+                            <td class="unavailable"> <input type="radio" name="radio-schedule"><span>20:00</span></td>
+                        </tr>
+                    </table>
+                </tbody>
+            </div>
+            <!--  CONFIRM BUTTON  -->
+            <div style="flex-grow: 1;"></div>
+            <button type="submit" id="confirm-schedule-btn">CONFIRMAR</button>
+            </section>
+                    
+        <!--  RESUMO, INFORMAÇÕES DO CLIENTE  -->
+            <section class="hidden" id="overview-window">
+                <div class="client-info-overview">
+                    <img src = "../img/user.jpg" id="client-img" alt="Cliente"/>
+                    <div style="display: flex; flex-direction: column;">
+                        <h3 id="summary-client-name">NOME COMPLETO DO CLIENTE</h3>
+                        <div style="display: flex; flex-direction: row;">
+                            <p id="summary-client-number">(31) 90000-0000</p>
+                            <span style="flex-grow: 1;"></span> <!-- Spacer -->
+                            <p id="summary-client-instagram">@INSTAGRAMCLIENTE</p>
+                        </div>
+                    </div>
+                </div>
+                <h1 id="summary-client-date">DIA MES, ANO- 18H00</h3>
+                <!--  CONFIRM BUTTON  -->
+                <div style="flex-grow: 1;"></div>
+                <button type="submit" id="finish-scheduling">CONCLUIR</button>
+            </section>
+        </div>
+    </section>
+    <!--  Espaçamento entre o fundo da tela e a caixa de dialogo  -->
+    <div id="diag-box-space" style="flex-grow: 1;"></div>
+
+    <!--  Blur Overlay  -->
+    <div class="blur-overlay hidden"></div>
 
     <!--  Display Size -->
     <h5>Display Type</h5>

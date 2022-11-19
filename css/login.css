@@ -1,59 +1,77 @@
 * {
-    margin: 0;
-    padding: 0;
-    border: 0;
-
-    color: #fff;
+    font-family: 'Antonio', sans-serif;
+    margin: 0px;
+    border: 0px;
+    padding: 0px;
+    user-select: none
 }
 
 body {
     background-color: #000;
     background-image: url("../img/bg.png");
     background-size: cover;
-}
-
-img {
-    width: 300px;
-    padding-bottom: 30px;
-}
-
-main {
-    border: 2px #fff solid;
-    border-radius: 40px;
-    padding: 40px;
-    margin: 50px 100px;
 
     display: flex;
     flex-direction: column;
 }
 
-.container  {
+#brand-logo {
+    width: 300px;
+    margin: 50px auto 0;
+}
+
+main {
+    box-shadow: 
+    inset -10px 10px 10px 0px #fffe, /* Top */
+    inset 0px -10px 10px 0px #0003, /* Bottom */
+    inset 10px 0px 10px 0px #0003, /* Left */
+    inset -10px 0px 10px 0px #fffe; /* Right */
+    
+    background-color: #ebf7ff;
+    border-radius: 40px;
+    padding: 0px 40px;
+    margin: 50px auto;
+    width: 300px;
+
+
     display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.acess-container {
-    border-top: 2px #fff solid;
-    padding: 10px 0px;
+
+
+
+/*  ||  PROFILE STYLE  ||  */
+.profile {
+    display: flex;
+    flex-direction: row;
+
+    margin-bottom: 30px;
 }
 
-p {
+h1 { /* Titulo da Janela */
+    font-size: 25px;
+    margin: 40px;
+}
+
+.profile-img {
+    width: 50px;
+    clip-path: circle(calc(50px / 2) at center);
+    margin-right: 10px;
+}
+
+.profile-description {
+    width: 100%;
+    text-align: left;
+}
+
+h2 { /* nome do perfil */
+    font-size: 15px;
+}
+
+p { /* Descrição do acesso do perfil*/
+    color: #919191;
+    font-size: 12px;
     margin: 5px;
-}
-
-button {
-    background-color: #0000;
-    border-top: 2px #fff solid;
-    padding: 10px 10px;
-    margin: 10px auto;
-
-    font-size: 16px;
-    font-weight: bold;
-}
-
-button:hover {
-    color: #146df3;
-}
-
-h1 {
-    font-size: 20px;
 }
