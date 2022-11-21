@@ -29,10 +29,9 @@ main {
     
     background-color: #ebf7ff;
     border-radius: 40px;
-    padding: 0px 40px;
+    padding: 20px 20px 40px;
     margin: 50px auto;
     width: 300px;
-
 
     display: flex;
     flex-direction: column;
@@ -41,37 +40,37 @@ main {
 
 
 
-
 /*  ||  PROFILE STYLE  ||  */
-.profile {
-    display: flex;
-    flex-direction: row;
-
-    margin-bottom: 30px;
-}
 
 h1 { /* Titulo da Janela */
     font-size: 25px;
-    margin: 40px;
+    margin: 20px;
 }
 
-.profile-img {
-    width: 50px;
-    clip-path: circle(calc(50px / 2) at center);
-    margin-right: 10px;
+.input-container-row {
+  display: flex;
+  flex-direction: row;
+  margin: 5px;
 }
 
-.profile-description {
-    width: 100%;
-    text-align: left;
+label {
+  width: 60px;
 }
 
-h2 { /* nome do perfil */
-    font-size: 15px;
+input {
+  border-radius: 4px;
+  padding: 0px 5px;
+  border: 2px solid #c5d8e0;
 }
 
-p { /* Descrição do acesso do perfil*/
-    color: #919191;
-    font-size: 12px;
-    margin: 5px;
+button {
+  width: 80px;
+  margin: 5px auto 0;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
 }

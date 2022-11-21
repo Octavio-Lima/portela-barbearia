@@ -120,33 +120,35 @@ input[type=number] {
     height: 100%;
 }
 
-#schedule-window p {
-    font-size: 3vw;
-    margin: 2%;
+.schedule-list table {
+  width: 93%;
+  margin: 10px 7%;
 }
 
-#schedule-window span {
-    font-size: 3vw;
-}
-
-#available-schedule-table table{
-  margin: 0 auto;
-}
-
-#available-schedule-table td, #available-schedule-table span { /* Formatação do texto e horario */
-  padding: 2px 5px;
-  min-width: 10px;
+.schedule-list p {
+  font-size: 4vw;
+  padding-right: 10px;
 }
 
 
-/* Botões indisponiveis */
 
-.unavailable input {
-    pointer-events: none;
-    opacity:0.2;
+.service-container {
+  flex-grow: 1;
 }
-  
-.unavailable span {
+
+
+.schedule-list td {  
+  display: flex;
+  flex-direction: row;
+
+  font-size: 3vw;
+}
+
+.schedule-list .selected {
+  background-color: #ddd;
+}
+
+.unavailable {
     color: #f00;
 }
 
@@ -224,10 +226,6 @@ input[type=number] {
     margin-top: 5%;
     font-size: 4vw;
 }
-
-
-
-
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
@@ -430,61 +428,66 @@ input[type=number] {
 
     /* Horarios disponiveis */
 
-    /* || TEXT FORMATING */
-    .calendar-title {
-        font-size: 20px;
-        padding: 8px;
-    }
+  /* || TEXT FORMATING */
+  .calendar-title {
+    font-size: 20px;
+    padding: 3%;
+  }
+    
+  .schedule-list table {
+    width: 100%;
+    margin: 0px 0;
+  }
+  
+  .schedule-list p {
+    font-size: 10px;
+    padding-right: 5px;
+  }
+  
+  .schedule-list td {    
+    font-size: 10px;
+  }
 
-    #schedule-window p {
-        font-size: 16px;
-        margin: 5px;
-    }
+  /* || LISTA DE SERVIÇOS E PRODUTOS */
 
-    #schedule-window span {
-        font-size: 14px;
-    }
+  #service-window table {
+      padding: 0 10px;
+  }
 
-    /* || LISTA DE SERVIÇOS E PRODUTOS */
+  #service-window p {
+      font-size: 20px;
+      margin: 5px;
+  }
 
-    #service-window table {
-        padding: 0 10px;
-    }
+  #service-window td {
+      padding-left: 5px;
+      font-size: 16px;
+  }
 
-    #service-window p {
-        font-size: 20px;
-        margin: 5px;
-    }
+  /* || RESUMO, INFORMAÇÕES DO CLIENTE */
 
-    #service-window td {
-        padding-left: 5px;
-        font-size: 16px;
-    }
+  #client-img {
+      margin: 0px 10px 0px 0px;
+      width: 40px;
+      height: 40px;
+      clip-path: circle(20px at center);
+  }
 
-    /* || RESUMO, INFORMAÇÕES DO CLIENTE */
+  .client-info-overview {
+      margin-top: 10px;
+  }
 
-    #client-img {
-        margin: 0px 10px 0px 0px;
-        width: 40px;
-        height: 40px;
-        clip-path: circle(20px at center);
-    }
+  #overview-window h3 { /* Nome completo do cliente */
+      font-size: 20px;
+  }
 
-    .client-info-overview {
-        margin-top: 10px;
-    }
+  #overview-window p { /* numero e instagram do cliente */
+      font-size: 16px;
+      padding-right: 5px;
+  }
 
-    #overview-window h3 { /* Nome completo do cliente */
-        font-size: 20px;
-    }
-
-    #overview-window p { /* numero e instagram do cliente */
-        font-size: 16px;
-        padding-right: 5px;
-    }
-
-    #overview-window h1 { /* data do serviço */
-        margin-top: 5%;
-        font-size: 20px;
-    }
+  #overview-window h1 { /* data do serviço */
+      margin-top: 5%;
+      font-size: 20px;
+  }
 }

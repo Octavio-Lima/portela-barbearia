@@ -1,0 +1,75 @@
+* {
+  font-family: 'Antonio', sans-serif;
+  user-select: none;
+  margin: 0px;
+  border: 0px;
+  padding: 0px;
+}
+
+body {
+  background-color: #000;
+  background-image: url("../img/bg.png");
+  background-size: cover;
+
+  text-align: center;
+}
+
+#logo {
+  width: 300px;
+  margin: 50px auto 0;
+}
+
+main {
+  box-shadow: 
+  inset -10px 10px 10px 0px #fffe, /* Top */
+  inset 0px -10px 10px 0px #0003, /* Bottom */
+  inset 10px 0px 10px 0px #0003, /* Left */
+  inset -10px 0px 10px 0px #fffe; /* Right */
+
+  text-align: left;
+
+  background-color: #ebf7ff;
+  border-top-left-radius: 40px;
+  padding: 20px 20px 40px;
+  margin: 50px auto 0;
+  width: 300px;
+}
+
+
+
+/*  ||  PROFILE STYLE  ||  */
+
+h1 { /* Titulo da Janela */
+  font-size: 25px;
+  margin: 20px 0;
+}
+
+.link-container {
+  display: flex;
+  height: 64px;
+}
+
+.link-img {
+  clip-path: circle( 16px at center);
+  width: 32px;
+  height: 32px;
+
+  margin: auto 0;
+}
+
+a {
+  color: #000;
+  font-size: 20px;
+  text-decoration: none;
+
+  width: 100%;
+  border-top: 2px solid #0000;
+  border-bottom: 2px solid #999;
+  padding: 15px 0;
+  margin: auto 10px;
+
+}
+
+a:hover {
+  color: #15c;
+}

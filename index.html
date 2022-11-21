@@ -12,6 +12,7 @@
 
       <!-- Scripts -->
     <script src="js/index.js" defer></script>
+    <script src="js/services.js" defer></script>
 
       <!-- Fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,7 +39,7 @@
                 <h2>LÚCIO</h2>
             </div>        
         </div>
-        <div class="links-container">
+        <div class="links-container hidden">
             <button><a href="https://g.co/kgs/ZuPVoq" target="_blank" class="button-link">LOCALIZAÇÃO</a></button>
             <button><a href="https://g.page/r/CRlyE4HO9XUpEBM/review" target="_blank" class="button-link">AVALIE NOSSO SERVIÇO</a></button>
             <button><a href="/html/about-us.html" class="button-link">SOBRE NÓS</a></button>
@@ -48,22 +49,22 @@
     <!---->
     <div id="footer-spacer" style="flex-grow: 1;"></div>
 
-    <footer>
+    <footer class="hidden">
         <a href="https://instagram.com/portelasbarbearia?igshid=YmMyMTA2M2Y%3D" target="_blank" class="fa fa-instagram"></a>
         <a href="http://tiny.cc/portelasbarbearia" class="fa fa-whatsapp" target="_blank"></a>
         <a href="#" class="fa fa-spotify"></a>
     </footer>
     
     <!-- JANELAS DE HORARIOS & SERVIÇOS -->
-    <section id="appointment-window" class="hidden">
+    <section id="appointment-window" class="">
         <div class="window-container">
         
         <!--  CALENDARIO  -->
-            <section class="" id="calendar-window">
+            <section class="hidden" id="calendar-window">
                 <div class="calendar-pick-month-container calendar-title">
-                    <button class="fa-solid fa-angle-double-left select-month-arrow" id="previous-month"></button>
+                    <button class="fa-solid fa-angle-double-left select-month-arrow" id="previous-month" onclick=" updateCalendar(false); "></button>
                     <h3 id="calendar-month-name">MÊS</h3>
-                    <button class="fa-solid fa-angle-double-right select-month-arrow" id="next-month"></button>
+                    <button class="fa-solid fa-angle-double-right select-month-arrow" id="next-month" onclick=" updateCalendar(true); "></button>
                 </div>
                 <table id="calendar-table">
                     <tbody>
@@ -125,7 +126,7 @@
                 </table>
                 <!--  CONFIRM BUTTON  -->
                 <div style="flex-grow: 1;"></div>
-                <button type="submit" id="pick-day-btn">CONFIRMAR</button>
+                <button type="submit" onclick="switchBetweenWindows(1);">CONFIRMAR</button>
             </section>
 
         <!--  INFORMAÇÕES DO CLIENTE  -->
@@ -137,7 +138,7 @@
                 <input type="text" id="input-client-instagram" placeholder="INSTAGRAM">
                 <!--  CONFIRM BUTTON  -->
                 <div style="flex-grow: 1;"></div>
-                <button type="submit" id="confirm-client-info-btn">CONFIRMAR</button>
+                <button type="submit" onclick="switchBetweenWindows(2);">CONFIRMAR</button>
             </section>
 
         <!--  LISTA DE SERVIÇOS E PRODUTOS  -->
@@ -147,60 +148,43 @@
             <div class="service-container" style="overflow-x: scroll;">
                 <table>
                     <tbody>
-                        <tr>
-                            <td><input type="checkbox" id=""></td>
-                            <td>CORTE</td>
-                            <td>R$25,00</td>
+                        <tr class="services">
+                            <td><input type="checkbox" id="ser-corte"></td>
+                            <td class="service-name">CORTE (30m)</td>
+                            <td class="service-price">R$25,00</td>
                         </tr>
-                        <tr>
-                            <td><input type="checkbox" id=""></td>
-                            <td>BARBOTERAPIA</td>
-                            <td>R$25,00</td>
+                        <tr class="services">
+                            <td><input type="checkbox" id="ser-barboterapia"></td>
+                            <td class="service-name">BARBOTERAPIA (60m)</td>
+                            <td class="service-price">R$25,00</td>
                         </tr>
-                        <tr>
-                            <td><input type="checkbox" id=""></td>
-                            <td>SOBRANCELHA</td>
-                            <td>R$10,00</td>
+                        <tr class="services">
+                            <td><input type="checkbox" id="ser-sobrancelha"></td>
+                            <td class="service-name">SOBRANCELHA (10m)</td>
+                            <td class="service-price">R$10,00</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
             <!--  CONFIRM BUTTON  -->
-            <button type="submit" id="confirm-service-btn">CONFIRMAR</button>
+            <button type="submit" onclick="switchBetweenWindows(3);">CONFIRMAR</button>
             </section>
 
         <!--  AGENDAR HORARIO  -->
-            <section class="hidden" id="schedule-window">
-            <h3 class="calendar-title" id="schedule-title">8 NOVEMBRO, 2022</h3>
-            <p>HORÁRIOS DISPONIVEIS</p>
-            <div id="available-schedule-table">
-                <tbody>
-                    <table>
-                        <tr>
-                            <td class=""> <input type="radio" name="radio-schedule"><span>09:00</span></td>
-                            <td class=""> <input type="radio" name="radio-schedule"><span>12:00</span></td>
-                            <td class=""> <input type="radio" name="radio-schedule"><span>15:00</span></td>
-                            <td class=""> <input type="radio" name="radio-schedule"><span>18:00</span></td>
-                        </tr>
-                        <tr>
-                            <td class="unavailable"> <input type="radio" name="radio-schedule"><span>10:00</span></td>
-                            <td class=""> <input type="radio" name="radio-schedule"><span>13:00</span></td>
-                            <td class="unavailable"> <input type="radio" name="radio-schedule"><span>16:00</span></td>
-                            <td class="unavailable"> <input type="radio" name="radio-schedule"><span>19:00</span></td>
-                        </tr>
-                        <tr>
-                            <td class=""> <input type="radio" name="radio-schedule"><span>11:00</span></td>
-                            <td class=""> <input type="radio" name="radio-schedule"><span>12:00</span></td>
-                            <td class=""> <input type="radio" name="radio-schedule"><span>17:00</span></td>
-                            <td class="unavailable"> <input type="radio" name="radio-schedule"><span>20:00</span></td>
-                        </tr>
-                    </table>
-                </tbody>
-            </div>
-            <!--  CONFIRM BUTTON  -->
-            <div style="flex-grow: 1;"></div>
-            <button type="submit" id="confirm-schedule-btn">CONFIRMAR</button>
-            </section>
+          <section class="" id="schedule-window">
+          <h3 class="calendar-title" id="schedule-title">8 NOVEMBRO, 2022</h3>
+          <p>HORÁRIOS DISPONIVEIS</p>
+          <div class="schedule-list" style="overflow-x: scroll;">
+            <table>
+              <tbody id="schedule-table">
+                <!-- <tr class="schedule"><td class=""><p>08:00</p><p>Horario indisponivel</p></td> -->
+              </tbody>
+            </table>
+        </div>
+          <!--  CONFIRM BUTTON  -->
+          <div style="flex-grow: 1;"></div>
+          <button type="submit" onclick="switchBetweenWindows(4);">CONFIRMAR</button>
+          </section>
                     
         <!--  RESUMO, INFORMAÇÕES DO CLIENTE  -->
             <section class="hidden" id="overview-window">
@@ -218,7 +202,7 @@
                 <h1 id="summary-client-date">DIA MES, ANO- 18H00</h3>
                 <!--  CONFIRM BUTTON  -->
                 <div style="flex-grow: 1;"></div>
-                <button type="submit" id="finish-scheduling">CONCLUIR</button>
+                <button type="submit" onclick="selectWorker(currentWorkerSel);">CONCLUIR</button>
             </section>
         </div>
     </section>

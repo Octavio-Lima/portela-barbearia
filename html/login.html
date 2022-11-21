@@ -1,46 +1,39 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema</title>
-    <link rel="stylesheet" href="../css/login.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema</title>
+  <link rel="stylesheet" href="../css/login.css">
+  <!-- Scripts -->
+  <script src="../js/login.js"></script>
 
-    <!-- Fontes -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Antonio:wght@100;400;700&display=swap" rel="stylesheet"> 
-    <script src="https://kit.fontawesome.com/0d15831467.js" crossorigin="anonymous"></script>
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Antonio:wght@100;400;700&display=swap" rel="stylesheet"> 
+  <script src="https://kit.fontawesome.com/0d15831467.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <img src="../img/logo-a.svg" id="brand-logo" alt="logo portela">
     
     <main>
         <h1>LOGIN</h1>
-        <div class="profile-container">
-            <div class="profile">
-                <img src="../img/worker/worker0.jpg" class="profile-img" alt="perfil">
-                <div class="profile-description">
-                    <h2>JOÃO PEDRO PORTELA</h2>
-                    <p>PROPRIETÁRIO/ BARBEIRO</p>
-                </div>
-            </div>
-            <div class="profile">
-                <img src="../img/worker/worker1.jpg" class="profile-img" alt="perfil">
-                <div class="profile-description">
-                    <h2>LÚCIO XAVIER</h2>
-                    <p>BARBEIRO</p>
-                </div>
-            </div>
-            <div class="profile">
-                <img src="../img/worker/worker2.jpg" class="profile-img" alt="perfil">
-                <div class="profile-description">
-                    <h2>LETÍCIA KIMBERLLY</h2>
-                    <p>SECRETÁRIA</p>
-                </div>
-            </div>
-        </div>
-    </main>
+        <form action="#">
+          <div class="input-container-row">
+            <label for="user">USUÁRIO:</label>
+            <input type="text" name="user" id="user" formaction="#">
+          </div>
+          <div class="input-container-row">
+            <label for="user">SENHA:</label>
+            <input type="password" name="pass" id="pass" formaction="#">
+          </div>
+          <button type="submit" onclick="checkCredentials(event);">ACESSAR</button>
+        </form>
+        <p style="color: #f00; text-align: center; font-size: 14px; margin-top: 10px; display: none;" id="wrong-cred-msg">
+          Credendiais incorretas. <br> Verifique novamente as credenciais informadas.
+        </p>
+      </main>
 </body>
 </html>

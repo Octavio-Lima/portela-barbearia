@@ -14,6 +14,12 @@ const inputCelularCliente = document.querySelector("#input-client-phone");
 const inputEmailCliente = document.querySelector("#input-client-email");
 const inputInstagramCliente = document.querySelector("#input-client-instagram");
 
+const schedule_table = document.getElementById("schedule-table");
+
+// Agendamento de horarios
+var schedule_storeOpensAt = 8;
+var schedule_storeClosesAt = 20;
+
 // Variables
 var selectedNextMonth = false;
 
@@ -97,9 +103,6 @@ document.addEventListener("click", (e) => {
         let parentID = parentEl.id;
         selectWorker(parentID);
     }
-
-    if (targetEl.id == "previous-month") { updateCalendar(false); }
-    if (targetEl.id == "next-month") { updateCalendar(true); }
 })
 
 
@@ -155,7 +158,7 @@ function resetAllScheduleInfo() {
     emailCliente = '';
     instagramCliente = '';
     serviçosSelecionados = 0;
-    horarioAgendado = null;
+    horarioAgendado = '';
 
     var allCalendarDays = document.querySelectorAll(".calendar-pick-day");
     allCalendarDays.forEach(days => {
@@ -170,15 +173,6 @@ function resetAllScheduleInfo() {
 
 appointmentWindow.addEventListener("click", (e) => {
     tarEl = e.target;
-
-    //  Botões de confirmação de cada tela
-    let buttonID = tarEl.id;
-
-    if (buttonID == "pick-day-btn") { switchBetweenWindows(1); }
-    if (buttonID == "confirm-client-info-btn") { switchBetweenWindows(2); }
-    if (buttonID == "confirm-service-btn") { switchBetweenWindows(3); }
-    if (buttonID == "confirm-schedule-btn") { switchBetweenWindows(4); }
-    if (buttonID == "finish-scheduling") { selectWorker(currentWorkerSel); }
 
     // || SELECIONAR DIAS NO CALENDARIO
     if (tarEl.classList.contains("calendar-pick-day")) {
@@ -257,7 +251,6 @@ function switchBetweenWindows(index) {
         } else
         if (index == 3) { // saindo do selecionamento do serviço / produto
             //serviçosSelecionados
-            updateSchedule();
 
             // console.log(nomeCliente,celularCliente,emailCliente,instagramCliente)
 
@@ -269,13 +262,13 @@ function switchBetweenWindows(index) {
             }
         }
         if (index == 4) { // saindo do agendamento de horario
-            horarioAgendado = 0;
+            
 
             updateClientSummaryInfo();
             // console.log(nomeCliente,celularCliente,emailCliente,instagramCliente)
 
-            if (!nomeCliente || !celularCliente || !emailCliente || !instagramCliente) {
-                alert("Por favor, preencha todas as informações para que seja possível prosseguir");
+            if (!horarioAgendado) {
+                alert("Por favor, selecione um horario disponivel para que seja possível prosseguir");
             } else {
                 windowPages.forEach(page => { page.classList.add("hidden"); });
                 windowPages[index].classList.remove("hidden"); // exibe a pagina com o numero informado se o index for >= 0
@@ -375,25 +368,105 @@ function updateServiceTitle() {
 
 // || Tela de Agendamento de Horario
 
-function updateSchedule() {
-    const service_title = document.querySelector("#schedule-title");
+// function updateSchedule() {
+//   const service_title = document.querySelector("#schedule-title");
 
-    service_title.innerText = diaAgendado + " " + monthNames[mesAgendado] + ", " + anoAgendado;
+//   service_title.innerText = diaAgendado + " " + monthNames[mesAgendado] + ", " + anoAgendado;
+// }
+
+function updateSchedule(value) {
+  for (let index = schedule_storeOpensAt; index < schedule_storeClosesAt; index++) {
+    schedule_table.append(createScheduleTime(index, false, 0));
+    schedule_table.append(createScheduleTime(index, false, 15));
+    schedule_table.append(createScheduleTime(index, false, 30));
+    schedule_table.append(createScheduleTime(index, false, 45));
+  }
 }
+
+function disableSchedule(timeToDisable, minuteToDisable, ammount) {
+  var correctIndex = ((timeToDisable * 4) + minuteToDisable) - (schedule_storeOpensAt * 4);
+  var allTimeInSchedule = document.querySelectorAll(".schedule");
+  
+  allTimeInSchedule.forEach(timeElement => {
+    timeElement.classList.remove("selected")
+  });
+
+
+  // evita que numeros errados façam alguma coisa
+  if (correctIndex < schedule_storeOpensAt || correctIndex > allTimeInSchedule.length) {
+    return 0;
+  }
+
+  for (let index = 0; index < ammount; index++) {
+    var indexToChance = correctIndex + index;
+
+    if (indexToChance < allTimeInSchedule.length) {
+      allTimeInSchedule[indexToChance].classList.add("unavailable");
+      allTimeInSchedule[indexToChance].firstChild.lastChild.classList.remove("hidden"); // msg de indisponivel
+    } else {
+      return 0;
+    }
+  }
+
+
+  return 0;
+}
+
+function createScheduleTime(time, unavailable, minute) {
+  var tableRow = document.createElement("tr");
+  tableRow.classList.add("schedule");
+
+  var tableData = document.createElement("td");
+  if (unavailable) { tableRow.classList.add("unavailable"); }
+
+  var schedule_time = document.createElement("p");
+  schedule_time.innerHTML = formatNumbers(time) + ":" + formatNumbers(minute);
+
+  var unavailable_msg = document.createElement("p");
+  unavailable_msg.innerHTML = "HORARIO INDISPONÍVEL";
+  unavailable_msg.classList.add("hidden");
+
+  tableData.appendChild(schedule_time);
+  tableData.appendChild(unavailable_msg);
+  tableRow.appendChild(tableData);
+
+  return tableRow;
+}
+
+schedule_table.addEventListener("click", (e) => {
+  targetEl = e.target.closest("tr");
+
+  if (targetEl != null)
+  {
+    if (!targetEl.classList.contains("unavailable"))
+    {
+      var allTimeInSchedule = document.querySelectorAll(".schedule");
+      allTimeInSchedule.forEach(timeElement => { timeElement.classList.remove("selected") });
+    
+      targetEl.classList.add("selected");
+      horarioAgendado = targetEl.firstChild.firstChild.innerHTML;
+      console.log(horarioAgendado);
+    }
+  }
+})
 
 //  ||  Resumo das informações do cliente
 function updateClientSummaryInfo() {
-    const clientInfoSummary_clientName = document.querySelector("#summary-client-name");
-    const clientInfoSummary_clientNumber = document.querySelector("#summary-client-number");
-    const clientInfoSummary_clientInstagram = document.querySelector("#summary-client-instagram");
-    const clientInfoSummary_clientDate = document.querySelector("#summary-client-date");
+  const clientInfoSummary_clientName = document.querySelector("#summary-client-name");
+  const clientInfoSummary_clientNumber = document.querySelector("#summary-client-number");
+  const clientInfoSummary_clientInstagram = document.querySelector("#summary-client-instagram");
+  const clientInfoSummary_clientDate = document.querySelector("#summary-client-date");
 
-    clientInfoSummary_clientName.innerHTML = nomeCliente;
-    clientInfoSummary_clientNumber.innerHTML = celularCliente;
-    clientInfoSummary_clientInstagram.innerHTML = instagramCliente;
+  clientInfoSummary_clientName.innerHTML = nomeCliente;
+  clientInfoSummary_clientNumber.innerHTML = celularCliente;
+  clientInfoSummary_clientInstagram.innerHTML = instagramCliente;
 
-    clientInfoSummary_clientDate.innerHTML = diaAgendado + " " + monthNames[mesAgendado] + ", " + anoAgendado + "- " + "18:00";
-    //8 NOVEMBRO, 2022- 18H00
+  clientInfoSummary_clientDate.innerHTML = diaAgendado + " " + monthNames[mesAgendado] + ", " + anoAgendado + "- " + horarioAgendado;
+  //8 NOVEMBRO, 2022- 18H00
+}
+
+function formatNumbers(n) {
+  return (n < 10 ? '0' : '') + n;
 }
 
 
@@ -401,3 +474,6 @@ function updateClientSummaryInfo() {
 
 updateCalendar(false);
 resetAllScheduleInfo();
+updateSchedule();
+disableSchedule(12, 0, 4);
+disableSchedule(18, 2, 2);
