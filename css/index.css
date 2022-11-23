@@ -11,7 +11,8 @@
   margin: 0px;
   border: 0px;
   padding: 0px;
-  user-select: none
+  user-select: none;
+  text-transform: uppercase;
 }
 
 body {

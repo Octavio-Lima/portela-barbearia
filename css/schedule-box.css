@@ -455,13 +455,13 @@ input[type=number] {
   }
 
   #service-window p {
-      font-size: 20px;
+      font-size: 15px;
       margin: 5px;
   }
 
   #service-window td {
       padding-left: 5px;
-      font-size: 16px;
+      font-size: 14px;
   }
 
   /* || RESUMO, INFORMAÇÕES DO CLIENTE */

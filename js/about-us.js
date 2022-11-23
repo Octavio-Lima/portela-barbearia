@@ -1,31 +1,29 @@
-const pageTitleElements = document.querySelectorAll(".page-title");
-const pageNumberElements = document.querySelectorAll(".page-number");
-
-addLineDecorations();
+const page_title = document.querySelectorAll(".page-title");
+const page_number = document.querySelectorAll(".page-number");
 
 function addLineDecorations() {  // Adiciona uma linha de enfeite ao titulo e numero de cada pagina    
-    pageTitleElements.forEach(title => {
-        title.appendChild(createLine());
-    });
+  page_title.forEach(title => {
+    title.appendChild(createLine());
+  });
 
-    pageNumberElements.forEach((page) => {
-        page.prepend(createLine());
-    });
+  page_number.forEach((page) => {
+    page.prepend(createLine());
+  });
 }
 
 function createLine() {
-    var newLine = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    newLine.setAttribute('height', '2')
-    newLine.setAttribute('width', '5000')
+  var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute('height', '2')
+  svg.setAttribute('width', '5000')
 
-    var lineDetails = document.createElementNS("http://www.w3.org/2000/svg", "line");
-    lineDetails.setAttribute('x1','0px');
-    lineDetails.setAttribute('y1','0px');
-    lineDetails.setAttribute('x2','5000px');
-    lineDetails.setAttribute('y2','0px');
-    lineDetails.style.stroke = "#fff";
-    lineDetails.style.strokeWidth = "10px";
-    newLine.appendChild(lineDetails);
+  var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+  line.setAttribute('x1','0px');
+  line.setAttribute('y1','0px');
+  line.setAttribute('x2','5000px');
+  line.setAttribute('y2','0px');
+  line.style.stroke = "#fff";
+  line.style.strokeWidth = "10px";
+  svg.appendChild(line);
 
-    return newLine;
+  return svg;
 }

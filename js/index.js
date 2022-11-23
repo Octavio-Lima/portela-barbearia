@@ -20,6 +20,13 @@ const schedule_table = document.getElementById("schedule-table");
 var schedule_storeOpensAt = 8;
 var schedule_storeClosesAt = 20;
 
+const service_list = [ // serviço, preço, id, minutos (15*n)
+  ['CORTE', 25, 0, 2],
+  ['BARBOTERAPIA', 25, 1, 4],
+  ['SOBRANCELHA', 10, 2, 1],
+  ['CERVEJA', 10, 3, 0]
+]
+
 // Variables
 var selectedNextMonth = false;
 
@@ -92,6 +99,8 @@ var emailCliente;
 var instagramCliente;
 var servicosSelecionados;
 var horarioAgendado;
+var minutosAgendados = 0;
+var precoTotal = 0;
 
 //  ||  Selecionar Prestador   ||  //------------------------------------------------------------
 
@@ -131,22 +140,30 @@ function selectWorker(selectedID) {
 // || INFORMAÇÕES DO CLIENTE
 
 serviceWindow.addEventListener("click", (e) => {
-    targetEl = e.target;
-    parentEl = targetEl.closest("tr");
-    checkbox = targetEl.closest("input");
+  targetEl = e.target;
+  parentEl = targetEl.closest("tr");
+  checkbox = targetEl.closest("input");
 
 
-    if (parentEl !== null){
-        let checkbox = parentEl.querySelector("input");
+  if (parentEl !== null){
+    let checkbox = parentEl.querySelector("input");
+    var tar_id = parseInt(parentEl.id, 10);
 
-        if (parentEl.classList.contains("selected")) {
-            checkbox.checked = false;
-            parentEl.classList.remove("selected");
-        } else {
-            checkbox.checked = true;
-            parentEl.classList.add("selected");
-        }
+    if (parentEl.classList.contains("selected")) {
+      parentEl.classList.remove("selected");
+      checkbox.checked = false;
+      minutosAgendados -= service_list[tar_id][3]
+      precoTotal -= service_list[tar_id][1]
+    } else {
+      parentEl.classList.add("selected");
+      checkbox.checked = true;
+      minutosAgendados += service_list[tar_id][3]
+      precoTotal += service_list[tar_id][1]
     }
+    
+    let totalTime = document.getElementById("total-time");
+    totalTime.innerHTML = "Total Time: " + minutosAgendados * 15 + " Minutes | Preço Total: " + textToPrice(precoTotal)
+  }
 })
 
 function resetAllScheduleInfo() {
@@ -242,7 +259,7 @@ function switchBetweenWindows(index) {
             instagramCliente = inputInstagramCliente.value;
             updateServiceTitle();
 
-            if (!nomeCliente || !celularCliente || !emailCliente || !instagramCliente) {
+            if (!nomeCliente || celularCliente.length < 11 || !checkEmail(emailCliente) || !instagramCliente) {
                 alert("Por favor, preencha todas as informações para que seja possível prosseguir");
             } else {
                 windowPages.forEach(page => { page.classList.add("hidden"); });
@@ -393,7 +410,9 @@ function disableSchedule(timeToDisable, minuteToDisable, ammount) {
 
 
   // evita que numeros errados façam alguma coisa
-  if (correctIndex < schedule_storeOpensAt || correctIndex > allTimeInSchedule.length) {
+  if (correctIndex < 0 || correctIndex > allTimeInSchedule.length) {
+    console.log("index maior ou menor que a array");
+    console.log(correctIndex);
     return 0;
   }
 
@@ -404,6 +423,7 @@ function disableSchedule(timeToDisable, minuteToDisable, ammount) {
       allTimeInSchedule[indexToChance].classList.add("unavailable");
       allTimeInSchedule[indexToChance].firstChild.lastChild.classList.remove("hidden"); // msg de indisponivel
     } else {
+      console.log("index maior que a array");
       return 0;
     }
   }
@@ -475,5 +495,118 @@ function formatNumbers(n) {
 updateCalendar(false);
 resetAllScheduleInfo();
 updateSchedule();
-disableSchedule(12, 0, 4);
+disableSchedule(8, 0, 4);
 disableSchedule(18, 2, 2);
+
+const service_table = document.querySelector("#service-table");
+
+updateServiceList();
+
+function updateServiceList() {
+  for (let index = 0; index < service_list.length; index++) {
+    service_table.appendChild(createServiceElement(service_list[index][0], textToPrice(service_list[index][1]), service_list[index][2]))
+  }
+}
+
+function createServiceElement(service, price, id) {
+  var tableRow = document.createElement("tr");
+  tableRow.classList.add("services");
+  tableRow.id = id;
+
+  var checkboxTableData = document.createElement("td");
+  var checkboxEl = document.createElement("input");
+  checkboxEl.type = "checkbox";
+  checkboxTableData.appendChild(checkboxEl);
+
+  var serviceName = document.createElement("td");
+  serviceName.classList.add("service-name");
+  serviceName.innerHTML = service;
+
+  var servicePrice = document.createElement("td");
+  servicePrice.classList.add("service-price");
+  servicePrice.innerHTML = price;
+
+  tableRow.appendChild(checkboxTableData);
+  tableRow.appendChild(serviceName);
+  tableRow.appendChild(servicePrice);
+
+  return tableRow;
+}
+
+function textToPrice(value) {
+  var formatedText = ("R$ " + value.toFixed(2));
+  formatedText = formatedText.replace('.',',');
+
+  return formatedText;
+  // 'R$ 25,00'
+}
+
+
+
+
+// document.getElementById('input-client-phone').addEventListener('keyup',function(evt){
+//   var phoneNumber = document.getElementById('input-client-phone');
+//   var charCode = (evt.which) ? evt.which : evt.keyCode;
+//   phoneNumber.value = formatPhoneNmb(phoneNumber.value);
+// });
+
+// A function to format text to look like a phone number
+var input_PhoneNvalue = '';
+
+function formatPhoneNmb(value, input){
+  const inputPhoneN = document.getElementById("input-client-phone");
+  console.log(event.keyCode);
+
+  // Letras, e outros caracteres que deverá ignorar
+  if ((event.keyCode >= 58 && event.keyCode <= 90) || (event.keyCode >= 106)) { 
+    event.preventDefault();
+  }
+  
+  // Numeros
+  if ((event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105)) { 
+    event.preventDefault();
+    value += input;
+  }
+
+  // Remover todos os caracteres desnecessários
+  value = value.replace(/\D/g,'');
+  
+  // // Trim the remaining value to ten characters, to preserve phone number format
+  value = value.substring(0,11);
+
+  //Based upon the length of the string, we add formatting as necessary
+  var size = value.length;
+  if(size == 0) {
+    value = value;
+  }else if(size < 3) {
+    value = '('+value;
+  }else if(size < 8) {
+    value = '('+value.substring(0,2)+') '+value.substring(2,7);
+  }else{
+    value = '('+value.substring(0,2)+') '+value.substring(2,7)+'-'+value.substring(7,11);
+  }
+
+  inputPhoneN.value = value; 
+  console.log(inputPhoneN.value);
+}
+
+function formatInstagramHandle(input){
+  const insta_username = document.getElementById("input-client-instagram");
+ 
+  //Based upon the length of the string, we add formatting as necessary
+  var inp_length = input.length;
+  if (inp_length > 0 && !input.includes("@")) {
+    input = "@" + input
+  }
+
+  insta_username.value = input; 
+  console.log(inputPhoneN.value);
+}
+
+function checkEmail(input) {
+  if (input.includes("@") && input.includes(".com")) {
+    return true;
+  } else {
+    return false;
+  }
+}
