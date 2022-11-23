@@ -122,7 +122,7 @@ function selectWorker(selectedID) {
             worker.classList.remove("selected-worker");
         })
             
-        switchBetweenWindows(-1);
+        switchBetweenWindows(-1, false);
         scheduleDisplay(false);
         resetAllScheduleInfo();
     } else {
@@ -132,7 +132,7 @@ function selectWorker(selectedID) {
         })
 
         availableWorkers[selectedID].classList.add("selected-worker");
-        switchBetweenWindows(-1);
+        switchBetweenWindows(-1, false);
         scheduleDisplay(true);
     }
 }
@@ -219,6 +219,7 @@ function scheduleDisplay(showBox) {
     const footer = document.querySelector("footer");
     const diagBoxSpace = document.querySelector("#diag-box-space");
     const footerSpacer = document.querySelector("#footer-spacer");
+    const cancelSchedule = document.querySelector("#cancel-schedule");
 
     // Quando é selecionado um barbeiro
     if (showBox) {
@@ -228,6 +229,7 @@ function scheduleDisplay(showBox) {
         footer.classList.add("hidden");
         diagBoxSpace.classList.remove("hidden");
         footerSpacer.classList.add("hidden");
+        cancelSchedule.classList.remove("hidden");
     }
 
     // Quando sair da tela de agendamentos
@@ -238,14 +240,15 @@ function scheduleDisplay(showBox) {
         footer.classList.remove("hidden");
         diagBoxSpace.classList.add("hidden");
         footerSpacer.classList.remove("hidden");
+        cancelSchedule.classList.add("hidden");
     }
 }
 
 
-function switchBetweenWindows(index) {
+function switchBetweenWindows(index, ignoreRequirements) {
     if (index >= 0) {
         if (index == 1) { // saindo do calendario
-            if (diaAgendado <= 0 || diaAgendado >= 32) {
+            if ((diaAgendado <= 0 || diaAgendado >= 32) && !ignoreRequirements) {
                 alert("Por favor, selecione um dia valido para que seja possível prosseguir com o agendamento");
             } else {
                 windowPages.forEach(page => { page.classList.add("hidden"); });
@@ -259,7 +262,7 @@ function switchBetweenWindows(index) {
             instagramCliente = inputInstagramCliente.value;
             updateServiceTitle();
 
-            if (!nomeCliente || celularCliente.length < 11 || !checkEmail(emailCliente) || !instagramCliente) {
+            if ((!nomeCliente || celularCliente.length < 11 || !checkEmail(emailCliente) || !instagramCliente) && !ignoreRequirements) {
                 alert("Por favor, preencha todas as informações para que seja possível prosseguir");
             } else {
                 windowPages.forEach(page => { page.classList.add("hidden"); });
@@ -271,7 +274,7 @@ function switchBetweenWindows(index) {
 
             // console.log(nomeCliente,celularCliente,emailCliente,instagramCliente)
 
-            if (!nomeCliente || !celularCliente || !emailCliente || !instagramCliente) {
+            if ((!nomeCliente || !celularCliente || !emailCliente || !instagramCliente) && !ignoreRequirements) {
                 alert("Por favor, preencha todas as informações para que seja possível prosseguir");
             } else {
                 windowPages.forEach(page => { page.classList.add("hidden"); });
@@ -284,7 +287,7 @@ function switchBetweenWindows(index) {
             updateClientSummaryInfo();
             // console.log(nomeCliente,celularCliente,emailCliente,instagramCliente)
 
-            if (!horarioAgendado) {
+            if (!horarioAgendado && !ignoreRequirements) {
                 alert("Por favor, selecione um horario disponivel para que seja possível prosseguir");
             } else {
                 windowPages.forEach(page => { page.classList.add("hidden"); });
@@ -299,7 +302,7 @@ function switchBetweenWindows(index) {
 
             // console.log(nomeCliente,celularCliente,emailCliente,instagramCliente)
 
-            if (!nomeCliente || !celularCliente || !emailCliente || !instagramCliente) {
+            if ((!nomeCliente || !celularCliente || !emailCliente || !instagramCliente) && !ignoreRequirements) {
                 alert("Por favor, preencha todas as informações para que seja possível prosseguir");
             } else {
                 windowPages.forEach(page => { page.classList.add("hidden"); });
@@ -610,3 +613,9 @@ function checkEmail(input) {
     return false;
   }
 }
+
+
+// TESTES
+
+selectWorker(0);
+switchBetweenWindows(1, true);
