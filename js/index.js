@@ -1,34 +1,118 @@
-const availableWorkers = document.querySelectorAll(".worker");
-const appointmentWindow = document.querySelector("#appointment-window")
-const cal_daysEl = document.querySelectorAll(".calendar-pick-day");
-let currentWorkerSel = -1;
+const EL_CALENDAR_DAY = document.querySelectorAll(".calendar-pick-day");
+const EL_WINDOW_APPOINTMENT = document.querySelector("#appointment-window")
+const EL_BLUR = document.querySelector(".blur-overlay");
+const EL_WINDOW_SPACER = document.querySelector("#diag-box-space");
+const EL_CLOSE_SCHEDULE_WINDOW = document.querySelector("#cancel-schedule");
+const EL_LINK_CONTAINER = document.querySelector(".links-container");
+const EL_FOOTER = document.querySelector("footer");
+const EL_FOOTER_SPACER = document.querySelector("#footer-spacer");
+const EL_BARBERS = document.querySelectorAll(".barber");
+EL_BARBERS.forEach((worker, index) => { worker.setAttribute("id", index); }); // Define um ID para cada barbeiro
 
-const calendarWindow = document.querySelector("#calendar-window");
-const clientInfoWindow = document.querySelector("#client-info-window");
-const scheduleWindow = document.querySelector("#schedule-window");
-const serviceWindow = document.querySelector("#service-window");
-const overviewWindow = document.querySelector("#overview-window");
+let selectedBarber = 0;
 
-const inputNomeCliente = document.querySelector("#input-client-name");
-const inputCelularCliente = document.querySelector("#input-client-phone");
-const inputEmailCliente = document.querySelector("#input-client-email");
-const inputInstagramCliente = document.querySelector("#input-client-instagram");
+//  ||  Selecionar BARBEIRO   //---------------------------------------------------------------------------
 
-const schedule_table = document.getElementById("schedule-table");
+document.addEventListener("click", (e) => {
+  targetEl = e.target;
+  barberEl = targetEl.closest(".barber");
 
-// Agendamento de horarios
-var schedule_storeOpensAt = 8;
-var schedule_storeClosesAt = 20;
+  if (barberEl !== null) {  // Seleciona o barbeiro selecionado
+    activateBarber(barberEl.id);
+  }
+})
 
-const service_list = [ // serviço, preço, id, minutos (15*n)
-  ['CORTE', 25, 0, 2],
-  ['BARBOTERAPIA', 25, 1, 4],
-  ['SOBRANCELHA', 10, 2, 1],
-  ['CERVEJA', 10, 3, 0]
-]
+function activateBarber(id) {
+  displayScheduler(true, false);
+  addRemoveElementClass(EL_BARBERS, false, "selected-worker")
+  EL_BARBERS[id].classList.add("selected-worker");
+  selectedBarber = id;
+}
+
+function displayScheduler(show, clearInput) {
+  if (show) { // Quando é selecionado um barbeiro
+    EL_BLUR.classList.remove("hidden");
+    EL_WINDOW_APPOINTMENT.classList.remove("hidden");
+    EL_WINDOW_SPACER.classList.remove("hidden");
+    EL_CLOSE_SCHEDULE_WINDOW.classList.remove("hidden");
+    EL_LINK_CONTAINER.classList.add("hidden");
+    EL_FOOTER.classList.add("hidden");
+    EL_FOOTER_SPACER.classList.add("hidden");
+  } else { // Quando sair da tela de agendamentos
+    EL_BLUR.classList.add("hidden")
+    EL_WINDOW_APPOINTMENT.classList.add("hidden")
+    EL_WINDOW_SPACER.classList.add("hidden");
+    EL_CLOSE_SCHEDULE_WINDOW.classList.add("hidden");
+    EL_LINK_CONTAINER.classList.remove("hidden");
+    EL_FOOTER.classList.remove("hidden");
+    EL_FOOTER_SPACER.classList.remove("hidden");
+  }
+
+  setActiveWindow(0);
+
+  if (clearInput) {
+    resetAllScheduleInfo()
+  }
+}
+
+
+
+//  ||  Janela Principal  //---------------------------------------------------------------------------
 
 // Variables
-var selectedNextMonth = false;
+let isNextMonth = false;
+
+const EL_WINDOW_CALENDAR = document.querySelector("#calendar-window");
+const EL_WINDOW_CLIENT_INFO = document.querySelector("#client-info-window");
+const EL_WINDOW_SCHEDULE = document.querySelector("#schedule-window");
+const EL_WINDOW_SERVICE = document.querySelector("#service-window");
+const EL_WINDOW_OVERVIEW = document.querySelector("#overview-window");
+const EL_SCHEDULE_TABLE = document.getElementById("schedule-table");
+const IN_CLIENT_NAME = document.querySelector("#input-client-name");
+const IN_CLIENT_PHONE = document.querySelector("#input-client-phone");
+const IN_CLIENT_EMAIL = document.querySelector("#input-client-email");
+const IN_CLIENT_INSTA = document.querySelector("#input-client-instagram");
+
+let StoreOpensAt = 8;
+let StoreClosesAt = 20;
+let storeWorkDays = [0, 0, 1, 1, 1, 1, 1]; // domingo a segunda
+
+let data_day, diaAgendado;
+let data_month, mesAgendado;
+let data_year, anoAgendado;
+let data_clientName, nomeCliente;
+let data_clientPhone, celularCliente;
+let data_clientEmail, emailCliente;
+let data_clientInsta, instagramCliente;
+let data_services, servicosSelecionados;
+let data_time, horarioAgendado;
+let data_minute, minutosAgendados = 0;
+let data_totalPrice, precoTotal = 0;
+
+// MUDAR DE JANELAS
+
+const windowPages = [ // Agrupar todas as janelas em uma array só
+  EL_WINDOW_CALENDAR,
+  EL_WINDOW_CLIENT_INFO,
+  EL_WINDOW_SERVICE,
+  EL_WINDOW_SCHEDULE,
+  EL_WINDOW_OVERVIEW
+]
+
+const monthNames = [
+  "JANEIRO",
+  "FEVEREIRO",
+  "MARÇO",
+  "ABRIL",
+  "MAIO",
+  "JUNHO",
+  "JULHO",
+  "AGOSTO",
+  "SETEMBRO",
+  "OUTUBRO",
+  "NOVEMBRO",
+  "DEZEMBRO"
+]
 
 const date = new Date();
 const currentYear = date.getFullYear();
@@ -39,414 +123,227 @@ const nextYear = date.getFullYear()+1;
 const cal_monthFirstDay = new Date(currentYear, currentMonth, 1).getDay();
 const cal_monthTotalDays = new Date(currentYear, currentMonth + 1, 0).getDate();
 
-function cal_nextMonthFirstDay() {
-    var year;
-    if (nextMonth == 0) { year = nextYear; } else { year = currentYear; }
-
-    return new Date(year, nextMonth, 1).getDay();
-}
-
-function cal_nextMonthTotalDays() {
-    var year;
-    if (nextMonth == 0) { year = nextYear; } else { year = currentYear; }
-
-    return new Date(year, nextMonth + 1, 0).getDate();
-}
-
-// Retorna o ano correto se o mês que vem for ano novo
-function cal_nextMonthYear() {
-    if (mesAgendado == 0 && nextMonth == 0) { return nextYear; } else { return currentYear; }
-}
-
-// || MUDAR DE JANELAS
-
-const windowPages = [ // Agrupar todas as janelas em uma array só
-    calendarWindow,
-    clientInfoWindow,
-    serviceWindow,
-    scheduleWindow,
-    overviewWindow
+const service_list = [ // serviço, preço, id, minutos (15*n)
+  ['CORTE', 25, 0, 2],
+  ['BARBOTERAPIA', 25, 1, 4],
+  ['SOBRANCELHA', 10, 2, 1],
+  ['CERVEJA', 10, 3, 0]
 ]
 
-const monthNames = [
-    "JANEIRO",
-    "FEVEREIRO",
-    "MARÇO",
-    "ABRIL",
-    "MAIO",
-    "JUNHO",
-    "JULHO",
-    "AGOSTO",
-    "SETEMBRO",
-    "OUTUBRO",
-    "NOVEMBRO",
-    "DEZEMBRO"
-]
+function setActiveWindow(index) {
+  if (/*checkWindowRequirement(index)*/ true) {
+    updateInformation(index);
+    addRemoveElementClass(windowPages, true, "hidden")
+    windowPages[index].classList.remove("hidden");
+  }
+}
 
-//  ||  Declarações Iniciais   ||  //------------------------------------------------------------
+function checkWindowRequirement(index) {
+  if (index == 0) { return true; }
+  if (index == 1) { // conferir calendario
+    if ((diaAgendado <= 0 || diaAgendado >= 32)) {
+      alert("Por favor, selecione um dia valido para que seja possível prosseguir com o agendamento");
+    } else return true
+  }
+  if (index == 2) { // conferir formulario do cliente
+    nomeCliente = IN_CLIENT_NAME.value;
+    instagramCliente = IN_CLIENT_INSTA.value;
+    emailCliente = IN_CLIENT_EMAIL.value;
+    if ((!nomeCliente || celularCliente.length < 11 || !checkEmail(emailCliente) || !instagramCliente)) {
+      alert("Por favor, preencha todas as informações para que seja possível prosseguir");
+    } else return true
+  }
+  if (index == 3) { // conferir selecionamento do serviço / produto
+    if ((!nomeCliente || !celularCliente || !emailCliente || !instagramCliente)) {
+      alert("Por favor, preencha todas as informações para que seja possível prosseguir");
+    } else return true
+  }
+  if (index == 4) { // conferir agendamento de horario
+    if (!horarioAgendado) {
+      alert("Por favor, selecione um horario disponivel para que seja possível prosseguir");
+    } else return true
+  }
+  if (index == 5) { // conferir selecionamento do serviço
+    if ((!nomeCliente || !celularCliente || !emailCliente || !instagramCliente)) {
+      alert("Por favor, preencha todas as informações para que seja possível prosseguir");
+    } else return true
+  }
 
-// Define um ID para cada prestador de acordo com a ordem da array
-availableWorkers.forEach((worker, index) => { worker.setAttribute("id", index); });
+  return false;
+}
 
-// Informações do cliente para agendamento
+//  ||  Calendario     //---------------------------------------------------------------------------
 
-var diaAgendado;
-var mesAgendado;
-var anoAgendado;
-var nomeCliente;
-var celularCliente;
-var emailCliente;
-var instagramCliente;
-var servicosSelecionados;
-var horarioAgendado;
-var minutosAgendados = 0;
-var precoTotal = 0;
+EL_WINDOW_CALENDAR.addEventListener("click", (e) => {
+  let day = e.target;
 
-//  ||  Selecionar Prestador   ||  //------------------------------------------------------------
+  // || SELECIONAR DIAS NO CALENDARIO
+  if (day.classList.contains("calendar-pick-day")) {
+    addRemoveElementClass(EL_CALENDAR_DAY, false, "selected-day"); // desmarca todos os outros dias do calendario
+    day.classList.add("selected-day"); // marcar o dia selecionado
 
-document.addEventListener("click", (e) => {
-    targetEl = e.target;
-    parentEl = targetEl.closest(".worker");
-
-    if (parentEl !== null){
-        let parentID = parentEl.id;
-        selectWorker(parentID);
-    }
+    // converte dia string do calendario para int
+    storeDate(parseInt(day.closest(".selected-day").innerText, 10));
+  }
 })
 
-
-function selectWorker(selectedID) {
-    if (currentWorkerSel == selectedID) {
-        currentWorkerSel = -1;
-        availableWorkers.forEach((worker, index) => {
-            worker.classList.remove("selected-worker");
-        })
-            
-        switchBetweenWindows(-1, false);
-        scheduleDisplay(false);
-        resetAllScheduleInfo();
-    } else {
-        currentWorkerSel = selectedID;
-        availableWorkers.forEach((worker, index) => {
-            worker.classList.remove("selected-worker");
-        })
-
-        availableWorkers[selectedID].classList.add("selected-worker");
-        switchBetweenWindows(-1, false);
-        scheduleDisplay(true);
-    }
+function storeDate(day) {
+  diaAgendado = day;
+  mesAgendado = (isNextMonth ? nextMonth : currentMonth);
+  anoAgendado = (cal_nextMonthYear());
 }
 
-// || INFORMAÇÕES DO CLIENTE
+function updateCalendar(showNextMonth) { // Cabeçalho do calendario | Atualizar dias disponiveis no calendario
+  const EL_CAL_TITLE = document.querySelector("#calendar-month-name");
+  const EL_CAL_PREV = document.querySelector("#previous-month");
+  const EL_CAL_NEXT = document.querySelector("#next-month");
 
-serviceWindow.addEventListener("click", (e) => {
-  targetEl = e.target;
-  parentEl = targetEl.closest("tr");
-  checkbox = targetEl.closest("input");
+  let firstDay = (showNextMonth ? cal_nextMonthFirstDay() : cal_monthFirstDay);
+  let totalDays = (showNextMonth ? cal_nextMonthTotalDays() : cal_monthTotalDays);
+  let month = (showNextMonth ? nextMonth : currentMonth);
+  let year = (showNextMonth ? cal_nextMonthYear() : currentYear);
 
+  for (let index = 0; index < 35; index++) {
+    if (index < firstDay) { EL_CALENDAR_DAY[index].innerText = ""; }
+    if (index >= firstDay) { EL_CALENDAR_DAY[index].innerText = index - firstDay + 1; }
+    if (index > totalDays + firstDay - 1) { EL_CALENDAR_DAY[index].innerText = ""; }
+  }
+  
+  EL_CAL_TITLE.innerText = monthNames[month] + " / " + year;
+  if (showNextMonth) { enableAllDays(); } else { disablePastDays();}
+  if (showNextMonth) {
+    EL_CAL_PREV.classList.remove("hide-arrow");
+    EL_CAL_NEXT.classList.add("hide-arrow"); 
+  } else { 
+    EL_CAL_PREV.classList.add("hide-arrow");
+    EL_CAL_NEXT.classList.remove("hide-arrow");
+  }
+
+}
+
+function disablePastDays() { // Desabilita dias anteriores, para evitar agendamentos em dias passados
+    let today = date.getDate();
+
+    for (let index = 0; index < (today + cal_monthFirstDay -1); index++) {
+        EL_CALENDAR_DAY[index].classList.add("disabled-day");        
+    }
+
+    // remove a classe de selecionado em todos os dias do calendario 
+    addRemoveElementClass(EL_CALENDAR_DAY, false, "selected-day");
+
+    diaAgendado = 0; // marca como nenhum dia foi selecionado
+    isNextMonth = false;
+}
+
+function enableAllDays() { // habilita todos os dias, pois é o mês que vem
+  addRemoveElementClass(EL_CALENDAR_DAY, false, "selected-day");
+  addRemoveElementClass(EL_CALENDAR_DAY, false, "disabled-day");
+
+  diaAgendado = 0; // marca como nenhum dia foi selecionado
+  isNextMonth = true;
+}
+
+//  ||  Informações do cliente     //---------------------------------------------------------------------------
+
+
+
+//  ||  Serviços     //---------------------------------------------------------------------------
+
+EL_WINDOW_SERVICE.addEventListener("click", (e) => {
+  let targetEl = e.target;
+  let parentEl = targetEl.closest("tr");
 
   if (parentEl !== null){
-    let checkbox = parentEl.querySelector("input");
-    var tar_id = parseInt(parentEl.id, 10);
+    let tar_id = parseInt(parentEl.id, 10);
 
     if (parentEl.classList.contains("selected")) {
       parentEl.classList.remove("selected");
-      checkbox.checked = false;
       minutosAgendados -= service_list[tar_id][3]
       precoTotal -= service_list[tar_id][1]
     } else {
       parentEl.classList.add("selected");
-      checkbox.checked = true;
       minutosAgendados += service_list[tar_id][3]
       precoTotal += service_list[tar_id][1]
     }
     
-    let totalTime = document.getElementById("total-time");
-    totalTime.innerHTML = "Total Time: " + minutosAgendados * 15 + " Minutes | Preço Total: " + textToPrice(precoTotal)
+    let totalTime = document.getElementById("total-time").innerHTML = 
+    "Total Time: " + minutosAgendados * 15 + " Minutes | Preço Total: " + stringToPrice(precoTotal);
   }
 })
 
-function resetAllScheduleInfo() {
-    diaAgendado = 0;
-    mesAgendado = currentMonth;
-    anoAgendado = currentYear;
-    nomeCliente = '';
-    celularCliente = '';
-    emailCliente = '';
-    instagramCliente = '';
-    serviçosSelecionados = 0;
-    horarioAgendado = '';
 
-    var allCalendarDays = document.querySelectorAll(".calendar-pick-day");
-    allCalendarDays.forEach(days => {
-        days.classList.remove("selected-day");
-    });
+function updateServiceTable() {  // atualizar tabela de serviços
+  const table = document.querySelector("#service-table");
 
-    inputNomeCliente.value = '';
-    inputCelularCliente.value = '';
-    inputEmailCliente.value = '';
-    inputInstagramCliente.value = '';
+  for (let index = 0; index < service_list.length; index++) {
+    table.appendChild(createServiceElement(service_list[index][0], stringToPrice(service_list[index][1]), service_list[index][2]))
+  }
 }
 
-appointmentWindow.addEventListener("click", (e) => {
-    tarEl = e.target;
+function createServiceElement(service, price, id) {
+  let tableRow = document.createElement("tr");
+  tableRow.classList.add("services");
+  tableRow.id = id;
 
-    // || SELECIONAR DIAS NO CALENDARIO
-    if (tarEl.classList.contains("calendar-pick-day")) {
-        // desmarca todos os outros dias do calendario
-        var allCalendarDays = document.querySelectorAll(".calendar-pick-day");
-        allCalendarDays.forEach(days => {
-            days.classList.remove("selected-day");
-        });
+  let serviceName = document.createElement("td");
+  serviceName.classList.add("service-name");
+  serviceName.innerHTML = service;
 
-        // marcar o dia selecionado
-        tarEl.classList.toggle("selected-day");
+  let servicePrice = document.createElement("td");
+  servicePrice.classList.add("service-price");
+  servicePrice.innerHTML = price;
 
-        // converte dia string do calendario para int
-        selectDay(parseInt(tarEl.closest(".selected-day").innerText, 10));
+  tableRow.appendChild(serviceName);
+  tableRow.appendChild(servicePrice);
+
+  return tableRow;
+}
+
+//  ||  Horarios disponiveis   ||  //---------------------------------------------------------------------------
+
+EL_SCHEDULE_TABLE.addEventListener("click", (e) => {
+  targetEl = e.target.closest("tr");
+
+  if (targetEl != null)
+  {
+    if (!targetEl.classList.contains("unavailable"))
+    {
+      let allTimeInSchedule = document.querySelectorAll(".schedule");
+      addRemoveElementClass(allTimeInSchedule, false, "selected");
+    
+      targetEl.classList.add("selected");
+      horarioAgendado = targetEl.firstChild.firstChild.innerHTML;
     }
+  }
 })
-
-function selectDay(day) {
-    diaAgendado = day;
-    mesAgendado = (selectedNextMonth ? nextMonth : currentMonth);
-    anoAgendado = (cal_nextMonthYear());
-}
-
-function scheduleDisplay(showBox) {
-    const blur_background = document.querySelector(".blur-overlay");
-    const linkContainer = document.querySelector(".links-container");
-    const footer = document.querySelector("footer");
-    const diagBoxSpace = document.querySelector("#diag-box-space");
-    const footerSpacer = document.querySelector("#footer-spacer");
-    const cancelSchedule = document.querySelector("#cancel-schedule");
-
-    // Quando é selecionado um barbeiro
-    if (showBox) {
-        blur_background.classList.remove("hidden");
-        appointmentWindow.classList.remove("hidden");
-        linkContainer.classList.add("hidden");
-        footer.classList.add("hidden");
-        diagBoxSpace.classList.remove("hidden");
-        footerSpacer.classList.add("hidden");
-        cancelSchedule.classList.remove("hidden");
-    }
-
-    // Quando sair da tela de agendamentos
-    if (!showBox) {
-        blur_background.classList.add("hidden")
-        appointmentWindow.classList.add("hidden")
-        linkContainer.classList.remove("hidden");
-        footer.classList.remove("hidden");
-        diagBoxSpace.classList.add("hidden");
-        footerSpacer.classList.remove("hidden");
-        cancelSchedule.classList.add("hidden");
-    }
-}
-
-
-function switchBetweenWindows(index, ignoreRequirements) {
-    if (index >= 0) {
-        if (index == 1) { // saindo do calendario
-            if ((diaAgendado <= 0 || diaAgendado >= 32) && !ignoreRequirements) {
-                alert("Por favor, selecione um dia valido para que seja possível prosseguir com o agendamento");
-            } else {
-                windowPages.forEach(page => { page.classList.add("hidden"); });
-                windowPages[index].classList.remove("hidden"); // exibe a pagina com o numero informado se o index for >= 0
-            }
-        } else
-        if (index == 2) { // saindo do preenchimento do formulario do cliente
-            nomeCliente = inputNomeCliente.value;
-            celularCliente = inputCelularCliente.value;
-            emailCliente = inputEmailCliente.value;
-            instagramCliente = inputInstagramCliente.value;
-            updateServiceTitle();
-
-            if ((!nomeCliente || celularCliente.length < 11 || !checkEmail(emailCliente) || !instagramCliente) && !ignoreRequirements) {
-                alert("Por favor, preencha todas as informações para que seja possível prosseguir");
-            } else {
-                windowPages.forEach(page => { page.classList.add("hidden"); });
-                windowPages[index].classList.remove("hidden"); // exibe a pagina com o numero informado se o index for >= 0
-            }
-        } else
-        if (index == 3) { // saindo do selecionamento do serviço / produto
-            //serviçosSelecionados
-
-            // console.log(nomeCliente,celularCliente,emailCliente,instagramCliente)
-
-            if ((!nomeCliente || !celularCliente || !emailCliente || !instagramCliente) && !ignoreRequirements) {
-                alert("Por favor, preencha todas as informações para que seja possível prosseguir");
-            } else {
-                windowPages.forEach(page => { page.classList.add("hidden"); });
-                windowPages[index].classList.remove("hidden"); // exibe a pagina com o numero informado se o index for >= 0
-            }
-        }
-        if (index == 4) { // saindo do agendamento de horario
-            
-
-            updateClientSummaryInfo();
-            // console.log(nomeCliente,celularCliente,emailCliente,instagramCliente)
-
-            if (!horarioAgendado && !ignoreRequirements) {
-                alert("Por favor, selecione um horario disponivel para que seja possível prosseguir");
-            } else {
-                windowPages.forEach(page => { page.classList.add("hidden"); });
-                windowPages[index].classList.remove("hidden"); // exibe a pagina com o numero informado se o index for >= 0
-            }
-        }
-        if (index == 5) { // saindo do selecionamento do serviço
-            nomeCliente = inputNomeCliente.value;
-            celularCliente = inputCelularCliente.value;
-            emailCliente = inputEmailCliente.value;
-            instagramCliente = inputInstagramCliente.value;
-
-            // console.log(nomeCliente,celularCliente,emailCliente,instagramCliente)
-
-            if ((!nomeCliente || !celularCliente || !emailCliente || !instagramCliente) && !ignoreRequirements) {
-                alert("Por favor, preencha todas as informações para que seja possível prosseguir");
-            } else {
-                windowPages.forEach(page => { page.classList.add("hidden"); });
-                windowPages[index].classList.remove("hidden"); // exibe a pagina com o numero informado se o index for >= 0
-            }
-        }
-    } else {
-        windowPages.forEach(page => { page.classList.add("hidden"); }); // esconde tudo
-        windowPages[0].classList.remove("hidden");  // se for -1,mas  reseta para o calendario, e fecha a janela principal
-        appointmentWindow.classList.add("hidden");
-    }
-}
-
-
-//  ||  Janela de Agendamento   ||  //------------------------------------------------------------
-
-//  ||  Calendario
-
-function updateCalendar(showNextMonth) { // Cabeçalho do calendario | Atualizar dias disponiveis no calendario
-    const cal_titleEl = document.querySelector("#calendar-month-name");
-    const cal_prevArrowEl = document.querySelector("#previous-month");
-    const cal_nextArrowEl = document.querySelector("#next-month");
-
-    if (showNextMonth) {
-        cal_prevArrowEl.classList.remove("hide-arrow");
-        cal_nextArrowEl.classList.add("hide-arrow");
-        cal_titleEl.innerText = monthNames[nextMonth] + " / " + cal_nextMonthYear();
-        enableAllDays();
-
-        for (let index = 0; index < 35; index++) {
-            if (index < cal_nextMonthFirstDay()) { cal_daysEl[index].innerText = ""; }
-            if (index >= cal_nextMonthFirstDay()) { cal_daysEl[index].innerText = index - cal_nextMonthFirstDay() + 1; }
-            if (index > cal_nextMonthTotalDays() + cal_nextMonthFirstDay() - 1) { cal_daysEl[index].innerText = ""; }
-        }
-    } else
-    if (!showNextMonth) {
-        cal_prevArrowEl.classList.add("hide-arrow");
-        cal_nextArrowEl.classList.remove("hide-arrow");
-        cal_titleEl.innerText = monthNames[currentMonth] + " / " + currentYear;
-        disablePastDays();
-
-        for (let index = 0; index <  35; index++) {
-            if (index < cal_monthFirstDay) { cal_daysEl[index].innerText = ""; }
-            if (index >= cal_monthFirstDay) { cal_daysEl[index].innerText = index - cal_monthFirstDay + 1; }
-            if (index > cal_monthTotalDays + cal_monthFirstDay - 1) { cal_daysEl[index].innerText = ""; }
-        }
-    }
-}
-
-function disablePastDays() { // Desabilita dias anteriores, para evitar agendamentos em dias passados
-    var today = date.getDate();
-
-    for (let index = 0; index < (today + cal_monthFirstDay -1); index++) {
-        cal_daysEl[index].classList.add("disabled-day");        
-    }
-
-    // remove a classe de selecionado em todos os dias do calendario 
-    cal_daysEl.forEach(days => { 
-        days.classList.remove("selected-day");
-    });
-
-    diaAgendado = 0; // marca como nenhum dia foi selecionado
-    selectedNextMonth = false;
-}
-
-function enableAllDays() { // habilita todos os dias, pois é o mês que vem
-    cal_daysEl.forEach(day => {
-        day.classList.remove("selected-day");
-        day.classList.remove("disabled-day");    
-    });
-
-    diaAgendado = 0; // marca como nenhum dia foi selecionado
-    selectedNextMonth = true;
-}
-
-// || Tela de Serviço
 
 function updateServiceTitle() {
-    const service_title = document.querySelector("#service-title");
+  const service_title = document.querySelector("#service-title");
 
-    service_title.innerText = diaAgendado + " " + monthNames[mesAgendado] + ", " + anoAgendado;
+  service_title.innerText = diaAgendado + " " + monthNames[mesAgendado] + ", " + anoAgendado;
 }
-
-// || Tela de Agendamento de Horario
-
-// function updateSchedule() {
-//   const service_title = document.querySelector("#schedule-title");
-
-//   service_title.innerText = diaAgendado + " " + monthNames[mesAgendado] + ", " + anoAgendado;
-// }
 
 function updateSchedule(value) {
-  for (let index = schedule_storeOpensAt; index < schedule_storeClosesAt; index++) {
-    schedule_table.append(createScheduleTime(index, false, 0));
-    schedule_table.append(createScheduleTime(index, false, 15));
-    schedule_table.append(createScheduleTime(index, false, 30));
-    schedule_table.append(createScheduleTime(index, false, 45));
+  for (let index = StoreOpensAt; index < StoreClosesAt; index++) {
+    EL_SCHEDULE_TABLE.append(createScheduleTime(index, false, 0));
+    EL_SCHEDULE_TABLE.append(createScheduleTime(index, false, 15));
+    EL_SCHEDULE_TABLE.append(createScheduleTime(index, false, 30));
+    EL_SCHEDULE_TABLE.append(createScheduleTime(index, false, 45));
   }
-}
-
-function disableSchedule(timeToDisable, minuteToDisable, ammount) {
-  var correctIndex = ((timeToDisable * 4) + minuteToDisable) - (schedule_storeOpensAt * 4);
-  var allTimeInSchedule = document.querySelectorAll(".schedule");
-  
-  allTimeInSchedule.forEach(timeElement => {
-    timeElement.classList.remove("selected")
-  });
-
-
-  // evita que numeros errados façam alguma coisa
-  if (correctIndex < 0 || correctIndex > allTimeInSchedule.length) {
-    console.log("index maior ou menor que a array");
-    console.log(correctIndex);
-    return 0;
-  }
-
-  for (let index = 0; index < ammount; index++) {
-    var indexToChance = correctIndex + index;
-
-    if (indexToChance < allTimeInSchedule.length) {
-      allTimeInSchedule[indexToChance].classList.add("unavailable");
-      allTimeInSchedule[indexToChance].firstChild.lastChild.classList.remove("hidden"); // msg de indisponivel
-    } else {
-      console.log("index maior que a array");
-      return 0;
-    }
-  }
-
-
-  return 0;
 }
 
 function createScheduleTime(time, unavailable, minute) {
-  var tableRow = document.createElement("tr");
+  let tableRow = document.createElement("tr");
   tableRow.classList.add("schedule");
 
-  var tableData = document.createElement("td");
+  let tableData = document.createElement("td");
   if (unavailable) { tableRow.classList.add("unavailable"); }
 
-  var schedule_time = document.createElement("p");
+  let schedule_time = document.createElement("p");
   schedule_time.innerHTML = formatNumbers(time) + ":" + formatNumbers(minute);
 
-  var unavailable_msg = document.createElement("p");
-  unavailable_msg.innerHTML = "HORARIO INDISPONÍVEL";
+  let unavailable_msg = document.createElement("p");
+  unavailable_msg.innerHTML = " - HORARIO INDISPONÍVEL";
   unavailable_msg.classList.add("hidden");
 
   tableData.appendChild(schedule_time);
@@ -456,24 +353,33 @@ function createScheduleTime(time, unavailable, minute) {
   return tableRow;
 }
 
-schedule_table.addEventListener("click", (e) => {
-  targetEl = e.target.closest("tr");
+function disableSchedule(timeToDisable, minuteToDisable, ammount) {
+  let correctIndex = ((timeToDisable * 4) + minuteToDisable) - (StoreOpensAt * 4);
+  let allTimeInSchedule = document.querySelectorAll(".schedule");
+  
+  addRemoveElementClass(allTimeInSchedule, false, "selected");
 
-  if (targetEl != null)
-  {
-    if (!targetEl.classList.contains("unavailable"))
-    {
-      var allTimeInSchedule = document.querySelectorAll(".schedule");
-      allTimeInSchedule.forEach(timeElement => { timeElement.classList.remove("selected") });
-    
-      targetEl.classList.add("selected");
-      horarioAgendado = targetEl.firstChild.firstChild.innerHTML;
-      console.log(horarioAgendado);
+  // evita que numeros errados façam alguma coisa
+  if (correctIndex < 0 || correctIndex > allTimeInSchedule.length) {
+    console.log("index maior ou menor que a array");
+    console.log(correctIndex);
+    return;
+  }
+
+  for (let index = 0; index < ammount; index++) {
+    let indexToChance = correctIndex + index;
+
+    if (indexToChance < allTimeInSchedule.length) {
+      allTimeInSchedule[indexToChance].classList.add("unavailable");
+      allTimeInSchedule[indexToChance].firstChild.lastChild.classList.remove("hidden"); // msg de indisponivel
+    } else {
+      console.log("index maior que a array");
     }
   }
-})
+}
 
-//  ||  Resumo das informações do cliente
+//  ||  Resumo informações do cliente   ||  //---------------------------------------------------------------------------
+
 function updateClientSummaryInfo() {
   const clientInfoSummary_clientName = document.querySelector("#summary-client-name");
   const clientInfoSummary_clientNumber = document.querySelector("#summary-client-number");
@@ -485,80 +391,19 @@ function updateClientSummaryInfo() {
   clientInfoSummary_clientInstagram.innerHTML = instagramCliente;
 
   clientInfoSummary_clientDate.innerHTML = diaAgendado + " " + monthNames[mesAgendado] + ", " + anoAgendado + "- " + horarioAgendado;
-  //8 NOVEMBRO, 2022- 18H00
 }
 
-function formatNumbers(n) {
-  return (n < 10 ? '0' : '') + n;
+//  || Utilidades    ---------------------------------------------------------------------------
+
+function formatNumbers(n) { return (n < 10 ? '0' : '') + n; }
+
+function formatInstagramHandle(input){ 
+  let str_length = input.length;
+  if (str_length > 0 && !input.includes("@")) { input = "@" + input }
+  IN_CLIENT_INSTA.value = input; 
 }
-
-
-//  ||  Declarações Iniciais   ||  //------------------------------------------------------------
-
-updateCalendar(false);
-resetAllScheduleInfo();
-updateSchedule();
-disableSchedule(8, 0, 4);
-disableSchedule(18, 2, 2);
-
-const service_table = document.querySelector("#service-table");
-
-updateServiceList();
-
-function updateServiceList() {
-  for (let index = 0; index < service_list.length; index++) {
-    service_table.appendChild(createServiceElement(service_list[index][0], textToPrice(service_list[index][1]), service_list[index][2]))
-  }
-}
-
-function createServiceElement(service, price, id) {
-  var tableRow = document.createElement("tr");
-  tableRow.classList.add("services");
-  tableRow.id = id;
-
-  var checkboxTableData = document.createElement("td");
-  var checkboxEl = document.createElement("input");
-  checkboxEl.type = "checkbox";
-  checkboxTableData.appendChild(checkboxEl);
-
-  var serviceName = document.createElement("td");
-  serviceName.classList.add("service-name");
-  serviceName.innerHTML = service;
-
-  var servicePrice = document.createElement("td");
-  servicePrice.classList.add("service-price");
-  servicePrice.innerHTML = price;
-
-  tableRow.appendChild(checkboxTableData);
-  tableRow.appendChild(serviceName);
-  tableRow.appendChild(servicePrice);
-
-  return tableRow;
-}
-
-function textToPrice(value) {
-  var formatedText = ("R$ " + value.toFixed(2));
-  formatedText = formatedText.replace('.',',');
-
-  return formatedText;
-  // 'R$ 25,00'
-}
-
-
-
-
-// document.getElementById('input-client-phone').addEventListener('keyup',function(evt){
-//   var phoneNumber = document.getElementById('input-client-phone');
-//   var charCode = (evt.which) ? evt.which : evt.keyCode;
-//   phoneNumber.value = formatPhoneNmb(phoneNumber.value);
-// });
-
-// A function to format text to look like a phone number
-var input_PhoneNvalue = '';
 
 function formatPhoneNmb(value, input){
-  const inputPhoneN = document.getElementById("input-client-phone");
-  console.log(event.keyCode);
 
   // Letras, e outros caracteres que deverá ignorar
   if ((event.keyCode >= 58 && event.keyCode <= 90) || (event.keyCode >= 106)) { 
@@ -571,51 +416,94 @@ function formatPhoneNmb(value, input){
     value += input;
   }
 
-  // Remover todos os caracteres desnecessários
-  value = value.replace(/\D/g,'');
-  
-  // // Trim the remaining value to ten characters, to preserve phone number format
+  value = value.replace(/\D/g,'');  
   value = value.substring(0,11);
 
-  //Based upon the length of the string, we add formatting as necessary
-  var size = value.length;
+  let size = value.length;
   if(size == 0) {
     value = value;
   }else if(size < 3) {
     value = '('+value;
   }else if(size < 8) {
-    value = '('+value.substring(0,2)+') '+value.substring(2,7);
+    value = '('+value.substring(0,2)+') ' + value.substring(2,7);
   }else{
-    value = '('+value.substring(0,2)+') '+value.substring(2,7)+'-'+value.substring(7,11);
+    value = '('+value.substring(0,2)+') ' + value.substring(2,7) + '-' + value.substring(7,11);
   }
 
-  inputPhoneN.value = value; 
-  console.log(inputPhoneN.value);
+  IN_CLIENT_PHONE.value = value; 
+  celularCliente = value.replace(/\D/g,'');
 }
 
-function formatInstagramHandle(input){
-  const insta_username = document.getElementById("input-client-instagram");
- 
-  //Based upon the length of the string, we add formatting as necessary
-  var inp_length = input.length;
-  if (inp_length > 0 && !input.includes("@")) {
-    input = "@" + input
-  }
+function stringToPrice(value) {
+  let formatedText = ("R$ " + value.toFixed(2));
+  formatedText = formatedText.replace('.',',');
+  return formatedText;
+}
 
-  insta_username.value = input; 
-  console.log(inputPhoneN.value);
+
+function resetAllScheduleInfo() {
+  diaAgendado = 0;
+  mesAgendado = currentMonth;
+  anoAgendado = currentYear;
+  nomeCliente = '';
+  celularCliente = '';
+  emailCliente = '';
+  instagramCliente = '';
+  horarioAgendado = '';
+
+  IN_CLIENT_NAME.value = '';
+  IN_CLIENT_PHONE.value = '';
+  IN_CLIENT_EMAIL.value = '';
+  IN_CLIENT_INSTA.value = '';
+
+  addRemoveElementClass(EL_CALENDAR_DAY, false, "selected-day");
+}
+
+function cal_nextMonthFirstDay() {
+  let year;
+  if (nextMonth == 0) { year = nextYear; } else { year = currentYear; }
+
+  return new Date(year, nextMonth, 1).getDay();
+}
+
+function cal_nextMonthTotalDays() {
+  let year;
+  if (nextMonth == 0) { year = nextYear; } else { year = currentYear; }
+
+  return new Date(year, nextMonth + 1, 0).getDate();
+}
+
+function cal_nextMonthYear() {
+  if (mesAgendado == 0 && nextMonth == 0) { return nextYear; } else { return currentYear; }
 }
 
 function checkEmail(input) {
-  if (input.includes("@") && input.includes(".com")) {
-    return true;
-  } else {
-    return false;
-  }
+  if (input.includes("@") && input.includes(".com")) { return true; } else { return false; }
 }
 
+function addRemoveElementClass(Element, addClass, className) {
+  Element.forEach(el => {
+    if (addClass) {
+      el.classList.add(className);
+    } else {
+      el.classList.remove(className);
+    }
+  })
+}
 
-// TESTES
+function updateInformation(index) {
+  if (index == 0) { updateCalendar(isNextMonth); } else
+  if (index == 1) {  } else
+  if (index == 2) {  } else
+  if (index == 3) {  } else
+  if (index == 4) { updateClientSummaryInfo(); }
+}
 
-selectWorker(0);
-switchBetweenWindows(1, true);
+// displayScheduler(true, true); // mostrar janela
+// activateBarber(0); // ativar barbeiro
+// setActiveWindow(0); // selecionar janela
+
+updateSchedule();
+updateServiceTable();
+disableSchedule(8, 0, 4);
+disableSchedule(18, 2, 2);

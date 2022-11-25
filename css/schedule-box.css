@@ -58,8 +58,8 @@
     color: #000;
 }
 
-#calendar-table td:first-child, #calendar-table td:last-child, #calendar-table td:empty{ /* Alterado Sabado e Domingo para Vermelho, e dias vazios*/
-    color: #f00;
+.unavailable-day, #calendar-table td:empty{ /* Alterado Sabado e Domingo para Vermelho, e dias vazios*/
+    color: #f00 !important;
     pointer-events: none;
 }
 
@@ -137,6 +137,7 @@ input[type=number] {
 }
 
 
+
 .schedule-list td {  
   display: flex;
   flex-direction: row;
@@ -167,12 +168,16 @@ input[type=number] {
 #service-window table {
     border-collapse: collapse;
     border-spacing: 0;
-    width: 100%;
-    text-align: left;
-    padding: 0 7%;
+    width: 80%;
+    margin: 0 auto;
+    padding: 0% 7%;
 }
 
 #service-window table td:first-child {
+    text-align: left;
+}
+
+#service-window table td:last-child {
     text-align: right;
 }
 
@@ -428,20 +433,26 @@ input[type=number] {
 
     /* Horarios disponiveis */
 
-  /* || TEXT FORMATING */
+/* || TEXT FORMATING */
+
   .calendar-title {
     font-size: 20px;
     padding: 3%;
   }
     
   .schedule-list table {
-    width: 100%;
-    margin: 0px 0;
+    width: 90%;
+    margin: 0px auto;
   }
   
   .schedule-list p {
     font-size: 10px;
     padding-right: 5px;
+  }
+  
+  #schedule-window p {
+    font-size: 16px;
+    margin: 0px;
   }
   
   .schedule-list td {    

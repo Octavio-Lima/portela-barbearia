@@ -12,7 +12,6 @@
 
     <!-- Scripts -->
   <script src="js/index.js" defer></script>
-  <script src="js/services.js" defer></script>
 
     <!-- Fontes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,12 +29,12 @@
   <!---->
   <main>
     <div class="select-worker-container">
-      <div class="worker">
-        <img src = "../img/worker/worker0.jpg" class="worker-img" alt="Trabalhador"/> 
+      <div class="barber">
+        <img src = "../img/worker/worker0.jpg" class="worker-img" alt="Barbeiro"/> 
         <h2>JOÃO PEDRO</h2>
       </div>
-      <div class="worker">
-        <img src = "../img/worker/worker1.jpg" class="worker-img" alt="Trabalhador"/> 
+      <div class="barber">
+        <img src = "../img/worker/worker1.jpg" class="worker-img" alt="Barbeiro"/> 
         <h2>LÚCIO</h2>
       </div>        
     </div>
@@ -126,7 +125,7 @@
       </table>
       <!--  CONFIRM BUTTON  -->
       <div style="flex-grow: 1;"></div>
-      <button type="submit" onclick="switchBetweenWindows(1);">CONFIRMAR</button>
+      <button type="submit" onclick="setActiveWindow(1);">CONFIRMAR</button>
     </section>
 
   <!--  INFORMAÇÕES DO CLIENTE  -->
@@ -138,7 +137,7 @@
       <input type="text" id="input-client-instagram" placeholder="INSTAGRAM" onkeyup="formatInstagramHandle(value);">
       <!--  CONFIRM BUTTON  -->
       <div style="flex-grow: 1;"></div>
-      <button type="submit" onclick="switchBetweenWindows(2);">CONFIRMAR</button>
+      <button type="submit" onclick="setActiveWindow(2);">CONFIRMAR</button>
     </section>
 
   <!--  LISTA DE SERVIÇOS E PRODUTOS  -->
@@ -158,7 +157,7 @@
     </div>
     <!--  CONFIRM BUTTON  -->
     <p id="total-time">total time:</p>
-    <button type="submit" onclick="switchBetweenWindows(3);">CONFIRMAR</button>
+    <button type="submit" onclick="setActiveWindow(3);">CONFIRMAR</button>
     </section>
 
   <!--  AGENDAR HORARIO  -->
@@ -174,7 +173,7 @@
     </div>
     <!--  CONFIRM BUTTON  -->
     <div style="flex-grow: 1;"></div>
-    <button type="submit" onclick="switchBetweenWindows(4);">CONFIRMAR</button>
+    <button type="submit" onclick="setActiveWindow(4);">CONFIRMAR</button>
     </section>
                 
   <!--  RESUMO, INFORMAÇÕES DO CLIENTE  -->
@@ -193,14 +192,14 @@
       <h1 id="summary-client-date">DIA MES, ANO- 18H00</h3>
       <!--  CONFIRM BUTTON  -->
       <div style="flex-grow: 1;"></div>
-      <button type="submit" onclick="selectWorker(currentWorkerSel);">CONCLUIR</button>
+      <button type="submit" onclick="displayScheduler(false, true);">CONCLUIR</button>
     </section>
     </div>
   </section>
   <!--  Espaçamento entre o fundo da tela e a caixa de dialogo  -->
   <div id="diag-box-space" style="flex-grow: 1;" class="hidden"></div>
 
-  <div id="cancel-schedule" style="position: absolute; width: 100%; height: 100%;" onclick="selectWorker(currentWorkerSel);"></div>
+  <div id="cancel-schedule" class="hidden" style="position: absolute; width: 100%; height: 100%;" onclick="displayScheduler(false, false);"></div>
 
   <!--  Blur Overlay  -->
   <div class="blur-overlay hidden"></div>
