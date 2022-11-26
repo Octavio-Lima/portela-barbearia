@@ -1,5 +1,7 @@
-var user = "joao";
-var pass = "123";
+const account = [
+  {user:"joao", pass:"123", name:"joão pedro portela", access:'proprietario, barbeiro'},
+  {user:"lucio", pass:"321", name:"lúcio xavier", access:'barbeiro'}
+]
 
 function checkCredentials(event) {
   event.preventDefault();
@@ -8,9 +10,19 @@ function checkCredentials(event) {
   const pass_input = document.getElementById("pass");
   const wrong_cred = document.getElementById("wrong-cred-msg");
 
-  if (user_input.value == user && pass_input.value == pass) {
+  if (checkUser(user_input.value, pass_input.value)) {
     window.open("../html/manage.html", "_self");
   } else {
     wrong_cred.style.display = 'block'
+  }
+}
+
+function checkUser(input, passInput) {
+  for (let index = 0; index < account.length; index++) {
+    if (input == account[index].user && passInput == account[index].pass) {
+      localStorage.setItem("accessName", account[index].name);
+      localStorage.setItem("accessType", account[index].access);
+      return true
+    }
   }
 }

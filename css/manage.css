@@ -4,62 +4,49 @@
   margin: 0px;
   border: 0px;
   padding: 0px;
+  text-transform: uppercase;
 }
 
 body {
-  background-color: #000;
-  background-image: url("../img/bg.png");
+  background-color: #ECF0F3;
   background-size: cover;
-
-  text-align: center;
-}
-
-#logo {
+  
+  padding: 40px 40px 40px;
   width: 300px;
-  margin: 50px auto 0;
+  margin: 0 auto;
 }
 
 main {
-  box-shadow: 
-  inset -10px 10px 10px 0px #fffe, /* Top */
-  inset 0px -10px 10px 0px #0003, /* Bottom */
-  inset 10px 0px 10px 0px #0003, /* Left */
-  inset -10px 0px 10px 0px #fffe; /* Right */
-
-  text-align: left;
-
-  background-color: #ebf7ff;
-  border-top-left-radius: 40px;
-  padding: 20px 20px 40px;
-  margin: 50px auto 0;
-  width: 300px;
 }
-
-
 
 /*  ||  PROFILE STYLE  ||  */
 
-h1 { /* Titulo da Janela */
-  font-size: 25px;
-  margin: 20px 0;
+h1 { /* Nome do trabalhador */
+  font-size: 35px;
+}
+
+p { /* Função do funcionario */
+  font-size: 20px;
+  color: #989899;
 }
 
 .link-container {
   display: flex;
   height: 64px;
+  margin: 20px 0;
 }
 
 .link-img {
-  clip-path: circle( 16px at center);
-  width: 32px;
-  height: 32px;
+  clip-path: circle( 24px at center);
+  width: 48px;
+  height: 48px;
 
   margin: auto 0;
 }
 
-a {
+a, h1 {
   color: #000;
-  font-size: 20px;
+  font-size: 25px;
   text-decoration: none;
 
   width: 100%;
@@ -67,9 +54,29 @@ a {
   border-bottom: 2px solid #999;
   padding: 15px 0;
   margin: auto 10px;
-
 }
 
 a:hover {
   color: #15c;
+}
+
+/* Cadastrar Clientes */
+input {
+  width: 100%;
+  margin: 5px 0;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+.title {
+  text-align: center;
+  margin: 20px 0;
+}
+
+/* Fluxo de caixa */
+
+.total-price {
+  border-top: #999 dotted 2px;
 }

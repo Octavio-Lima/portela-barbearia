@@ -7,7 +7,7 @@
   <title>Sistema</title>
   <link rel="stylesheet" href="../css/manage.css">
   <!-- Scripts -->
-  <!-- <script src="../js/login.js"></script> -->
+  <script src="../js/manage.js" defer></script>
 
   <!-- Fontes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,19 +16,29 @@
   <script src="https://kit.fontawesome.com/0d15831467.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <img src="../img/logo-a.svg" id="logo" alt="logo portela">
-    
   <main>
-    <h1>LÚCIO XAVIER</h1>
-    <p>BARBEIRO</p>
+    <h1 id="worker-name">LÚCIO XAVIER</h1>
+    <p id="worker-job">BARBEIRO</p>
     <section>
-      <div class="link-container">
-        <img src="../img/user.jpg" alt="Cliente" class="link-img">
-        <a href="#">CADASTRAR CLIENTE</a>
+      <div class="link-container" id="register-client">
+        <img src="../img/icons/user.jpg" alt="Cliente" class="link-img">
+        <a href="../html/register-client.html">CADASTRAR CLIENTE</a>
       </div>
-      <div class="link-container">
-        <img src="../img/user.jpg" alt="Cliente" class="link-img">
+      <div class="link-container" id="schedules">
+        <img src="../img/icons/user.jpg" alt="Cliente" class="link-img">
         <a href="#">AGENDAMENTOS</a>
+      </div>
+      <div class="link-container" id="cash-flow">
+        <img src="../img/icons/user.jpg" alt="Cliente" class="link-img">
+        <a href="../html/cash-flow.html">FLUXO DE CAIXA</a>
+      </div>
+      <div class="link-container" id="product-stock">
+        <img src="../img/icons/user.jpg" alt="Cliente" class="link-img">
+        <a href="#">ESTOQUE DE PRODUTOS</a>
+      </div>
+      <div class="link-container" id="client-data">
+        <img src="../img/icons/user.jpg" alt="Cliente" class="link-img">
+        <a href="#">DADOS DOS CLIENTES</a>
       </div>
     </section>
   </main>
