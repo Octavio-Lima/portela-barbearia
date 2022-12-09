@@ -67,7 +67,7 @@ const EL_WINDOW_CLIENT_INFO = document.querySelector("#client-info-window");
 const EL_WINDOW_SCHEDULE = document.querySelector("#schedule-window");
 const EL_WINDOW_SERVICE = document.querySelector("#service-window");
 const EL_WINDOW_OVERVIEW = document.querySelector("#overview-window");
-const EL_SCHEDULE_TABLE = document.getElementById("schedule-table");
+const EL_SCHEDULE_TABLE = document.getElementById("schedule-list");
 const IN_CLIENT_NAME = document.querySelector("#input-client-name");
 const IN_CLIENT_PHONE = document.querySelector("#input-client-phone");
 const IN_CLIENT_EMAIL = document.querySelector("#input-client-email");
@@ -308,7 +308,7 @@ EL_SCHEDULE_TABLE.addEventListener("click", (e) => {
   {
     if (!targetEl.classList.contains("unavailable"))
     {
-      let allTimeInSchedule = document.querySelectorAll(".schedule");
+      let allTimeInSchedule = document.querySelectorAll(".schedule-entry");
       addRemoveElementClass(allTimeInSchedule, false, "selected");
     
       targetEl.classList.add("selected");
@@ -323,7 +323,7 @@ function updateServiceTitle() {
   service_title.innerText = diaAgendado + " " + monthNames[mesAgendado] + ", " + anoAgendado;
 }
 
-function updateSchedule(value) {
+function updateSchedule() {
   for (let index = StoreOpensAt; index < StoreClosesAt; index++) {
     EL_SCHEDULE_TABLE.append(createScheduleTime(index, false, 0));
     EL_SCHEDULE_TABLE.append(createScheduleTime(index, false, 15));
@@ -333,11 +333,12 @@ function updateSchedule(value) {
 }
 
 function createScheduleTime(time, unavailable, minute) {
-  let tableRow = document.createElement("tr");
-  tableRow.classList.add("schedule");
+  let tableRow = document.createElement("div");
+  tableRow.classList.add("schedule-entry");
 
-  let tableData = document.createElement("td");
+  let tableData = document.createElement("div");
   if (unavailable) { tableRow.classList.add("unavailable"); }
+
 
   let schedule_time = document.createElement("p");
   schedule_time.innerHTML = formatNumbers(time) + ":" + formatNumbers(minute);
@@ -353,9 +354,10 @@ function createScheduleTime(time, unavailable, minute) {
   return tableRow;
 }
 
-function disableSchedule(timeToDisable, minuteToDisable, ammount) {
+function disableSchedule(timeToDisable, minuteToDisable, ammount, isOccupied) {
   let correctIndex = ((timeToDisable * 4) + minuteToDisable) - (StoreOpensAt * 4);
-  let allTimeInSchedule = document.querySelectorAll(".schedule");
+  let allTimeInSchedule = document.querySelectorAll(".schedule-entry");
+  let entries = [];
   
   addRemoveElementClass(allTimeInSchedule, false, "selected");
 
@@ -366,17 +368,33 @@ function disableSchedule(timeToDisable, minuteToDisable, ammount) {
     return;
   }
 
-  for (let index = 0; index < ammount; index++) {
-    let indexToChance = correctIndex + index;
+  for (let i = 0; i < ammount; i++) {
+    let j = correctIndex + i
+    entries[i] = allTimeInSchedule[j];
+  }
+
+  console.log(entries);
+  let rowType = (isOccupied ? "row-busy" : "row-unav")
+
+  for (let i = 0; i < ammount; i++) {
+    let indexToChance = correctIndex + i;
 
     if (indexToChance < allTimeInSchedule.length) {
       allTimeInSchedule[indexToChance].classList.add("unavailable");
       allTimeInSchedule[indexToChance].firstChild.lastChild.classList.remove("hidden"); // msg de indisponivel
+
+      if (entries.length > 0) {
+        if (i == 0) { entries[i].classList.add(rowType + "-top"); entries[i].parentElement.classList.add("top"); } else
+        if (i == ammount-1) { entries[i].classList.add(rowType + "-base"); entries[i].parentElement.classList.add("base"); } else 
+        { entries[i].classList.add(rowType); entries[i].parentElement.classList.add("middle"); } 
+      }
     } else {
       console.log("index maior que a array");
     }
+    
   }
 }
+
 
 //  ||  Resumo informações do cliente   ||  //---------------------------------------------------------------------------
 
@@ -499,11 +517,12 @@ function updateInformation(index) {
   if (index == 4) { updateClientSummaryInfo(); }
 }
 
-// displayScheduler(true, true); // mostrar janela
-// activateBarber(0); // ativar barbeiro
-// setActiveWindow(0); // selecionar janela
+ displayScheduler(true, true); // mostrar janela
+ activateBarber(0); // ativar barbeiro
+ setActiveWindow(3); // selecionar janela
 
 updateSchedule();
 updateServiceTable();
 disableSchedule(8, 0, 4);
 disableSchedule(18, 2, 2);
+disableSchedule(14, 0, 4, true);

@@ -16,24 +16,25 @@
   <script src="https://kit.fontawesome.com/0d15831467.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <img src="../img/logo-a.svg" id="brand-logo" alt="logo portela">
-    
-    <main>
-        <h1>LOGIN</h1>
-        <form action="#">
-          <div class="input-container-row">
-            <label for="user">USUÁRIO:</label>
-            <input type="text" name="user" id="user" formaction="#">
-          </div>
-          <div class="input-container-row">
-            <label for="user">SENHA:</label>
-            <input type="password" name="pass" id="pass" formaction="#">
-          </div>
-          <button type="submit" onclick="checkCredentials(event);">ACESSAR</button>
-        </form>
-        <p style="color: #f00; text-align: center; font-size: 14px; margin-top: 10px; display: none;" id="wrong-cred-msg">
-          Credendiais incorretas. <br> Verifique novamente as credenciais informadas.
-        </p>
-      </main>
+  <img src="../img/logo-a.svg" id="brand-logo" alt="logo portela">
+  
+  <main>
+    <h1>LOGIN</h1>
+    <form action="#">
+      <label for="user">USUÁRIO:</label>
+      <input type="text" name="user" id="user" formaction="#">
+      
+      <label for="user">SENHA:</label>
+      <input type="password" name="pass" id="pass" formaction="#">
+
+      <button type="submit" onclick="checkCredentials(event);">ACESSAR</button>
+    </form>
+
+    <a href="#">esqueci a senha</a>
+
+    <p style="color: #f00; text-align: center; font-size: 14px; margin-top: 10px; display: none;" id="wrong-cred-msg">
+      Credendiais incorretas. <br> Verifique novamente as credenciais informadas.
+    </p>
+  </main>
 </body>
 </html>

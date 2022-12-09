@@ -29,7 +29,7 @@ main {
     
     background-color: #ebf7ff;
     border-radius: 40px;
-    padding: 20px 20px 40px;
+    padding: 20px 30px 40px;
     margin: 50px auto;
     width: 300px;
 
@@ -39,38 +39,60 @@ main {
 }
 
 
+h1 { /* Titulo da Janela */
+  font-size: 25px;
+  margin: 20px;
+}
 
 /*  ||  PROFILE STYLE  ||  */
 
-h1 { /* Titulo da Janela */
-    font-size: 25px;
-    margin: 20px;
-}
-
-.input-container-row {
+form {
   display: flex;
-  flex-direction: row;
-  margin: 5px;
+  flex-direction: column;
+
+  width: 80%;
+  height: 100%;
 }
 
 label {
-  width: 60px;
+  margin: 5px 0 5px;
+  font-weight: lighter;
 }
 
 input {
   border-radius: 4px;
   padding: 0px 5px;
   border: 2px solid #c5d8e0;
+  margin-bottom: 10px;
 }
 
 button {
-  width: 80px;
+  width: 120px;
+  height: 40px;
   margin: 5px auto 0;
-  border-radius: 5px;
-  padding: 5px 10px;
+
+  font-size: 20px;
+
+  border-radius: 50px;
+  border: 2px outset;
 }
 
-form {
-  display: flex;
-  flex-direction: column;
+button:hover {
+  border: 2px inset;
+}
+
+a {
+  margin: 10px 0 0px;
+  font-size: 14px;
+  text-decoration: none;
+
+  color: #125bf7;
+}
+
+a:hover {
+  color: #6b90df;
+}
+
+a:active {
+  color: #0e3079;
 }

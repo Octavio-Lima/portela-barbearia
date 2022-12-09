@@ -58,142 +58,137 @@
   <section id="appointment-window" class="hidden">
     <div class="window-container">
     
-  <!--  CALENDARIO  -->
-    <section class="" id="calendar-window">
-      <div class="calendar-pick-month-container calendar-title">
-        <button class="fa-solid fa-angle-double-left select-month-arrow" id="previous-month" onclick=" updateCalendar(false); "></button>
-        <h3 id="calendar-month-name">MÊS</h3>
-        <button class="fa-solid fa-angle-double-right select-month-arrow" id="next-month" onclick=" updateCalendar(true); "></button>
-      </div>
-      <table id="calendar-table">
-        <tbody>
-          <tr>
-            <th>D</th>
-            <th>S</th>
-            <th>T</th>
-            <th>Q</th>
-            <th>Q</th>
-            <th>S</th>
-            <th>S</th>
-          </tr>
-          <tr>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-          </tr>
-          <tr>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-          </tr>
-          <tr>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-          </tr>
-          <tr>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-          </tr>
-          <tr>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-          </tr>
-        </tbody>
-      </table>
-      <!--  CONFIRM BUTTON  -->
-      <div style="flex-grow: 1;"></div>
-      <button type="submit" onclick="setActiveWindow(1);">CONFIRMAR</button>
-    </section>
+    <!--  CALENDARIO  -->
+      <section class="" id="calendar-window">
+        <div class="calendar-pick-month-container calendar-title">
+          <button class="fa-solid fa-angle-double-left select-month-arrow" id="previous-month" onclick=" updateCalendar(false); "></button>
+          <h3 id="calendar-month-name">MÊS</h3>
+          <button class="fa-solid fa-angle-double-right select-month-arrow" id="next-month" onclick=" updateCalendar(true); "></button>
+        </div>
+        <table id="calendar-table">
+          <tbody>
+            <tr>
+              <th>D</th>
+              <th>S</th>
+              <th>T</th>
+              <th>Q</th>
+              <th>Q</th>
+              <th>S</th>
+              <th>S</th>
+            </tr>
+            <tr>
+              <td class="calendar-pick-day">0</td>
+              <td class="calendar-pick-day">0</td>
+              <td class="calendar-pick-day">0</td>
+              <td class="calendar-pick-day">0</td>
+              <td class="calendar-pick-day">0</td>
+              <td class="calendar-pick-day">0</td>
+              <td class="calendar-pick-day">0</td>
+            </tr>
+            <tr>
+              <td class="calendar-pick-day">0</td>
+              <td class="calendar-pick-day">0</td>
+              <td class="calendar-pick-day">0</td>
+              <td class="calendar-pick-day">0</td>
+              <td class="calendar-pick-day">0</td>
+              <td class="calendar-pick-day">0</td>
+              <td class="calendar-pick-day">0</td>
+            </tr>
+            <tr>
+              <td class="calendar-pick-day">0</td>
+              <td class="calendar-pick-day">0</td>
+              <td class="calendar-pick-day">0</td>
+              <td class="calendar-pick-day">0</td>
+              <td class="calendar-pick-day">0</td>
+              <td class="calendar-pick-day">0</td>
+              <td class="calendar-pick-day">0</td>
+            </tr>
+            <tr>
+              <td class="calendar-pick-day">0</td>
+              <td class="calendar-pick-day">0</td>
+              <td class="calendar-pick-day">0</td>
+              <td class="calendar-pick-day">0</td>
+              <td class="calendar-pick-day">0</td>
+              <td class="calendar-pick-day">0</td>
+              <td class="calendar-pick-day">0</td>
+            </tr>
+            <tr>
+              <td class="calendar-pick-day">0</td>
+              <td class="calendar-pick-day">0</td>
+              <td class="calendar-pick-day">0</td>
+              <td class="calendar-pick-day">0</td>
+              <td class="calendar-pick-day">0</td>
+              <td class="calendar-pick-day">0</td>
+              <td class="calendar-pick-day">0</td>
+            </tr>
+          </tbody>
+        </table>
+        <!--  CONFIRM BUTTON  -->
+        <div style="flex-grow: 1;"></div>
+        <button type="submit" onclick="setActiveWindow(1);">CONFIRMAR</button>
+      </section>
 
   <!--  INFORMAÇÕES DO CLIENTE  -->
-    <section class="hidden" id="client-info-window">
-      <h3>PREENCHA ABAIXO PARA AGENDAR SEU HORÁRIO</h3>
-      <input type="text" id="input-client-name" placeholder="NOME COMPLETO">
-      <input type="text" id="input-client-phone" placeholder="CEL. (31)90000-0000" onkeydown="formatPhoneNmb(value, event.key);">
-      <input type="text" id="input-client-email" placeholder="EMAIL">
-      <input type="text" id="input-client-instagram" placeholder="INSTAGRAM" onkeyup="formatInstagramHandle(value);">
-      <!--  CONFIRM BUTTON  -->
-      <div style="flex-grow: 1;"></div>
-      <button type="submit" onclick="setActiveWindow(2);">CONFIRMAR</button>
-    </section>
+      <section class="hidden" id="client-info-window">
+        <h3>PREENCHA ABAIXO PARA AGENDAR SEU HORÁRIO</h3>
+        <input type="text" id="input-client-name" placeholder="NOME COMPLETO">
+        <input type="text" id="input-client-phone" placeholder="CEL. (31)90000-0000" onkeydown="formatPhoneNmb(value, event.key);">
+        <input type="text" id="input-client-email" placeholder="EMAIL">
+        <input type="text" id="input-client-instagram" placeholder="INSTAGRAM" onkeyup="formatInstagramHandle(value);">
+        <!--  CONFIRM BUTTON  -->
+        <div style="flex-grow: 1;"></div>
+        <button type="submit" onclick="setActiveWindow(2);">CONFIRMAR</button>
+      </section>
 
   <!--  LISTA DE SERVIÇOS E PRODUTOS  -->
-    <section class="hidden" id="service-window">
-    <h3 class="calendar-title" id="service-title">DIA MES, ANO</h3>
-    <p>SELECIONE SERVIÇO E/OU PRODUTO</p>
-    <div class="service-container" style="overflow-x: scroll;">
-      <table>
-        <tbody id="service-table">
-          <!-- <tr class="services">
-            <td><input type="checkbox" id="ser-corte"></td>
-            <td class="service-name">CORTE (30m)</td>
-            <td class="service-price">R$25,00</td>
-          </tr> -->
-        </tbody>
-      </table>
-    </div>
-    <!--  CONFIRM BUTTON  -->
-    <p id="total-time">total time:</p>
-    <button type="submit" onclick="setActiveWindow(3);">CONFIRMAR</button>
-    </section>
+      <section class="hidden" id="service-window">
+      <h3 class="calendar-title" id="service-title">DIA MES, ANO</h3>
+      <p>SELECIONE SERVIÇO E/OU PRODUTO</p>
+      <div class="service-container" style="overflow-x: scroll;">
+        <table>
+          <tbody id="service-table">
+            <!-- <tr class="services">
+              <td><input type="checkbox" id="ser-corte"></td>
+              <td class="service-name">CORTE (30m)</td>
+              <td class="service-price">R$25,00</td>
+            </tr> -->
+          </tbody>
+        </table>
+      </div>
+      <!--  CONFIRM BUTTON  -->
+      <p id="total-time">total time:</p>
+      <button type="submit" onclick="setActiveWindow(3);">CONFIRMAR</button>
+      </section>
 
   <!--  AGENDAR HORARIO  -->
-    <section class="hidden" id="schedule-window">
-    <h3 class="calendar-title" id="schedule-title">8 NOVEMBRO, 2022</h3>
-    <p>HORÁRIOS DISPONIVEIS</p>
-    <div class="schedule-list" style="overflow-x: scroll;">
-      <table>
-        <tbody id="schedule-table">
-          <!-- <tr class="schedule"><td class=""><p>08:00</p><p>Horario indisponivel</p></td> -->
-        </tbody>
-      </table>
-    </div>
-    <!--  CONFIRM BUTTON  -->
-    <div style="flex-grow: 1;"></div>
-    <button type="submit" onclick="setActiveWindow(4);">CONFIRMAR</button>
-    </section>
-                
-  <!--  RESUMO, INFORMAÇÕES DO CLIENTE  -->
-    <section class="hidden" id="overview-window">
-      <div class="client-info-overview">
-        <img src = "/img/icons/user.jpg" id="client-img" alt="Cliente"/>
-        <div style="display: flex; flex-direction: column;">
-          <h3 id="summary-client-name">NOME COMPLETO DO CLIENTE</h3>
-          <div style="display: flex; flex-direction: row;">
-            <p id="summary-client-number">(31) 90000-0000</p>
-            <span style="flex-grow: 1;"></span> <!-- Spacer -->
-            <p id="summary-client-instagram">@INSTAGRAMCLIENTE</p>
-          </div>
-        </div>
+      <section class="hidden" id="schedule-window">
+      <h3 class="calendar-title" id="schedule-title">8 NOVEMBRO, 2022</h3>
+      <p>HORÁRIOS DISPONIVEIS</p>
+      <div id="schedule-list" style="overflow-x: scroll;">
       </div>
-      <h1 id="summary-client-date">DIA MES, ANO- 18H00</h3>
       <!--  CONFIRM BUTTON  -->
       <div style="flex-grow: 1;"></div>
-      <button type="submit" onclick="displayScheduler(false, true);">CONCLUIR</button>
-    </section>
+      <button type="submit" onclick="setActiveWindow(4);">CONFIRMAR</button>
+      </section>
+                
+  <!--  RESUMO, INFORMAÇÕES DO CLIENTE  -->
+      <section class="hidden" id="overview-window">
+        <div class="client-info-overview">
+          <img src = "/img/icons/user.jpg" id="client-img" alt="Cliente"/>
+          <div style="display: flex; flex-direction: column;">
+            <h3 id="summary-client-name">NOME COMPLETO DO CLIENTE</h3>
+            <div style="display: flex; flex-direction: row;">
+              <p id="summary-client-number">(31) 90000-0000</p>
+              <span style="flex-grow: 1;"></span> <!-- Spacer -->
+              <p id="summary-client-instagram">@INSTAGRAMCLIENTE</p>
+            </div>
+          </div>
+        </div>
+        <h1 id="summary-client-date">DIA MES, ANO- 18H00</h3>
+        <!--  CONFIRM BUTTON  -->
+        <div style="flex-grow: 1;"></div>
+        <button type="submit" onclick="displayScheduler(false, true);">CONCLUIR</button>
+      </section>
     </div>
   </section>
   <!--  Espaçamento entre o fundo da tela e a caixa de dialogo  -->

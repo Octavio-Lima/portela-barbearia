@@ -4,7 +4,7 @@ const addEntryButton = document.querySelector("#add-entry");
 const delEntryButton = document.querySelector("#del-entry");
 const confirmDelEntry = document.querySelector("#confirm-del-button")
 const filterEntryButton = document.querySelector("#filter-entry");
-const financeTable = document.querySelector('table');
+const financeTable = document.querySelector('main');
 const blockBgElement = document.querySelector(".block-bg-elements");
 const delEntryDiagBox = document.querySelector("#del-entry-window");
 const cancelDiagBox = document.querySelector("#cancel-button")
@@ -53,7 +53,7 @@ function selectRow(selectedRow) {
 
 document.addEventListener("click", (e) => {
   e.preventDefault();
-  const parentEl = e.target.closest("tr");
+  const parentEl = e.target.closest(".table-row");
 
   if (parentEl !== null)
   {
@@ -119,15 +119,15 @@ addEntryButton.addEventListener("click", (e) => {
 
 // Criar novo lançamento
 function addNewEntry(name, createType, dateCreated, datePayed, createBy, value, payType) {
-  const newEntry = document.createElement("tr");
-  const entryName = document.createElement("td");
-  const entryType = document.createElement("td");
-  const entryDateCreated = document.createElement("td");
-  const entryCreatedBy = document.createElement("td");
-  const entryValue = document.createElement("td");
-  const entryDetail = document.createElement("td");
+  const newEntry = document.createElement("div");
+  const entryName = document.createElement("p");
+  const entryType = document.createElement("p");
+  const entryDateCreated = document.createElement("p");
+  const entryCreatedBy = document.createElement("p");
+  const entryValue = document.createElement("p");
+  const entryDetail = document.createElement("div");
   const entryDetailBtn = document.createElement("button");
-  const entryDatePayed = document.createElement("td");
+  const entryDatePayed = document.createElement("p");
   const entryEditedBy = document.createElement("p");
   const entryPayType = document.createElement("p");
 
@@ -137,6 +137,13 @@ function addNewEntry(name, createType, dateCreated, datePayed, createBy, value, 
   newEntry.classList.add(isTrue ? "entry-type-profit" : "entry-type-debt");
   entryName.innerText = name;
   entryType.innerText = (isTrue ? "Entrada" : "Saída");
+  entryName.classList.add("table-data");
+  entryType.classList.add("table-data");
+  entryDateCreated.classList.add("table-data");
+  entryCreatedBy.classList.add("table-data");
+  entryValue.classList.add("table-data");
+  entryDetail.classList.add("table-data");
+  entryDatePayed.classList.add("table-data");
 
   entryDateCreated.innerText = dateCreated;
   entryDatePayed.innerText = datePayed;
@@ -150,6 +157,13 @@ function addNewEntry(name, createType, dateCreated, datePayed, createBy, value, 
   entryDetailBtn.classList.add("show-more-btn");
   entryEditedBy.classList.add("hidden")
   entryPayType.classList.add("hidden")
+
+  entryType.classList.add("show-on-desktop")
+  entryDateCreated.classList.add("show-on-desktop")
+  entryCreatedBy.classList.add("show-on-desktop")
+  entryPayType.classList.add("show-on-desktop")
+  entryPayType.classList.add("show-on-desktop")
+  entryPayType.classList.add("show-on-desktop")
 
   entryDetailBtn.addEventListener("click", showDetailBtnEvent());
   
@@ -237,7 +251,7 @@ confirmDelEntry.addEventListener("click", (e) => {
 
 function showDetailBtnEvent() {
   return function() {
-    const parentEl = this.closest("tr");
+    const parentEl = this.closest(".table-row");
     if (parentEl.classList.contains("table-row")){
       selectRow(parentEl);
       displayPopup(true, 3);
@@ -336,4 +350,4 @@ function toNumberFormat(value) {
 }
 
 addNewEntry("primeiro lançamento",'true',"28/11/2020","02/04/2024", "Administrador",toMoneyFormat(170.30),0);
-addNewEntry("Pagamento Dr. Mario",'false',"01/12/1990","30/12/1994", "Administrador",toMoneyFormat(900.00),3);
+addNewEntry("Segundo Lançamento",'false',"01/12/1990","30/12/1994", "Administrador",toMoneyFormat(900.00),3);

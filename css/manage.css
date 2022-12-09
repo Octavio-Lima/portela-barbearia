@@ -12,11 +12,12 @@ body {
   background-size: cover;
   
   padding: 40px 40px 40px;
-  width: 300px;
+  width: 350px;
   margin: 0 auto;
 }
 
-main {
+.flex-space {
+  flex-grow: 1;
 }
 
 /*  ||  PROFILE STYLE  ||  */
@@ -37,14 +38,19 @@ p { /* Função do funcionario */
 }
 
 .link-img {
-  clip-path: circle( 24px at center);
+  /* clip-path: circle( 24px at center); */
   width: 48px;
   height: 48px;
+  font-size: 30px;
+
+  color: #6e6e6e;
+  text-align: center;
+  padding-top: 20px;
 
   margin: auto 0;
 }
 
-a, h1 {
+a {
   color: #000;
   font-size: 25px;
   text-decoration: none;
@@ -79,4 +85,79 @@ h2 {
 
 .total-price {
   border-top: #999 dotted 2px;
+}
+
+/* || AGENDAMENTOS */
+
+#schedule-list {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  height: 62vh;
+  overflow-x: scroll;
+}
+
+.schedule-entry {
+  display: flex;
+  flex-direction: row;
+
+  font-size: 18px;
+}
+
+.schedule-entry:not(.top):not(.middle){
+  margin-bottom: 15px;
+}
+
+.schedule-entry h3 {
+  width: 40px;
+  text-align: center;
+}
+
+.row-info {
+  display: flex;
+  flex-direction: column;
+
+  margin-left: 15px;
+  font-size: 14px;
+}
+
+.row-client-detail {
+  display: flex;
+  flex-direction: row;
+}
+
+.row-client-detail p {
+  font-size: 12px;
+  color: #fff;
+}
+
+.row-busy-top {
+  background-color: #15c;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  width: 70%;
+  min-height: 30px;
+  padding: 5px 10px 0px;
+
+  color: #ECF0F3;
+}
+
+.row-busy {
+  background-color: #15c;
+  width: 70%;
+  min-height: 30px;
+  padding: 5px 10px 0px;
+
+  color: #ECF0F3;
+}
+
+.row-busy-bottom {
+  background-color: #15c;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  width: 70%;
+  min-height: 30px;
+  padding: 5px 10px 0px;
+
+  color: #ECF0F3;
 }

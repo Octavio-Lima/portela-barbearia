@@ -86,18 +86,18 @@ table {
   background-color: #ECF0F3;
 }
 
-tr {  height: 50px; display: flex; align-items: center; padding: 0 15px;}
-th, td { align-items: center; text-align: center; }
-tr:nth-child(even):not(.selected) { background-color: #cfe0ee; }
+.table-row, .table-header { width: 100vw;  height: 50px; display: flex;}
+.table-row:first-child, .table-header:first-child { padding: 0 0 0 0px;}
+.table-data { text-align: center; vertical-align: middle; }
+.table-row:nth-child(even):not(.selected) { background-color: #cfe0ee; }
 .entry-type-debt:nth-child(even):not(.selected) { background-color: #ffcbcb; }
 .entry-type-debt:nth-child(odd):not(.selected) { background-color: #ff9a9a; }
 
-th:first-child, td:first-child { width: 40%; text-align: left; }
-th:nth-child(2), th:nth-child(3), th:nth-child(4), th:nth-child(5) { width: 10%; }
-td:nth-child(2), td:nth-child(3), td:nth-child(4), td:nth-child(5) { width: 10%; }
-th:nth-child(6), th:nth-child(7), td:nth-child(6), td:nth-child(7){ width: 10%; }
+.table-data { flex-grow: 1; height: 100%; width: 0%; padding-top: 13px;}
+.table-data:first-child { flex-grow: 3; text-align: left; }
 
-/* td:nth-child(even) { background-color: red } */
+/* .table-data:nth-child(odd) { background-color: blue }
+.table-data:nth-child(even) { background-color: red } */
 
 /* Rodapé */
 
@@ -162,11 +162,11 @@ footer p {
   color: #fff;
 }
 
-tr:hover:not(#header-row):not(.selected):is(.entry-type-debt) {
+.table-row:hover:not(#header-row):not(.selected):is(.entry-type-debt) {
   background-color: #ff7575;
 }
 
-tr:hover:not(#header-row):not(.selected):not(.entry-type-debt) {
+.table-row:hover:not(#header-row):not(.selected):not(.entry-type-debt) {
   background-color: #6eb2ff;
 }
 
@@ -184,6 +184,7 @@ tr:hover:not(#header-row):not(.selected):not(.entry-type-debt) {
 
 pop-up {
   position: absolute;
+  width: 90%;
   top: 80px;
   right: 50%;
   transform: translate(50%, 0);
@@ -250,6 +251,7 @@ h3 {
   padding: 20px 50px;
 
 
+
   text-align: center;
 
   z-index: 10;
@@ -295,3 +297,42 @@ select {
 
 #detail-popup td:first-child { width: 80%; text-align: left; }
 #detail-popup td:last-child { width: 20%; text-align: left; }
+
+.show-on-desktop {
+  display: none;
+}
+
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .show-on-desktop {
+    display: block;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .show-on-desktop {
+    display: block;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .show-on-desktop {
+    display: block;
+  }
+}
+
+
+/* || TEST SCREEN SIZES */
+h5 { width: fit-content; position: absolute; border: 2px solid #fff; padding: 6px; color: #fff; top: 0; left: 0; }
+@media only screen and (max-width: 599px)  { h5 { background-color: #000; } } /* Very Small devices (Under 599px) */
+@media only screen and (min-width: 600px)  { h5 { background-color: #a00; } } /* Small devices (Over 600px) */
+@media only screen and (min-width: 768px)  { h5 { background-color: #0a0; } } /* Medium devices (Over 768px) */
+@media only screen and (min-width: 992px)  { h5 { background-color: #00a; } } /* Large devices (Over 992px) */
+@media only screen and (min-width: 1200px) { h5 { background-color: #aa0; } } /* Extra large devices (Over 1200px) */

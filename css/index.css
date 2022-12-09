@@ -317,59 +317,59 @@ a:hover {/* Decoração do Texto do botão*/
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-    /* || HEADER */
+  /* || HEADER */
 
-    #brand-logo {
-        width: 220px;
-        margin: 40px auto 15px;
-    }
+  #brand-logo {
+    width: 220px;
+    margin: 40px auto 15px;
+  }
 
-    header h3 { /* Slogan */
-        font-size: 30px;
-        margin: 15px auto 10px;
-    }
+  header h3 { /* Slogan */
+    font-size: 30px;
+    margin: 15px auto 10px;
+  }
 
-    header h1 { /* Agendamento */
-        font-size: 30px;
-        margin: 10px auto 15px;
-    }
+  header h1 { /* Agendamento */
+    font-size: 30px;
+    margin: 10px auto 15px;
+  }
 
 
-    /* || SELECIONAR TRABALHADOR */
+  /* || SELECIONAR TRABALHADOR */
 
-    .worker-img {
-        margin: 10px 20px 10px;
-        width: 100px;
-        clip-path: circle(calc(100px / 2) at center);
-    }
+  .worker-img {
+    margin: 10px 20px 10px;
+    width: 100px;
+    clip-path: circle(calc(100px / 2) at center);
+  }
 
-    h2 { /* Nome do Profissional */
-        font-size: 20px;    
-    }
+  h2 { /* Nome do Profissional */
+    font-size: 20px;    
+  }
 
-    .links-container {
-        margin-top: 20px;
-    }
+  .links-container {
+    margin-top: 20px;
+  }
 
-    .links-container  button { /* Botões de link da tela principal*/
-        width: 240px;
-        height: 40px;
-        border-radius: 50px;
-        border: 3px solid #fff;
-        box-shadow: 0 0 8px #fff, inset 0 0 7px #fff;
-        margin: 0 10px 10px 10px;
-    }
+  .links-container  button { /* Botões de link da tela principal*/
+    width: 240px;
+    height: 40px;
+    border-radius: 50px;
+    border: 3px solid #fff;
+    box-shadow: 0 0 8px #fff, inset 0 0 7px #fff;
+    margin: 0 10px 10px 10px;
+  }
 
-    .button-link {/* Decoração do Texto do botão*/
-        font-size: 20px;
-    }
+  .button-link {/* Decoração do Texto do botão*/
+    font-size: 20px;
+  }
 
-    /* || FOOTER AND LINKS */
-    footer .fa {
-        font-size: 35px;
-        margin: 10px 5px 30px;
-        text-decoration: none;
-    }
+  /* || FOOTER AND LINKS */
+  footer .fa {
+    font-size: 35px;
+    margin: 10px 5px 30px;
+    text-decoration: none;
+  }
 }
 
 

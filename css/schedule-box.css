@@ -120,37 +120,89 @@ input[type=number] {
     height: 100%;
 }
 
-.schedule-list table {
+#schedule-list {
   width: 93%;
   margin: 10px 7%;
 }
 
-.schedule-list p {
+#schedule-list p {
   font-size: 4vw;
   padding-right: 10px;
+  text-align: left;
 }
-
-
 
 .service-container {
   flex-grow: 1;
 }
 
-
-
-.schedule-list td {  
-  display: flex;
-  flex-direction: row;
-
-  font-size: 3vw;
-}
-
-.schedule-list .selected {
+#schedule-list .selected {
   background-color: #ddd;
 }
 
 .unavailable {
     color: #f00;
+}
+
+.row-unav-top {
+  background-color: #d11;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  width: 90%;
+  min-height: 30px;
+  padding: 5px 10px 0px;
+
+  color: #ECF0F3;
+}
+
+.row-unav {
+  background-color: #d11;
+  width: 90%;
+  min-height: 30px;
+  padding: 5px 10px 0px;
+
+  color: #ECF0F3;
+}
+
+.row-unav-base {
+  background-color: #d11;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  width: 90%;
+  min-height: 30px;
+  padding: 5px 10px 0px;
+
+  color: #ECF0F3;
+}
+
+.row-busy-top {
+  background-color: #777;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  width: 90%;
+  min-height: 30px;
+  padding: 5px 10px 0px;
+
+  color: #fff;
+}
+
+.row-busy {
+  background-color: #777;
+  width: 90%;
+  min-height: 30px;
+  padding: 5px 10px 0px;
+
+  color: #fff;
+}
+
+.row-busy-base {
+  background-color: #777;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  width: 90%;
+  min-height: 30px;
+  padding: 5px 10px 0px;
+
+  color: #fff;
 }
 
 /* || LISTA DE SERVIÇOS E PRODUTOS */
@@ -440,12 +492,12 @@ input[type=number] {
     padding: 3%;
   }
     
-  .schedule-list table {
+  #schedule-list {
     width: 90%;
     margin: 0px auto;
   }
   
-  .schedule-list p {
+  #schedule-list p {
     font-size: 10px;
     padding-right: 5px;
   }
@@ -455,50 +507,50 @@ input[type=number] {
     margin: 0px;
   }
   
-  .schedule-list td {    
+  #schedule-list td {    
     font-size: 10px;
   }
 
   /* || LISTA DE SERVIÇOS E PRODUTOS */
 
   #service-window table {
-      padding: 0 10px;
+    padding: 0 10px;
   }
 
   #service-window p {
-      font-size: 15px;
-      margin: 5px;
+    font-size: 15px;
+    margin: 5px;
   }
 
   #service-window td {
-      padding-left: 5px;
-      font-size: 14px;
+    padding-left: 5px;
+    font-size: 14px;
   }
 
   /* || RESUMO, INFORMAÇÕES DO CLIENTE */
 
   #client-img {
-      margin: 0px 10px 0px 0px;
-      width: 40px;
-      height: 40px;
-      clip-path: circle(20px at center);
+    margin: 0px 10px 0px 0px;
+    width: 40px;
+    height: 40px;
+    clip-path: circle(20px at center);
   }
 
   .client-info-overview {
-      margin-top: 10px;
+    margin-top: 10px;
   }
 
   #overview-window h3 { /* Nome completo do cliente */
-      font-size: 20px;
+    font-size: 20px;
   }
 
   #overview-window p { /* numero e instagram do cliente */
-      font-size: 16px;
-      padding-right: 5px;
+    font-size: 16px;
+    padding-right: 5px;
   }
 
   #overview-window h1 { /* data do serviço */
-      margin-top: 5%;
-      font-size: 20px;
+    margin-top: 5%;
+    font-size: 20px;
   }
 }
