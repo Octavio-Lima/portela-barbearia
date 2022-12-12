@@ -1,29 +1,56 @@
+/* || GERAL */
+h4 { /* Titulo de cada janela */
+  font-size: 20px;
+  margin: 10px;
+}
+
+h5 {
+  font-size: 15px;
+  margin: 10px;
+}
+
+h6 {
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
+
+main-pop-up button { /* Botão da janela de agendamentos */ 
+  background-color: #fff;
+  margin: 4% auto;
+  font-size: 3vw;
+}
+
+main-pop-up button:hover { color: #0066ff; }
+main-pop-up button:active { color: #0045ad; }
+
+/* .calendar-title { /* Titulos que possuem a linha embaixo do nome 
+  color: #000;
+  font-size: 4vw;
+  font-weight: bold;
+  padding: 3%;
+  text-align: center;
+} */
+
+hr {
+  border: 1px;
+  background-color:#555;
+  border-style: solid;
+
+  margin-bottom: 5px;
+}
+
 /* || JANELA DE AGENDAMENTO */
 
-#appointment-window {
+main-pop-up {
     background-color: #fff;
     border-radius: 8vw;
     width: 70vw;
-    height: 50vw;
+    min-height: 50vw;
     margin: 4% auto 4%;
 }
 
-.window-container {
-    width: 100%;
-    height: 100%;
-}
-
-#appointment-window button { /* Botão da janela de agendamentos */
-    background-color: #fff;
-    margin: 4% auto;
-    font-size: 3vw;
-}
-
-#appointment-window button:hover { /* Botão da janela de agendamentos */
-    color: #146df3;
-}
-
-/* Calendario */
+/* || CALENDARIO */
 
 #calendar-window {
     display: flex;
@@ -31,7 +58,7 @@
     height: 100%;
 }
 
-.calendar-pick-month-container {
+#month-container {
     display: flex;
     flex-direction: row;
 }
@@ -58,15 +85,16 @@
     color: #000;
 }
 
+.disabled-day{ /* Alterado Sabado e Domingo para Vermelho, e dias vazios*/
+    color: #aaa !important;
+    pointer-events: none;
+}
+
 .unavailable-day, #calendar-table td:empty{ /* Alterado Sabado e Domingo para Vermelho, e dias vazios*/
     color: #f00 !important;
     pointer-events: none;
 }
 
-.disabled-day{ /* Alterado Sabado e Domingo para Vermelho, e dias vazios*/
-    color: #aaa !important;
-    pointer-events: none;
-}
 
 .selected-day {
     background-color: #146df3;
@@ -104,16 +132,6 @@ input[type=number] {
 
 /* Horarios disponiveis */
 
-/* || TEXT FORMATING */
-.calendar-title {
-    border-bottom: 2px solid rgb(85, 85, 85);
-    color: #000;
-    font-size: 4vw;
-    font-weight: bold;
-    padding: 3%;
-    text-align: center;
-}
-
 #schedule-window {
     display: flex;
     flex-direction: column;
@@ -143,13 +161,21 @@ input[type=number] {
     color: #f00;
 }
 
+.sch-entry-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.schedule-entry:not(.unavailable) {
+  margin-left: 5px;
+}
+
 .row-unav-top {
   background-color: #d11;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   width: 90%;
-  min-height: 30px;
-  padding: 5px 10px 0px;
+  padding: 5px 0 0 5px;
 
   color: #ECF0F3;
 }
@@ -157,8 +183,7 @@ input[type=number] {
 .row-unav {
   background-color: #d11;
   width: 90%;
-  min-height: 30px;
-  padding: 5px 10px 0px;
+  padding: 0 0 0 5px;
 
   color: #ECF0F3;
 }
@@ -168,39 +193,35 @@ input[type=number] {
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
   width: 90%;
-  min-height: 30px;
-  padding: 5px 10px 0px;
+  padding: 0 0 5px 5px;
 
   color: #ECF0F3;
 }
 
 .row-busy-top {
-  background-color: #777;
+  background-color: #456;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   width: 90%;
-  min-height: 30px;
-  padding: 5px 10px 0px;
+  padding: 5px 0 0 5px;
 
   color: #fff;
 }
 
 .row-busy {
-  background-color: #777;
+  background-color: #456;
   width: 90%;
-  min-height: 30px;
-  padding: 5px 10px 0px;
+  padding: 0 0 0 5px;
 
   color: #fff;
 }
 
 .row-busy-base {
-  background-color: #777;
+  background-color: #456;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
   width: 90%;
-  min-height: 30px;
-  padding: 5px 10px 0px;
+  padding: 0 0 5px 5px;
 
   color: #fff;
 }
@@ -262,12 +283,12 @@ input[type=number] {
     clip-path: circle(calc(8vw / 2) at center);
 }
 
-.client-info-overview {
-    margin-top: 8%;
-    display: flex;    
-    flex-direction: row;
-    justify-content: center;
-    text-align: left;
+#client-info-overview {
+  margin-top: 20%;
+  display: flex;    
+  flex-direction: row;
+  justify-content: center;
+  text-align: left;
 }
 
 #overview-window h3 { /* Nome completo do cliente */
@@ -286,10 +307,6 @@ input[type=number] {
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
-
-    body{
-        background-color: #800;
-    }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
@@ -301,10 +318,10 @@ input[type=number] {
 
     /* || JANELA DE AGENDAMENTO */
 
-    #appointment-window {
+    main-pop-up {
         border-radius: 8vw;
         width: 70vw;
-        height: 50vw;
+        min-height: 50vw;
         margin: 4% auto 4%;
     }
 
@@ -335,14 +352,14 @@ input[type=number] {
     
     /* || JANELA DE AGENDAMENTO */
 
-    #appointment-window {
+    main-pop-up {
         border-radius: 30px;
         width: 300px;
-        height: 200px;
+        min-height: 200px;
         margin: 16px auto 16px;
     }
 
-    #appointment-window button { /* Botão da janela de agendamentos */
+    main-pop-up button { /* Botão da janela de agendamentos */
         margin: 8px auto;
         font-size: 14px;
     }
@@ -416,7 +433,7 @@ input[type=number] {
         clip-path: circle(20px at center);
     }
 
-    .client-info-overview {
+    #client-info-overview{
         margin-top: 10px;
     }
 
@@ -444,14 +461,14 @@ input[type=number] {
     
     /* || JANELA DE AGENDAMENTO */
 
-    #appointment-window {
+    main-pop-up {
         border-radius: 30px;
         width: 350px;
-        height: 200px;
+        min-height: 200px;
         margin: 16px auto 16px;
     }
 
-    #appointment-window button { /* Botão da janela de agendamentos */
+    main-pop-up button { /* Botão da janela de agendamentos */
         margin: 8px auto;
         font-size: 14px;
     }
@@ -483,7 +500,7 @@ input[type=number] {
     }
 
 
-    /* Horarios disponiveis */
+  /* Horarios disponiveis */
 
 /* || TEXT FORMATING */
 
@@ -536,8 +553,8 @@ input[type=number] {
     clip-path: circle(20px at center);
   }
 
-  .client-info-overview {
-    margin-top: 10px;
+  #client-info-overview {
+    margin-top: 30px;
   }
 
   #overview-window h3 { /* Nome completo do cliente */

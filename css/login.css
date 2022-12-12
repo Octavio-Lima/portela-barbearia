@@ -8,7 +8,7 @@
 
 body {
     background-color: #000;
-    background-image: url("../img/bg.png");
+    background-image: url("../resources/bg.png");
     background-size: cover;
 
     display: flex;

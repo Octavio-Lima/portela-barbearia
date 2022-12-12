@@ -17,7 +17,7 @@
 
 body {
     background-color: #000;
-    background-image: url("/img/bg.png");
+    background-image: url("/resources/bg.png");
     background-size: cover;
     height: 100vh;
 
@@ -33,7 +33,7 @@ body {
     display: none !important;
 }
 
-#appointment-window, .selected-worker { /* Remover o Filtro de blur dos elementos com essas classes e ID */
+main-pop-up, .selected-worker { /* Remover o Filtro de blur dos elementos com essas classes e ID */
   z-index: 10;
 }
 
@@ -48,6 +48,10 @@ body {
   z-index: 0;
 }
 
+.text-glow {
+  text-shadow: 0 0 15px #fff;
+}
+
 /* || HEADER */
 
 header {
@@ -60,7 +64,7 @@ header {
     margin: calc(var(--logo-size) / 6) auto 3%;
 }
 
-header h3 { /* Slogan */
+h1 { /* Slogan */
     font-size: 5vw;
     color: #fff;
     font-weight: 100;
@@ -68,7 +72,7 @@ header h3 { /* Slogan */
 
 }
 
-header h1 { /* Agendamento */
+h2 { /* Agendamento */
     font-size: 6vw;
     color: #fff;
     margin: 3% auto 3%;
@@ -90,7 +94,7 @@ header h1 { /* Agendamento */
     pointer-events: none;
 }
 
-h2 { /* Nome do Profissional */
+h3 { /* Nome do Profissional */
     color: #fff;
     font-weight: bold;
     font-size: 4vw;
@@ -151,13 +155,13 @@ a:hover {/* Decoração do Texto do botão*/
         margin: calc(300px / 6) auto 3%;
     }
 
-    header h3 { /* Slogan */
+    h1 { /* Slogan */
         font-size: 5vw;
         margin: 3% auto 3%;
 
     }
 
-    header h1 { /* Agendamento */
+    h2 { /* Agendamento */
         font-size: 6vw;
         margin: 3% auto 3%;
     }
@@ -171,7 +175,7 @@ a:hover {/* Decoração do Texto do botão*/
         clip-path: circle(calc(var(--worker-pic-size) / 2) at center);
     }
 
-    h2 { /* Nome do Profissional */
+    h3 { /* Nome do Profissional */
         font-size: 4vw;
     }
 
@@ -209,13 +213,13 @@ a:hover {/* Decoração do Texto do botão*/
         margin: calc(300px / 6) auto 3%;
     }
 
-    header h3 { /* Slogan */
+    h1 { /* Slogan */
         font-size: 5vw;
         margin: 3% auto 2%;
 
     }
 
-    header h1 { /* Agendamento */
+    h2 { /* Agendamento */
         font-size: 6vw;
         margin: 2% auto 3%;
     }
@@ -229,7 +233,7 @@ a:hover {/* Decoração do Texto do botão*/
         clip-path: circle(calc(220px / 2) at center);
     }
 
-    h2 { /* Nome do Profissional */
+    h3 { /* Nome do Profissional */
         font-size: 4vw;
     }
 
@@ -267,12 +271,12 @@ a:hover {/* Decoração do Texto do botão*/
         margin: 40px auto 15px;
     }
 
-    header h3 { /* Slogan */
+    h1 { /* Slogan */
         font-size: 30px;
         margin: 15px auto 10px;
     }
 
-    header h1 { /* Agendamento */
+    h2 { /* Agendamento */
         font-size: 30px;
         margin: 10px auto 15px;
     }
@@ -286,7 +290,7 @@ a:hover {/* Decoração do Texto do botão*/
         clip-path: circle(calc(160px / 2) at center);
     }
 
-    h2 { /* Nome do Profissional */
+    h3 { /* Nome do Profissional */
         font-size: 20px;
     }
 
@@ -324,12 +328,12 @@ a:hover {/* Decoração do Texto do botão*/
     margin: 40px auto 15px;
   }
 
-  header h3 { /* Slogan */
+  h1 { /* Slogan */
     font-size: 30px;
     margin: 15px auto 10px;
   }
 
-  header h1 { /* Agendamento */
+  h2 { /* Agendamento */
     font-size: 30px;
     margin: 10px auto 15px;
   }
@@ -343,7 +347,7 @@ a:hover {/* Decoração do Texto do botão*/
     clip-path: circle(calc(100px / 2) at center);
   }
 
-  h2 { /* Nome do Profissional */
+  h3 { /* Nome do Profissional */
     font-size: 20px;    
   }
 
@@ -374,9 +378,9 @@ a:hover {/* Decoração do Texto do botão*/
 
 
 /* || TEST SCREEN SIZES */
-h5 { width: fit-content; position: absolute; border: 2px solid #fff; padding: 6px; color: #fff; top: 0; left: 0; }
-@media only screen and (max-width: 599px)  { h5 { background-color: #000; } } /* Very Small devices (Under 599px) */
-@media only screen and (min-width: 600px)  { h5 { background-color: #a00; } } /* Small devices (Over 600px) */
-@media only screen and (min-width: 768px)  { h5 { background-color: #0a0; } } /* Medium devices (Over 768px) */
-@media only screen and (min-width: 992px)  { h5 { background-color: #00a; } } /* Large devices (Over 992px) */
-@media only screen and (min-width: 1200px) { h5 { background-color: #aa0; } } /* Extra large devices (Over 1200px) */
+h7 { width: fit-content; position: absolute; border: 2px solid #fff; padding: 6px; color: #fff; top: 0; left: 0; }
+@media only screen and (max-width: 599px)  { h7 { background-color: #000; } } /* Very Small devices (Under 599px) */
+@media only screen and (min-width: 600px)  { h7 { background-color: #a00; } } /* Small devices (Over 600px) */
+@media only screen and (min-width: 768px)  { h7 { background-color: #0a0; } } /* Medium devices (Over 768px) */
+@media only screen and (min-width: 992px)  { h7 { background-color: #00a; } } /* Large devices (Over 992px) */
+@media only screen and (min-width: 1200px) { h7 { background-color: #aa0; } } /* Extra large devices (Over 1200px) */
