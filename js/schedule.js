@@ -1,6 +1,6 @@
 const STORE_OPENS_AT = 8
 const STORE_CLOSES_AT = 20
-const EL_MAIN = document.querySelector("main")
+const EL_MAIN = document.querySelector("#schedule-list")
 
 let entriesList = [];
 
@@ -55,7 +55,7 @@ function addEntryInfo(time, minute, timeSpent, service, client, phone, insta) {
   for (let i = 0; i < timeSpent; i++) {
     if (i == 0) { entries[i].item(1).classList.add("row-busy-top"); entries[i].item(0).parentElement.classList.add("top"); } else
     if (i == timeSpent-1) { entries[i].item(1).classList.add("row-busy-bottom"); entries[i].item(0).parentElement.classList.add("base"); } else 
-    { entries[i].item(1).classList.add("row-busy"); console.log("middle"); entries[i].item(0).parentElement.classList.add("middle"); } 
+    { entries[i].item(1).classList.add("row-busy"); console.log("middle"); entries[i].item(0).parentElement.classList.add("middle"); entries[i].item(0).parentElement.children.item(0).classList.add("hidden"); } 
   }
   
   el_service.innerText = service;
@@ -88,5 +88,5 @@ function updateEntryList() {
   entriesList = document.querySelectorAll(".schedule-entry");
 }
 
-addEntryInfo(11,2, 3,"corte de cabelo","maria mario mariano maia","(31)94865-1465","@mariamaio");
-addEntryInfo(12,1, 5,"corte de orelha","amim amou amado","(31)91689-1125","@amim");
+addEntryInfo(11,2, 3,"corte de cabelo","João Silva","(31)94865-1465","@meuinstagram");
+addEntryInfo(12,1, 5,"corte de cabelo","Guilherme","(31)91689-1125","@instagram");

@@ -4,8 +4,11 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sistema</title>
+  <title>Agendamentos</title>
+
+  <!-- Styles-->
   <link rel="stylesheet" href="../css/manage.css">
+  
   <!-- Scripts -->
   <script src="../js/schedule.js" defer></script>
 
@@ -17,25 +20,29 @@
 </head>
 <body>
   <header>
-    <div class="link-container" id="register-client">
-      <img src="../resources/icons/user.jpg" alt="Cliente" class="link-img">
-      <h1>Agendamentos</h1>
-    </div>
-    <h2 class="title">8 novembro, 2022</h2>
+    <div class="link-container">
+      <i class="fa-regular fa-calendar link-img"></i>
+      <h3 class="category-title" href="/html/schedule.html">
+        AGENDAMENTOS
+        <div style="flex-grow: 1; background-color: #f00"></div>
+        <hr class="title-underline">
+      </h3>
+    </div>      
+    <h3 class="title">8 novembro, 2022</h3>
   </header>
-  <main id="schedule-list">
-<!-- <div class="schedule-entry">
-    <h3>09:00</h3>
-    <div class="row-info">
-      <h4>(procedimento)</h4></td>
-      <h4>Nome</h4></td>
-      <div class="row-client-detail">
-        <p>Telefone</p>
-        <span class="flex-space"></span>
-        <p>instagram</p>
+  <div id="schedule-list">
+    <!-- <div class="schedule-entry">
+      <h3>09:00</h3>
+      <div class="row-info">
+        <h4>(procedimento)</h4></td>
+        <h4>Nome</h4></td>
+        <div class="row-client-detail">
+          <p>Telefone</p>
+          <span class="flex-space"></span>
+          <p>instagram</p>
+        </div>
       </div>
-    </div>
-  </div> -->
-  </main>
+    </div> -->
+  </div>
 </body>
 </html>

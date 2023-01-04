@@ -1,217 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Portela Barbearia</title>
-  
-  <!-- CSS -->
-  <link rel="stylesheet" href="../css/schedule-box.css"> <!-- Schedule Box CSS -->
-  <link rel="stylesheet" href="../css/client_schedule.css"> <!-- Maing Page CSS -->
+    <title>Gerenciador de Barbearia</title>
 
-  <!-- Scripts -->
-  <script src="../js/client_schedule.js" defer></script>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
 
-  <!-- Fontes -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Antonio:wght@100;400;700&display=swap" rel="stylesheet"> 
-  <script src="https://kit.fontawesome.com/0d15831467.js" crossorigin="anonymous"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/schedule-box.css"> <!-- Schedule Box CSS -->
+    <link rel="stylesheet" href="../css/client_schedule.css"> <!-- Maing Page CSS -->
+
+    <!-- Scripts -->
+    <script src="../js/client_schedule.js" defer></script>
+
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Antonio:wght@100;400;700&display=swap"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/0d15831467.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
-  <header>
-    <img src = "../resources/logo-a.svg" alt="Portela's Barbearia Logo" id="brand-logo"/> 
-    <h1>O CABELO É A MOLDURA DO ROSTO, CUIDE BEM DELE.</h1>
-    <h2>AGENDAMENTO:</h2>
-  </header>
-  
-  <main>
-    <div class="select-worker-container">
-      <div class="barber">
-        <img src = "../resources/worker/worker0.jpg" class="worker-img" alt="Barbeiro"/> 
-        <h3>JOÃO PEDRO</h3>
-      </div>
-      <div class="barber">
-        <img src = "../resources/worker/worker1.jpg" class="worker-img" alt="Barbeiro"/> 
-        <h3>LÚCIO</h3>
-      </div>        
-    </div>
-    <div class="links-container">
-      <button><a href="https://g.co/kgs/ZuPVoq" target="_blank" class="button-link">LOCALIZAÇÃO</a></button>
-      <button><a href="https://g.page/r/CRlyE4HO9XUpEBM/review" target="_blank" class="button-link">AVALIE NOSSO SERVIÇO</a></button>
-      <button><a href="/html/about-us.html" class="button-link">SOBRE NÓS</a></button>
-    </div>
-  </main>
+    <header>
+        <img src="../resources/logo-a.svg" alt="Barbearia Logo" id="brand-logo" />
+        <h3 class="slogan">O CABELO É A MOLDURA DO ROSTO, CUIDE BEM DELE.</h3>
+        <h2>AGENDAMENTO:</h2>
+    </header>
 
-  <!---->
-  <div id="footer-spacer" style="flex-grow: 1;"></div>
+    <main>
+        <div class="select-worker-container">
+            <div class="barber">
+                <img src="../resources/worker/worker0.jpg" class="worker-img" alt="Barbeiro" />
+                <h3>JOÃO PEDRO</h3>
+            </div>
+            <div class="barber">
+                <img src="../resources/worker/worker1.jpg" class="worker-img" alt="Barbeiro" />
+                <h3>LÚCIO</h3>
+            </div>
+        </div>
+        <div class="menu-button-group">
+            <a class="menu-button" href="https://g.co/kgs/ZuPVoq" target="_blank">LOCALIZAÇÃO</a>
+            <a class="menu-button" href="https://g.page/r/CRlyE4HO9XUpEBM/review" target="_blank">AVALIE NOSSO SERVIÇO</a>
+            <a class="menu-button" href="#">SOBRE NÓS</a>
+        </div>
+    </main>
 
-  <footer>
-    <a href="https://instagram.com/portelasbarbearia?igshid=YmMyMTA2M2Y%3D" target="_blank" class="fa fa-instagram"></a>
-    <a href="http://tiny.cc/portelasbarbearia" class="fa fa-whatsapp" target="_blank"></a>
-    <a href="#" class="fa fa-spotify"></a>
-  </footer>
-    
-  <!-- JANELAS DE HORARIOS & SERVIÇOS -->
-  <main-pop-up class="hidden">
-    <!--  CALENDARIO  -->
-    <pop-up class="" id="calendar-window">
-      <div id="month-container">
-        <button class="fa-solid fa-angle-double-left" id="previous-month"></button>
-        <h4 id="month-name">MÊS</h4>
-        <button class="fa-solid fa-angle-double-right" id="next-month"></button>
-      </div>
-      <hr>
-      <table id="calendar-table">
-        <tbody>
-          <tr>
-            <th class="calendar-day-header">D</th>
-            <th class="calendar-day-header">S</th>
-            <th class="calendar-day-header">T</th>
-            <th class="calendar-day-header">Q</th>
-            <th class="calendar-day-header">Q</th>
-            <th class="calendar-day-header">S</th>
-            <th class="calendar-day-header">S</th>
-          </tr>
-          <tr>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-          </tr>
-          <tr>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-          </tr>
-          <tr>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-          </tr>
-          <tr>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-          </tr>
-          <tr>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-          </tr>
-          <tr>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-            <td class="calendar-pick-day">0</td>
-          </tr>
-        </tbody>
-      </table>
+    <!-- Spacing -->
+    <div id="footer-spacer" class="flex-grow-1" style="background-color: red"></div>
 
-      <!--  CONFIRM BUTTON  -->
-      <div style="flex-grow: 1;"></div>
-      <button type="submit" onclick="setActiveWindow(1);">CONFIRMAR</button>
-    </pop-up>
+    <footer>
+        <a href="#" target="_blank"
+            class="fa fa-instagram"></a>
+        <a href="#" class="fa fa-whatsapp" target="_blank"></a>
+        <a href="#" class="fa fa-spotify"></a>
+    </footer>
 
-    <!--  INFORMAÇÕES DO CLIENTE  -->
-    <pop-up class="hidden" id="client-info-window">
-      <h5>PREENCHA ABAIXO PARA AGENDAR SEU HORÁRIO</h5>
-      <hr>
-      <input type="text" id="input-client-name" placeholder="NOME COMPLETO">
-      <input type="text" id="input-client-phone" placeholder="CEL. (31)90000-0000" onkeydown="formatPhoneNmb(value, event.key);">
-      <input type="text" id="input-client-email" placeholder="EMAIL">
-      <input type="text" id="input-client-instagram" placeholder="INSTAGRAM" onkeyup="formatInstagramHandle(value);">
-      <!--  CONFIRM BUTTON  -->
-      <div style="flex-grow: 1;"></div>
-      <button type="submit" onclick="setActiveWindow(2);">CONFIRMAR</button>
-    </pop-up>
+    <!-- JANELAS DE HORARIOS & SERVIÇOS -->
+    <main-pop-up class="d-none">
+        <!--  CALENDARIO  -->
+        <pop-up class="" id="calendar-window">
+            <div id="month-container">
+                <button class="fa-solid fa-angle-double-left" id="previous-month"></button>
+                <h4 class="title-underline" id="month-name">MÊS</h4>
+                <button class="fa-solid fa-angle-double-right" id="next-month"></button>
+            </div>
+            <hr>
+            <table id="calendar-table">
+                <tbody>
+                    <tr>
+                        <th class="calendar-day-header">D</th>
+                        <th class="calendar-day-header">S</th>
+                        <th class="calendar-day-header">T</th>
+                        <th class="calendar-day-header">Q</th>
+                        <th class="calendar-day-header">Q</th>
+                        <th class="calendar-day-header">S</th>
+                        <th class="calendar-day-header">S</th>
+                    </tr>
+                    <tr>
+                        <td class="calendar-pick-day">0</td>
+                        <td class="calendar-pick-day">0</td>
+                        <td class="calendar-pick-day">0</td>
+                        <td class="calendar-pick-day">0</td>
+                        <td class="calendar-pick-day">0</td>
+                        <td class="calendar-pick-day">0</td>
+                        <td class="calendar-pick-day">0</td>
+                    </tr>
+                    <tr>
+                        <td class="calendar-pick-day">0</td>
+                        <td class="calendar-pick-day">0</td>
+                        <td class="calendar-pick-day">0</td>
+                        <td class="calendar-pick-day">0</td>
+                        <td class="calendar-pick-day">0</td>
+                        <td class="calendar-pick-day">0</td>
+                        <td class="calendar-pick-day">0</td>
+                    </tr>
+                    <tr>
+                        <td class="calendar-pick-day">0</td>
+                        <td class="calendar-pick-day">0</td>
+                        <td class="calendar-pick-day">0</td>
+                        <td class="calendar-pick-day">0</td>
+                        <td class="calendar-pick-day">0</td>
+                        <td class="calendar-pick-day">0</td>
+                        <td class="calendar-pick-day">0</td>
+                    </tr>
+                    <tr>
+                        <td class="calendar-pick-day">0</td>
+                        <td class="calendar-pick-day">0</td>
+                        <td class="calendar-pick-day">0</td>
+                        <td class="calendar-pick-day">0</td>
+                        <td class="calendar-pick-day">0</td>
+                        <td class="calendar-pick-day">0</td>
+                        <td class="calendar-pick-day">0</td>
+                    </tr>
+                    <tr>
+                        <td class="calendar-pick-day">0</td>
+                        <td class="calendar-pick-day">0</td>
+                        <td class="calendar-pick-day">0</td>
+                        <td class="calendar-pick-day">0</td>
+                        <td class="calendar-pick-day">0</td>
+                        <td class="calendar-pick-day">0</td>
+                        <td class="calendar-pick-day">0</td>
+                    </tr>
+                    <tr>
+                        <td class="calendar-pick-day">0</td>
+                        <td class="calendar-pick-day">0</td>
+                        <td class="calendar-pick-day">0</td>
+                        <td class="calendar-pick-day">0</td>
+                        <td class="calendar-pick-day">0</td>
+                        <td class="calendar-pick-day">0</td>
+                        <td class="calendar-pick-day">0</td>
+                    </tr>
+                </tbody>
+            </table>
 
-    <!--  LISTA DE SERVIÇOS E PRODUTOS  -->
-    <pop-up class="hidden" id="service-window">
-      <h4 id="service-title">DIA MES, ANO</h4>
-      <hr>
-      <p>SELECIONE SERVIÇO E/OU PRODUTO</p>
-      <div class="service-container" style="overflow-x: scroll;">
-        <table>
-          <tbody id="service-table">
-            <!-- <tr class="services">
+            <!-- Warning -->
+            <p class="warning-msg d-none" id="wmsg0">Deve ser selecionado um dia valido <br> para que seja possível
+                prosseguir.</p>
+
+            <!--  CONFIRM BUTTON  -->
+            <div style="flex-grow: 1; background-color: red;"></div>
+            <button type="submit" onclick="setActiveWindow(1);">CONFIRMAR</button>
+        </pop-up>
+
+        <!--  INFORMAÇÕES DO CLIENTE  -->
+        <pop-up class="d-none" id="client-info-window">
+            <h5 class="title-no-style">PREENCHA ABAIXO PARA AGENDAR SEU HORÁRIO</h5>
+            <hr>
+            <input type="text" id="input-client-name" placeholder="NOME COMPLETO">
+            <input type="text" id="input-client-phone" placeholder="CEL. (31)90000-0000"
+                onkeydown="formatPhoneNmb(value, event.key);">
+            <input type="text" id="input-client-email" placeholder="EMAIL">
+            <input type="text" id="input-client-instagram" placeholder="INSTAGRAM"
+                onkeyup="formatInstagramHandle(value);">
+
+            <!-- Warning -->
+            <p class="warning-msg d-none" id="wmsg1">Deve ser preenchido todas as informações para que seja possível
+                prosseguir.</p>
+
+            <!--  CONFIRM BUTTON  -->
+            <div style="flex-grow: 1; background-color: red"></div>
+            <button type="submit" onclick="setActiveWindow(2);">CONFIRMAR</button>
+        </pop-up>
+
+        <!--  LISTA DE SERVIÇOS E PRODUTOS  -->
+        <pop-up class="d-none" id="service-window">
+            <h4 class="title-underline" id="service-title">DIA MES, ANO</h4>
+            <hr>
+            <p>SELECIONE SERVIÇO E/OU PRODUTO</p>
+            <div class="service-container" style="overflow-x: scroll;">
+                <table>
+                    <tbody id="service-table">
+                        <!-- <tr class="services">
               <td><input type="checkbox" id="ser-corte"></td>
               <td class="service-name">CORTE (30m)</td>
               <td class="service-price">R$25,00</td>
             </tr> -->
-          </tbody>
-        </table>
-      </div>
-      <!--  CONFIRM BUTTON  -->
-      <p id="total-time">total time:</p>
-      <button type="submit" onclick="setActiveWindow(3);">CONFIRMAR</button>
-    </pop-up>
+                    </tbody>
+                </table>
+            </div>
 
-    <!--  AGENDAR HORARIO  -->
-    <pop-up class="hidden" id="schedule-window">
-      <h4 id="schedule-title">8 NOVEMBRO, 2022</h4>
-      <hr>
-      <p>HORÁRIOS DISPONIVEIS</p>
-      <div id="schedule-list" style="overflow-x: scroll;"></div>
+            <!-- Warning -->
+            <p class="warning-msg d-none" id="wmsg2">Deve ser selecionado pelo menos 1 serviço para que seja possível
+                prosseguir.</p>
 
-      <!--  CONFIRM BUTTON  -->
-      <div style="flex-grow: 1;"></div>
-      <button type="submit" onclick="setActiveWindow(4);">CONFIRMAR</button>
-    </pop-up>
-              
-    <!--  RESUMO, INFORMAÇÕES DO CLIENTE  -->
-    <pop-up class="hidden" id="overview-window">
-      <div id="client-info-overview">
-        <img src = "/resources/icons/checkmark.jpg" id="client-img" alt="Cliente"/>
-        <div style="display: flex; flex-direction: column; display: none;">
-          <h6 id="summary-client-name">NOME COMPLETO DO CLIENTE</h6>
-          <div style="display: flex; flex-direction: row;">
-            <p id="summary-client-number">(31) 90000-0000</p>
-            <span style="flex-grow: 1;"></span> <!-- Spacer -->
-            <p id="summary-client-instagram">@INSTAGRAMCLIENTE</p>
-          </div>
-        </div>
-      </div>
-      <h4 id="summary-client-date">DIA MES, ANO- 18H00</h4>
-      <p id="summary-client-number">Procedimento</p>
-      <!--  CONFIRM BUTTON  -->
-      <div style="flex-grow: 1;"></div>
-      <button type="submit" onclick="displayScheduler(false, true);">CONCLUIR</button>
-    </pop-up>
-  </main-pop-up>
+            <!--  CONFIRM BUTTON  -->
+            <p id="total-time">total time:</p>
+            <button type="submit" onclick="setActiveWindow(3);">CONFIRMAR</button>
+        </pop-up>
 
-  <!--  Espaçamento entre o fundo da tela e a caixa de dialogo  -->
-  <div id="diag-box-space" style="flex-grow: 1;" class="hidden"></div>
-  
-  <!--  Sair da tela de agendamento / Blur Overlay  -->
-  <div id="cancel-schedule" class="hidden" style="position: absolute; width: 100%; height: 100%;" onclick="displayScheduler(false, false);"></div>
-  <div class="blur-overlay hidden"></div>
+        <!--  AGENDAR HORARIO  -->
+        <pop-up class="d-none" id="schedule-window">
+            <h4 class="title-underline" id="schedule-title">8 NOVEMBRO, 2022</h4>
+            <hr>
+            <p>HORÁRIOS DISPONIVEIS</p>
+            <div id="schedule-list" style="overflow-x: scroll;"></div>
 
-  <!--  Display Size -->
-  <h7>Display Type</h7>
+            <!-- Warning -->
+            <p class="warning-msg d-none" id="wmsg3">Deve ser selecionado um horario disponível para que seja possível
+                prosseguir.</p>
+
+            <!--  CONFIRM BUTTON  -->
+            <div style="flex-grow: 1; background-color: red"></div>
+            <button type="submit" onclick="setActiveWindow(4);">CONFIRMAR</button>
+        </pop-up>
+
+        <!--  RESUMO, INFORMAÇÕES DO CLIENTE  -->
+        <pop-up class="d-none" id="overview-window">
+            <div id="client-info-overview">
+                <img src="/resources/icons/checkmark.jpg" id="client-img" alt="Cliente" />
+                <div style="display: flex; flex-direction: column; display: none;">
+                    <h6 id="summary-client-name">NOME COMPLETO DO CLIENTE</h6>
+                    <div style="display: flex; flex-direction: row;">
+                        <p id="summary-client-number">(31) 90000-0000</p>
+                        <span style="flex-grow: 1; background-color: red"></span> <!-- Spacer -->
+                        <p id="summary-client-instagram">@INSTAGRAMCLIENTE</p>
+                    </div>
+                </div>
+            </div>
+            <h4 class="title-underline" id="summary-client-date">DIA MES, ANO- 18H00</h4>
+            <p id="summary-client-number">Procedimento</p>
+            <!--  CONFIRM BUTTON  -->
+            <div style="flex-grow: 1;"></div>
+            <button type="submit" onclick="displayScheduler(false, true);">CONCLUIR</button>
+        </pop-up>
+    </main-pop-up>
+
+    <!--  Espaçamento entre o fundo da tela e a caixa de dialogo  -->
+    <div id="diag-box-space" style="background-color: red; z-index: 20;" class=""></div>
+
+    <!--  Sair da tela de agendamento / Blur Overlay  -->
+    <div id="cancel-schedule" class="d-none" style="position: absolute; width: 100%; height: 100%;"
+        onclick="displayScheduler(false, false);"></div>
+    <div class="blur-overlay d-none"></div>
 </body>
+
 </html>

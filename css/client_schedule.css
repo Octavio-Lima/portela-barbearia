@@ -1,18 +1,9 @@
-/* || VARIAVEIS*/
-:root {
-    --logo-size: 70vw;
-    --worker-pic-size: 30vw;
-}
-
-/* ||  GERAL */
-
+/* || GERAL */
 * {
-  font-family: 'Antonio', sans-serif;
-  margin: 0px;
-  border: 0px;
-  padding: 0px;
-  user-select: none;
-  text-transform: uppercase;
+    font-family: 'Antonio', sans-serif;
+    text-transform: uppercase;
+    user-select: none;
+    margin: 0; padding: 0; border: 0;
 }
 
 body {
@@ -20,367 +11,118 @@ body {
     background-image: url("/resources/bg.png");
     background-size: cover;
     height: 100vh;
-
+    
+    text-align: center;
+    
     display: flex;
     flex-direction: column;
-
-    text-align: center;
 }
 
-/* ||  UTILITIES */
-
-.hidden {
-    display: none !important;
-}
-
-main-pop-up, .selected-worker { /* Remover o Filtro de blur dos elementos com essas classes e ID */
-  z-index: 10;
+main-pop-up,
+.selected-worker { /* Elementos que ficarão por cima do efeito blur */
+    z-index: 10;
 }
 
 .blur-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  backdrop-filter: blur(6px);
-  pointer-events: none;
-  z-index: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(6px);
+    pointer-events: none;
+    z-index: 0;
 }
 
 .text-glow {
-  text-shadow: 0 0 15px #fff;
+    text-shadow: 0 0 15px #fff;
 }
 
 /* || HEADER */
-
-header {
-    display: flex;
-    flex-direction: column;
-}
-
 #brand-logo {
-    width: var(--logo-size);
-    margin: calc(var(--logo-size) / 6) auto 3%;
+    width: 200px;
+    margin-top: 45px;
 }
 
-h1 { /* Slogan */
-    font-size: 5vw;
+.slogan {
     color: #fff;
     font-weight: 100;
-    margin: 3% auto 3%;
-
+    font-size: 1rem;
+    margin-top: 30px;
 }
 
-h2 { /* Agendamento */
-    font-size: 6vw;
+h2 {
+    /* Agendamento */
+    font-size: 1.2rem;
     color: #fff;
-    margin: 3% auto 3%;
+    margin: 30px;
 }
-
 
 /* || SELECIONAR TRABALHADOR */
-
 .select-worker-container {
-    display: flex;
+    display: flex; 
     flex-wrap: wrap;
     justify-content: center;
+
+    margin-bottom: 25px;
 }
 
 .worker-img {
-    margin: 3% 2vw 5%;
-    width: var(--worker-pic-size);
-    clip-path: circle(calc(var(--worker-pic-size) / 2) at center);
+    margin: 0 10px 0;
+    width: 100px;
+    clip-path: circle(50px at center);
     pointer-events: none;
+
 }
 
-h3 { /* Nome do Profissional */
+h3 {
+    /* Nome do Profissional */
     color: #fff;
     font-weight: bold;
-    font-size: 4vw;
+    margin-top: 10px;
+    font-size: 1rem;
 }
 
-.links-container {
-    margin-top: 6%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.links-container button { /* Botões de link da tela principal*/
-    width: 50%;
-    height: 10vw;
-    background-color: #00000000;
-    border-radius: 50px;
+.menu-button {
+    /* Botões de link da tela principal*/
+    width: 11rem;
+    height: 2rem;
+    margin: 0 auto 10px;
     border: 4px solid #fff;
+    border-radius: 50px;
+
+    background-color: #0000;
     box-shadow: 0 0 5px #fff, inset 0 0 8px #fff;
-    margin: 0 auto 3% auto;
+    font-size: 1rem;
+    color: #fff;
+    font-weight: bold;
+
     display: flex;
     justify-content: center;
     align-items: center;
+    text-decoration: none;
 }
 
-.button-link {/* Decoração do Texto do botão*/
-    color: #fff;
-    font-weight: bold;
-    font-size: 5vw;
-    text-decoration: none;
-    width: 100%;
+.menu-button:hover {
+    /* Botões de link da tela principal*/
+    border: 4px solid #16f;
+    box-shadow: 0 0 5px #16f, inset 0 0 8px #16f;
+    color: #16f;
+    text-shadow: 1px 1px 2px #000;
+    transition: 65ms;
+}
+
+footer a:hover {
+    /* Decoração do Texto do botão*/
+    color: #16f;
+    transition: 65ms;
 }
 
 /* || FOOTER AND LINKS */
 footer .fa {
-    font-size: 7vw;
-    margin: 3% 0 15%;
     color: #fff;
     text-decoration: none;
-    margin: 4% 1% 8%;
+    margin: 0 1% 10%;
+    font-size: 1.6rem;
+    margin: 0px 0.3rem 40px;
 }
-
-a:hover {/* Decoração do Texto do botão*/
-    color: #16f;
-}
-
-
-/* || AGENDAMENTO */
-
-
-
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
-    /* || HEADER */
-
-    #brand-logo {
-        width: 300px;
-        margin: calc(300px / 6) auto 3%;
-    }
-
-    h1 { /* Slogan */
-        font-size: 5vw;
-        margin: 3% auto 3%;
-
-    }
-
-    h2 { /* Agendamento */
-        font-size: 6vw;
-        margin: 3% auto 3%;
-    }
-
-
-    /* || SELECIONAR TRABALHADOR */
-
-    .worker-img {
-        margin: 3% 2vw 5%;
-        width: var(--worker-pic-size);
-        clip-path: circle(calc(var(--worker-pic-size) / 2) at center);
-    }
-
-    h3 { /* Nome do Profissional */
-        font-size: 4vw;
-    }
-
-    .links-container {
-        margin-top: 6%;
-    }
-
-    .links-container button { /* Botões de link da tela principal*/
-        width: 50%;
-        height: 10vw;
-        border: 5px solid #fff;
-        margin: 0 auto 3% auto;
-        box-shadow: 0 0 9px #fff, inset 0 0 12px #fff;
-    }
-
-    .button-link {/* Decoração do Texto do botão*/
-        font-size: 5vw;
-        text-decoration: none;
-    }
-
-    /* || FOOTER AND LINKS */
-    footer .fa {
-        font-size: 7vw;
-        margin: 3% 0 15%;
-        margin: 4% 1% 8%;
-    }
-}
-
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
-    /* || HEADER */
-
-    #brand-logo {
-        width: 300px;
-        margin: calc(300px / 6) auto 3%;
-    }
-
-    h1 { /* Slogan */
-        font-size: 5vw;
-        margin: 3% auto 2%;
-
-    }
-
-    h2 { /* Agendamento */
-        font-size: 6vw;
-        margin: 2% auto 3%;
-    }
-
-
-    /* || SELECIONAR TRABALHADOR */
-
-    .worker-img {
-        margin: 3% 2vw 4%;
-        width: 220px;
-        clip-path: circle(calc(220px / 2) at center);
-    }
-
-    h3 { /* Nome do Profissional */
-        font-size: 4vw;
-    }
-
-    .links-container {
-        margin-top: 6%;
-    }
-
-    .links-container button { /* Botões de link da tela principal*/
-        width: 50%;
-        height: 8vw;
-        border: 5px solid #fff;
-        margin: 0 auto 2% auto;
-        box-shadow: 0 0 9px #fff, inset 0 0 12px #fff;
-    }
-
-    .button-link {/* Decoração do Texto do botão*/
-        font-size: 4vw;
-        text-decoration: none;
-    }
-
-    /* || FOOTER AND LINKS */
-    footer .fa {
-        font-size: 7vw;
-        margin: 3% 0 15%;
-        margin: 4% 1% 8%;
-    }
-}
-
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
-    /* || HEADER */
-
-    #brand-logo {
-        width: 260px;
-        margin: 40px auto 15px;
-    }
-
-    h1 { /* Slogan */
-        font-size: 30px;
-        margin: 15px auto 10px;
-    }
-
-    h2 { /* Agendamento */
-        font-size: 30px;
-        margin: 10px auto 15px;
-    }
-
-
-    /* || SELECIONAR TRABALHADOR */
-
-    .worker-img {
-        margin: 10px 20px 10px;
-        width: 160px;
-        clip-path: circle(calc(160px / 2) at center);
-    }
-
-    h3 { /* Nome do Profissional */
-        font-size: 20px;
-    }
-
-    .links-container {
-        margin-top: 20px;
-    }
-
-    .links-container button { /* Botões de link da tela principal*/
-        width: 300px;
-        height: 50px;
-        border-radius: 50px;
-        border: 5px solid #fff;
-        box-shadow: 0 0 9px #fff, inset 0 0 12px #fff;
-        margin: 0 10px 10px 10px;
-    }
-
-    .button-link {/* Decoração do Texto do botão*/
-        font-size: 25px;
-    }
-
-    /* || FOOTER AND LINKS */
-    footer .fa {
-        font-size: 35px;
-        margin: 10px 5px 30px;
-        text-decoration: none;
-    }
-}
-
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {
-  /* || HEADER */
-
-  #brand-logo {
-    width: 220px;
-    margin: 40px auto 15px;
-  }
-
-  h1 { /* Slogan */
-    font-size: 30px;
-    margin: 15px auto 10px;
-  }
-
-  h2 { /* Agendamento */
-    font-size: 30px;
-    margin: 10px auto 15px;
-  }
-
-
-  /* || SELECIONAR TRABALHADOR */
-
-  .worker-img {
-    margin: 10px 20px 10px;
-    width: 100px;
-    clip-path: circle(calc(100px / 2) at center);
-  }
-
-  h3 { /* Nome do Profissional */
-    font-size: 20px;    
-  }
-
-  .links-container {
-    margin-top: 20px;
-  }
-
-  .links-container  button { /* Botões de link da tela principal*/
-    width: 240px;
-    height: 40px;
-    border-radius: 50px;
-    border: 3px solid #fff;
-    box-shadow: 0 0 8px #fff, inset 0 0 7px #fff;
-    margin: 0 10px 10px 10px;
-  }
-
-  .button-link {/* Decoração do Texto do botão*/
-    font-size: 20px;
-  }
-
-  /* || FOOTER AND LINKS */
-  footer .fa {
-    font-size: 35px;
-    margin: 10px 5px 30px;
-    text-decoration: none;
-  }
-}
-
-
-/* || TEST SCREEN SIZES */
-h7 { width: fit-content; position: absolute; border: 2px solid #fff; padding: 6px; color: #fff; top: 0; left: 0; }
-@media only screen and (max-width: 599px)  { h7 { background-color: #000; } } /* Very Small devices (Under 599px) */
-@media only screen and (min-width: 600px)  { h7 { background-color: #a00; } } /* Small devices (Over 600px) */
-@media only screen and (min-width: 768px)  { h7 { background-color: #0a0; } } /* Medium devices (Over 768px) */
-@media only screen and (min-width: 992px)  { h7 { background-color: #00a; } } /* Large devices (Over 992px) */
-@media only screen and (min-width: 1200px) { h7 { background-color: #aa0; } } /* Extra large devices (Over 1200px) */

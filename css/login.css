@@ -1,361 +1,104 @@
 * {
     font-family: 'Antonio', sans-serif;
-    margin: 0px;
-    border: 0px;
-    padding: 0px;
-    user-select: none
+    user-select: none;
+    text-transform: uppercase;
 }
 
 body {
     background-color: #000;
     background-image: url("../resources/bg.png");
     background-size: cover;
-
-    display: flex;
-    flex-direction: column;
 }
 
 #brand-logo {
-    width: 300px;
-    margin: 50px auto 0;
+    width: 240px;
+}
+
+h2 {
+    color: #000;
 }
 
 main {
-    box-shadow: 
-    inset -10px 10px 10px 0px #fffe, /* Top */
-    inset 0px -10px 10px 0px #0003, /* Bottom */
-    inset 10px 0px 10px 0px #0003, /* Left */
-    inset -10px 0px 10px 0px #fffe; /* Right */
-    
-    background-color: #ebf7ff;
+    box-shadow:
+        /* Top */
+        inset -10px 5px 10px 0px #0003,
+        /* Bottom */
+        inset 0px -10px 10px 0px #fffe,
+        /* Left */
+        inset 10px 10px 10px 0px #fffe,
+        /* Right */
+        inset -10px 0px 10px -10px #0003;
+
+    background-color: #ecf0f3;
     border-radius: 40px;
     padding: 20px 30px 40px;
-    margin: 50px auto;
-    width: 300px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-
-h1 { /* Titulo da Janela */
-  font-size: 25px;
-  margin: 20px;
-}
-
-/*  ||  PROFILE STYLE  ||  */
-
-form {
-  display: flex;
-  flex-direction: column;
-
-  width: 80%;
-  height: 100%;
+    max-width: 250px;
 }
 
 label {
-  margin: 5px 0 5px;
-  font-weight: lighter;
+    font-size: 1rem;
 }
 
 input {
-  border-radius: 4px;
-  padding: 0px 5px;
-  border: 2px solid #c5d8e0;
-  margin-bottom: 10px;
+    font-size: 1rem;
+    border-style: none;
 }
 
 button {
-  width: 120px;
-  height: 40px;
-  margin: 5px auto 0;
-
-  font-size: 20px;
-
-  border-radius: 50px;
-  border: 2px outset;
+    min-width: 120px;
+    border-radius: 50px;
+    border-style: none;
+    background-color: #ecf0f3;
+    color: #009b9e;
+    font-size: larger;
+    padding: 10px 0;
+    
+    box-shadow:
+        /* Top */
+        inset -2px 2px 2px 0px #0002,
+        /* Bottom */
+        inset 0px -2px 2px 0px #fffe,
+        /* Left */
+        inset 2px 2px 2px 0px #0002,
+        /* Right */
+        inset -2px 0px 2px -2px #fffe;
 }
 
 button:hover {
-  border: 2px inset;
+    box-shadow:
+        /* Top */
+        inset -3px 3px 3px 0px #fffe,
+        /* Bottom */
+        inset 0px -3px 3px 0px #0003,
+        /* Left */
+        inset 3px 3px 3px 0px #fffe,
+        /* Right */
+        inset -3px 0px 3px -3px #0003;
 }
 
-p {
-  font-size: 16px;
+button:active {
+    box-shadow:
+        /* Top */
+        inset -3px 3px 3px 0px #0003,
+        /* Bottom */
+        inset 0px -3px 3px 0px #fffe,
+        /* Left */
+        inset 3px 3px 3px 0px #0003,
+        /* Right */
+        inset -3px 0px 3px -3px #fffe;
 }
 
 a {
-  margin: 15px 0;
-  font-size: 16px;
-  text-decoration: none;
+    font-size: smaller;
+    text-decoration: none;
 
-  color: #125bf7;
+    color: #8f8f8f;
 }
 
 a:hover {
-  color: #6b90df;
+    color: #125bf7;
 }
 
 a:active {
-  color: #0e3079;
+    color: #0e3079;
 }
-
-
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
-  #brand-logo {
-      width: 300px;
-      margin: 50px auto 0;
-  }
-
-  main {
-      border-radius: 40px;
-      padding: 20px 30px 40px;
-      margin: 50px auto;
-      width: 70vw;
-  }
-
-
-  h1 { /* Titulo da Janela */
-    font-size: 35px;
-    margin: 20px;
-  }
-
-  /*  ||  PROFILE STYLE  ||  */
-
-  form {
-    width: 80%;
-    height: 100%;
-  }
-
-  label {
-    margin: 5px 0 5px;
-    font-weight: lighter;
-    font-size: 20px;
-  }
-
-  input {
-    border-radius: 4px;
-    padding: 0px 5px;
-    border: 2px solid #c5d8e0;
-    margin-bottom: 10px;
-    font-size: 18px;
-  }
-
-  button {
-    width: 120px;
-    height: 40px;
-    margin: 5px auto 0;
-
-    font-size: 20px;
-
-    border-radius: 50px;
-    border: 2px outset;
-  }
-
-  button:hover {
-    border: 2px inset;
-  }
-
-  p {
-    font-size: 17px;
-  }
-
-  a {
-    margin: 20px 0;
-    font-size: 20px;
-  }
-}
-
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
-  #brand-logo {
-      width: 400px;
-      margin: 50px auto 0;
-  }
-
-  main {      
-      border-radius: 40px;
-      padding: 20px 30px 40px;
-      margin: 50px auto;
-      width: 70vw;
-  }
-
-
-  h1 { /* Titulo da Janela */
-    font-size: 45px;
-    margin: 20px;
-  }
-
-  /*  ||  PROFILE STYLE  ||  */
-
-  form {
-    width: 80%;
-    height: 100%;
-  }
-
-  label {
-    margin: 5px 0 5px;
-    font-weight: lighter;
-    font-size: 25px;
-  }
-
-  input {
-    border-radius: 4px;
-    padding: 0px 5px;
-    border: 2px solid #c5d8e0;
-    margin-bottom: 10px;
-    font-size: 25px;
-  }
-
-  button {
-    width: 140px;
-    height: 50px;
-    margin: 5px auto 0;
-
-    font-size: 30px;
-
-    border-radius: 50px;
-    border: 2px outset;
-  }
-
-  p {
-    font-size: 25px;
-  }
-
-  a {
-    margin: 20px 0;
-    font-size: 25px;
-  }
-}
-
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
-  #brand-logo {
-      width: 400px;
-      margin: 50px auto 0;
-  }
-
-  main {      
-      border-radius: 40px;
-      padding: 20px 30px 40px;
-      margin: 50px auto;
-      width: 50vw;
-  }
-
-
-  h1 { /* Titulo da Janela */
-    font-size: 45px;
-    margin: 20px;
-  }
-
-  /*  ||  PROFILE STYLE  ||  */
-
-  form {
-    width: 80%;
-    height: 100%;
-  }
-
-  label {
-    margin: 5px 0 5px;
-    font-weight: lighter;
-    font-size: 25px;
-  }
-
-  input {
-    border-radius: 4px;
-    padding: 0px 5px;
-    border: 2px solid #c5d8e0;
-    margin-bottom: 10px;
-    font-size: 25px;
-  }
-
-  button {
-    width: 140px;
-    height: 50px;
-    margin: 5px auto 0;
-
-    font-size: 30px;
-
-    border-radius: 50px;
-    border: 2px outset;
-  }
-
-  p {
-    font-size: 25px;
-  }
-
-  a {
-    margin: 20px 0;
-    font-size: 25px;
-  }
-}
-
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {
-  #brand-logo {
-      width: 300px;
-      margin: 50px auto 0;
-  }
-
-  main {      
-      border-radius: 40px;
-      padding: 20px 30px 40px;
-      margin: 50px auto;
-      width: 30vw;
-  }
-
-
-  h1 { /* Titulo da Janela */
-    font-size: 30px;
-    margin: 15px;
-  }
-
-  /*  ||  PROFILE STYLE  ||  */
-
-  form {
-    width: 80%;
-    height: 100%;
-  }
-
-  label {
-    margin: 5px 0 5px;
-    font-weight: lighter;
-    font-size: 18px;
-  }
-
-  input {
-    margin-bottom: 10px;
-    font-size: 18px;
-    font-weight: lighter;
-  }
-
-  button {
-    width: 120px;
-    height: 40px;
-    margin: 10px auto 5px;
-
-    font-size: 16px;
-
-    border-radius: 50px;
-    border: 2px outset;
-  }
-
-  p {
-    font-size: 15px;
-  }
-
-  a {
-    margin: 10px 0;
-    font-size: 18px;
-  }
-}
-
-/* || TEST SCREEN SIZES */
-h5 { width: fit-content; position: absolute; border: 2px solid #fff; padding: 6px; color: #fff; top: 0; left: 0; }
-@media only screen and (max-width: 599px)  { h5 { background-color: #000; } } /* Very Small devices (Under 599px) */
-@media only screen and (min-width: 600px)  { h5 { background-color: #a00; } } /* Small devices (Over 600px) */
-@media only screen and (min-width: 768px)  { h5 { background-color: #0a0; } } /* Medium devices (Over 768px) */
-@media only screen and (min-width: 992px)  { h5 { background-color: #00a; } } /* Large devices (Over 992px) */
-@media only screen and (min-width: 1200px) { h5 { background-color: #aa0; } } /* Extra large devices (Over 1200px) */

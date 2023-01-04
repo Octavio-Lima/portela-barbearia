@@ -1,163 +1,198 @@
 * {
-  font-family: 'Antonio', sans-serif;
-  user-select: none;
-  margin: 0px;
-  border: 0px;
-  padding: 0px;
-  text-transform: uppercase;
+    font-family: 'Antonio', sans-serif;
+    text-transform: uppercase;
+    user-select: none;
 }
 
 body {
-  background-color: #ECF0F3;
-  background-size: cover;
-  
-  padding: 40px 40px 40px;
-  width: 350px;
-  margin: 0 auto;
+    background-color: #ECF0F3;
+    background-size: cover;
+}
+
+main {
+    max-width: 500px;
 }
 
 .flex-space {
-  flex-grow: 1;
+    flex-grow: 1;
 }
 
 /*  ||  PROFILE STYLE  ||  */
-
-h1 { /* Nome do trabalhador */
-  font-size: 35px;
+#user-img {
+    width: 70px;
+    height: 70px;
+    clip-path: circle(35px at center);
 }
 
-p { /* Função do funcionario */
-  font-size: 20px;
-  color: #989899;
+#worker-name {
+    /* Nome do trabalhador */
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #000;
+    margin: 0;
+}
+
+#worker-job {
+    /* Função do funcionario */
+    font-size: 0.9rem;
+    color: #989899;
+    margin: 0;
 }
 
 .link-container {
-  display: flex;
-  height: 64px;
-  margin: 20px 0;
+    width: 100%;
+    height: 64px;
+    margin: 10px 0;
+
+    display: flex;
 }
 
 .link-img {
-  /* clip-path: circle( 24px at center); */
-  width: 48px;
-  height: 48px;
-  font-size: 30px;
+    width: 48px;
+    height: 48px;
+    font-size: 30px;
 
-  color: #6e6e6e;
-  text-align: center;
-  padding-top: 20px;
+    color: #6e6e6e;
+    text-align: center;
 
-  margin: auto 0;
+    display: inline-flex;
+
+    margin: auto 0;
+    padding: 0;
+    line-height: 0;
 }
 
-a {
-  color: #000;
-  font-size: 25px;
-  text-decoration: none;
+.link-container a {
+    color: #000;
+    font-weight: bold;
+    font-size: 1.3rem;
+    text-decoration: none;
 
-  width: 100%;
-  border-top: 2px solid #0000;
-  border-bottom: 2px solid #999;
-  padding: 15px 0;
-  margin: auto 10px;
+    width: 100%;
+    padding: 0 0;
+    margin: auto 10px;
 }
 
 a:hover {
-  color: #15c;
+    color: #15c;
 }
 
 /* Cadastrar Clientes */
 input {
-  width: 100%;
-  margin: 5px 0;
+    width: 100%;
+    margin: 5px 0;
 }
 
-h2 {
-  font-size: 20px;
+h3 {
+    font-size: 1.2rem;
+}
+
+.category-title {
+    color: #000;
+    font-size: 1rem;
+
+    width: 100%;
+    /* border-top: 2px solid #0000;
+  border-bottom: 2px solid #999; */
+    padding: 30px 0;
+    margin: auto 10px;
+}
+
+.title-underline {
+    position: relative;
+    bottom: 0;
+}
+
+hr {
+    border: 1px #000 solid;
+    margin: 0;
+    width: 100%;
+    transform: translate(0, 0.375rem);
 }
 
 .title {
-  text-align: center;
-  margin: 20px 0;
+    text-align: center;
+    font-size: 1.2rem;
+    margin: 60px 0 40px;
 }
 
 /* Fluxo de caixa */
 
 .total-price {
-  border-top: #999 dotted 2px;
+    border-top: #999 dotted 2px;
 }
 
 /* || AGENDAMENTOS */
 
 #schedule-list {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  height: 62vh;
-  overflow-x: scroll;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    height: 62vh;
+    overflow-x: scroll;
 }
 
 .schedule-entry {
-  display: flex;
-  flex-direction: row;
+    display: flex;
+    flex-direction: row;
 
-  font-size: 18px;
+    font-size: 18px;
 }
 
-.schedule-entry:not(.top):not(.middle){
-  margin-bottom: 15px;
+.schedule-entry:not(.top):not(.middle) {
+    margin-bottom: 15px;
 }
 
 .schedule-entry h3 {
-  width: 40px;
-  text-align: center;
+    width: 40px;
+    text-align: center;
 }
 
 .row-info {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 
-  margin-left: 15px;
-  font-size: 14px;
+    margin-left: 15px;
+    font-size: 14px;
 }
 
 .row-client-detail {
-  display: flex;
-  flex-direction: row;
+    display: flex;
+    flex-direction: row;
 }
 
 .row-client-detail p {
-  font-size: 12px;
-  color: #fff;
+    font-size: 12px;
+    color: #fff;
 }
 
 .row-busy-top {
-  background-color: #15c;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  width: 70%;
-  min-height: 30px;
-  padding: 5px 10px 0px;
+    background-color: #15c;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    width: 70%;
+    min-height: 30px;
+    padding: 5px 10px 0px;
 
-  color: #ECF0F3;
+    color: #ECF0F3;
 }
 
 .row-busy {
-  background-color: #15c;
-  width: 70%;
-  min-height: 30px;
-  padding: 5px 10px 0px;
+    background-color: #15c;
+    width: 70%;
+    min-height: 30px;
+    padding: 5px 10px 0px;
 
-  color: #ECF0F3;
+    color: #ECF0F3;
 }
 
 .row-busy-bottom {
-  background-color: #15c;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  width: 70%;
-  min-height: 30px;
-  padding: 5px 10px 0px;
+    background-color: #15c;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    width: 70%;
+    min-height: 30px;
+    padding: 5px 10px 0px;
 
-  color: #ECF0F3;
+    color: #ECF0F3;
 }

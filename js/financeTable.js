@@ -1,10 +1,10 @@
-let allEntries = document.querySelectorAll(".table-row");
+let allEntries = document.querySelectorAll("tr");
 let entryValue = document.querySelectorAll(".value");
 const addEntryButton = document.querySelector("#add-entry");
 const delEntryButton = document.querySelector("#del-entry");
 const confirmDelEntry = document.querySelector("#confirm-del-button")
-const filterEntryButton = document.querySelector("#filter-entry");
-const financeTable = document.querySelector('main');
+const BTN_FILTER = document.querySelector("#filter-entry");
+const financeTable = document.querySelector('tbody');
 const blockBgElement = document.querySelector(".block-bg-elements");
 const delEntryDiagBox = document.querySelector("#del-entry-window");
 const cancelDiagBox = document.querySelector("#cancel-button")
@@ -42,7 +42,7 @@ let selectedEntry = null;
 
 // Seleção de Linhas
 function selectRow(selectedRow) {
-  allEntries = document.querySelectorAll(".table-row");
+  allEntries = document.querySelectorAll("tr");
   allEntries.forEach((row, index) => {
     row.classList.remove("selected");
   });
@@ -53,13 +53,11 @@ function selectRow(selectedRow) {
 
 document.addEventListener("click", (e) => {
   e.preventDefault();
-  const parentEl = e.target.closest(".table-row");
+  const parentEl = e.target.closest("tr");
 
   if (parentEl !== null)
   {
-    if (parentEl.classList.contains("table-row")){
-      selectRow(parentEl);
-    }
+    selectRow(parentEl);
   }
 })
 
@@ -77,7 +75,7 @@ function updateTotalProfit() {
     if (rowValue !== null) {
       let replaceComma = rowValue.textContent.replace(',','.');
       let removeSign = replaceComma.slice(2);
-      let isDebt = rowValue.closest(".table-row").classList.contains("entry-type-debt");
+      let isDebt = rowValue.closest("tr").classList.contains("table-danger");
       sum += (isDebt ? -parseFloat(removeSign) : parseFloat(removeSign));
     }
   });
@@ -85,10 +83,8 @@ function updateTotalProfit() {
   EL_TOTAL_PROFIT.innerHTML = "Total Mês Atual: " + toMoneyFormat(sum);
 }
 
-filterEntryButton.addEventListener("click", (e) => {
-    e.preventDefault();
-
-    updateTotalProfit();
+BTN_FILTER.addEventListener("click", (e) => {
+  updateTotalProfit();
 })
 
 delEntryButton.addEventListener("click", (e) => {
@@ -104,11 +100,11 @@ delEntryButton.addEventListener("click", (e) => {
 
 function displayPopup(display, windowIndex) {
   if (display) {
-    blockBgElement.classList.remove("hidden");
-    allDiagWindow[windowIndex].classList.remove("hidden");
+    blockBgElement.classList.remove("d-none");
+    allDiagWindow[windowIndex].classList.remove("d-none");
   } else {
-    blockBgElement.classList.add("hidden");
-    allDiagWindow.forEach(window => { window.classList.add("hidden"); });
+    blockBgElement.classList.add("d-none");
+    allDiagWindow.forEach(window => { window.classList.add("d-none"); });
   }
 }
 
@@ -119,32 +115,47 @@ addEntryButton.addEventListener("click", (e) => {
 
 // Criar novo lançamento
 function addNewEntry(name, createType, dateCreated, datePayed, createBy, value, payType) {
-  const newEntry = document.createElement("div");
-  const entryName = document.createElement("p");
-  const entryType = document.createElement("p");
-  const entryDateCreated = document.createElement("p");
-  const entryCreatedBy = document.createElement("p");
-  const entryValue = document.createElement("p");
-  const entryDetail = document.createElement("div");
+
+  
+/* <tr class="table-danger">
+  <td scope="row" colspan="3">Primeiro Lançamento</th>
+  <td>Entrada</td>
+  <td>28/11/2020</td>
+  <td>02/04/2024</td>
+  <td>Administrador</td>
+  <td>R$170,30</td>
+  <td><i class="fa fa-bars"></i></td>
+</tr> */
+
+
+/* <button type="button" class="btn btn-default">
+  <span class="glyphicon glyphicon-align-left"></span>
+</button> */
+
+
+  const newEntry = document.createElement("tr");
+  const entryName = document.createElement("td");
+  const entryType = document.createElement("td");
+  const entryDateCreated = document.createElement("td");
+  const entryCreatedBy = document.createElement("td");
+  const entryValue = document.createElement("td");
+  const entryDetail = document.createElement("td");
   const entryDetailBtn = document.createElement("button");
-  const entryDatePayed = document.createElement("p");
+  const entryDetailIcon = document.createElement("i");
+  const entryDatePayed = document.createElement("td");
   const entryEditedBy = document.createElement("p");
   const entryPayType = document.createElement("p");
 
   let isTrue = (createType === 'true');
 
-  newEntry.classList.add("table-row");
-  newEntry.classList.add(isTrue ? "entry-type-profit" : "entry-type-debt");
+  newEntry.classList.add(isTrue ? "table-primary" : "table-danger");
+
+  entryName.setAttribute('scope','row');
+  entryName.setAttribute('colspan','3');
+  entryName.classList.add("table-data");
+  
   entryName.innerText = name;
   entryType.innerText = (isTrue ? "Entrada" : "Saída");
-  entryName.classList.add("table-data");
-  entryType.classList.add("table-data");
-  entryDateCreated.classList.add("table-data");
-  entryCreatedBy.classList.add("table-data");
-  entryValue.classList.add("table-data");
-  entryDetail.classList.add("table-data");
-  entryDatePayed.classList.add("table-data");
-
   entryDateCreated.innerText = dateCreated;
   entryDatePayed.innerText = datePayed;
   entryCreatedBy.innerText = createBy;
@@ -152,18 +163,16 @@ function addNewEntry(name, createType, dateCreated, datePayed, createBy, value, 
   entryPayType.innerText = payType;
   
   entryValue.classList.add("value");
-  entryDetailBtn.classList.add("fa");
-  entryDetailBtn.classList.add("fa-bars");
-  entryDetailBtn.classList.add("show-more-btn");
-  entryEditedBy.classList.add("hidden")
-  entryPayType.classList.add("hidden")
 
-  entryType.classList.add("show-on-desktop")
-  entryDateCreated.classList.add("show-on-desktop")
-  entryCreatedBy.classList.add("show-on-desktop")
-  entryPayType.classList.add("show-on-desktop")
-  entryPayType.classList.add("show-on-desktop")
-  entryPayType.classList.add("show-on-desktop")
+  entryDetailBtn.setAttribute('type','button');
+  entryDetailBtn.classList.add("btn");
+  entryDetailBtn.classList.add("btn-default");
+
+  entryDetailIcon.classList.add("fa");
+  entryDetailIcon.classList.add("fa-bars");
+  entryDetailIcon.classList.add("show-more-btn");
+  entryEditedBy.classList.add("d-none")
+  entryPayType.classList.add("d-none")
 
   entryDetailBtn.addEventListener("click", showDetailBtnEvent());
   
@@ -173,6 +182,7 @@ function addNewEntry(name, createType, dateCreated, datePayed, createBy, value, 
   newEntry.appendChild(entryDatePayed);
   newEntry.appendChild(entryCreatedBy);
   newEntry.appendChild(entryValue);
+  entryDetailBtn.appendChild(entryDetailIcon);
   entryDetail.appendChild(entryDetailBtn);
   newEntry.appendChild(entryDetail);
   newEntry.appendChild(entryEditedBy);
@@ -227,8 +237,8 @@ function saveEditedEntry() {
   entry.item(7).innerHTML = accessName;
   entry.item(8).innerHTML = OP_EDIT_ENTRY_PAYTYPE.value;
 
-  selectedEntry.classList.add(isTrue ? "entry-type-profit" : "entry-type-debt");
-  selectedEntry.classList.remove(isTrue ? "entry-type-debt" : "entry-type-profit");
+  selectedEntry.classList.add(isTrue ? "table-primary" : "table-danger");
+  selectedEntry.classList.remove(isTrue ? "table-danger" : "table-primary");
 
   updateTotalProfit();
 }
@@ -251,8 +261,8 @@ confirmDelEntry.addEventListener("click", (e) => {
 
 function showDetailBtnEvent() {
   return function() {
-    const parentEl = this.closest(".table-row");
-    if (parentEl.classList.contains("table-row")){
+    const parentEl = this.closest("tr");
+    if (parentEl != null){
       selectRow(parentEl);
       displayPopup(true, 3);
       updateEntryDetail();
@@ -283,9 +293,9 @@ function updateEntryDetail() {
 
   let hasBeenEdited = (entry.item(7).innerText.length > 0)
   if (hasBeenEdited) { 
-    DETAIL_EDITED_BY.parentElement.classList.remove("hidden"); 
+    DETAIL_EDITED_BY.parentElement.classList.remove("d-none"); 
   } else { 
-    DETAIL_EDITED_BY.parentElement.classList.add("hidden"); 
+    DETAIL_EDITED_BY.parentElement.classList.add("d-none"); 
   }
 }
 

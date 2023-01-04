@@ -1,5 +1,5 @@
 const account = [
-  {user:"joao", pass:"123", name:"joão pedro portela", access:'proprietario, barbeiro'},
+  {user:"joao", pass:"123", name:"joão pedro", access:'proprietario, barbeiro'},
   {user:"lucio", pass:"321", name:"lúcio xavier", access:'barbeiro'}
 ]
 
@@ -13,7 +13,7 @@ function checkCredentials(event) {
   if (checkUser(user_input.value, pass_input.value)) {
     window.open("../html/manage.html", "_self");
   } else {
-    wrong_cred.style.display = 'block'
+    wrong_cred.classList.remove("d-none");
   }
 }
 
