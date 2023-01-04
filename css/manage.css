@@ -7,11 +7,10 @@
 body {
     background-color: #ECF0F3;
     background-size: cover;
+    max-width: 500px;
+    margin: 0 auto;
 }
 
-main {
-    max-width: 500px;
-}
 
 .flex-space {
     flex-grow: 1;
@@ -98,22 +97,11 @@ h3 {
     margin: auto 10px;
 }
 
-.title-underline {
-    position: relative;
-    bottom: 0;
-}
-
 hr {
     border: 1px #000 solid;
     margin: 0;
     width: 100%;
     transform: translate(0, 0.375rem);
-}
-
-.title {
-    text-align: center;
-    font-size: 1.2rem;
-    margin: 60px 0 40px;
 }
 
 /* Fluxo de caixa */
@@ -137,6 +125,7 @@ hr {
     flex-direction: row;
 
     font-size: 18px;
+    max-height: 70px;
 }
 
 .schedule-entry:not(.top):not(.middle) {
@@ -148,19 +137,6 @@ hr {
     text-align: center;
 }
 
-.row-info {
-    display: flex;
-    flex-direction: column;
-
-    margin-left: 15px;
-    font-size: 14px;
-}
-
-.row-client-detail {
-    display: flex;
-    flex-direction: row;
-}
-
 .row-client-detail p {
     font-size: 12px;
     color: #fff;
@@ -170,8 +146,7 @@ hr {
     background-color: #15c;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    width: 70%;
-    min-height: 30px;
+    min-width: 70%;
     padding: 5px 10px 0px;
 
     color: #ECF0F3;
@@ -179,8 +154,7 @@ hr {
 
 .row-busy {
     background-color: #15c;
-    width: 70%;
-    min-height: 30px;
+    min-width: 70%;
     padding: 5px 10px 0px;
 
     color: #ECF0F3;
@@ -190,8 +164,7 @@ hr {
     background-color: #15c;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-    width: 70%;
-    min-height: 30px;
+    min-width: 70%;
     padding: 5px 10px 0px;
 
     color: #ECF0F3;
