@@ -2,7 +2,6 @@
 
 * {
     font-family: 'Antonio', sans-serif;
-    text-transform: uppercase;
     user-select: none;
 }
 
@@ -11,6 +10,7 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
+    overflow:hidden 
 }
 
 main {
@@ -20,29 +20,116 @@ main {
 
 footer {
     border-top: 2px solid #aaa;
-    height: 80px;
+    height: 50px;
+    max-height: 100%;
     padding: 10px;
 
     display: inline-flex;
 }
 
-/* || HEADER  */
+.red-text {
+    color: #e00;
+}
+
+hr {
+    margin: 10px 0 0;
+}
+
+/* || HEADER ----------------------------------  */
 
 h1 {
     font-weight: bold;
 }
 
-.buttons {
-    margin: 15px 0 0;
-    width: 100%;
-    height: 50px;
+.btn-header {
+    margin: 0 0 0;
+    min-width: 100px;
+    padding: 5px 0;
+    border-radius: 5px;
 }
 
 .header-input {
     margin: 3px 15px auto 5px;
 }
 
-/* Tables */
+/* Filtrar */
+
+.filter-box {
+    background-color: #fff;
+    height: 100%;
+    border-radius: 10px;
+
+    flex-grow: 1;
+
+    margin: 3px 15px 0px 0px;
+    padding: 8px;
+
+    position: relative;
+}
+
+.filter-tag {
+    background-color: #e9e9ed;
+    max-width: fit-content;
+    height: fit-content;
+
+    padding: 5px 10px;
+
+    display: flex;
+
+    border: #090 3px solid;
+    border-radius: 10px;
+    border-style: outset;
+}
+
+.filter-tag p {
+    margin: 0;
+}
+
+.filter-tag button {
+    background-color: #0000;
+    color: #aaa;
+    font-size: 1rem;
+    border: 0;
+    border-radius: 10rem;
+    height: fit-content;
+}
+
+.filter-tag button:hover {
+    color: #555;
+}
+
+.filter-tag button:active {
+    color: #222;
+}
+
+.add-tag {
+    background-color: #05e;
+    width: 40px;
+    height: 40px;
+
+    color: #fff;
+
+    border: #000 2px solid;
+    border-radius: 10px;
+    border-style: none;
+
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+}
+
+.add-tag:hover {
+    transition: 90ms;
+    background-color: #03b;
+}
+
+.add-tag:active {
+    transition: 90ms;
+    background-color: #027;
+}
+
+
+/* || TABLE */
 
 table {
     width: 100%;
@@ -51,38 +138,52 @@ table {
     table-layout: fixed;
 }
 
-/* Table Rows*/
-
 #header-row {
     position: sticky;
     top: 0;
     background-color: #fff;
 }
 
-.table-row,
-.table-header {
-    width: 100vw;
-    height: 50px;
-    display: flex;
+th:first-child,
+td:first-child {
+    text-align: left;
+    padding-left: 1.5rem;
 }
 
-.table-row:first-child,
-.table-header:first-child {
-    padding: 0 0 0 0px;
+td,
+th {
+    text-align: center;
 }
 
-.table-row:nth-child(even):not(.selected) {
-    background-color: #cfe0ee;
+tr {
+    height: 2px;
 }
 
-.entry-type-debt:nth-child(even):not(.selected) {
-    background-color: #ffcbcb;
+/* Entry Credit */
+.entry-credit:nth-child(even) { background-color: #cfe0ee; }
+.entry-credit:nth-child(odd) { background-color: #f1f6fa; }
+.entry-credit:hover { background-color: #5595c9; transition: 90ms; }
+.entry-credit:is(.selected) { background-color: #0059be; color: #fff; transition: 90ms; }
+
+/* Entry Debt*/
+.entry-debt:nth-child(even) { background-color: #ffcbcb; }
+.entry-debt:nth-child(odd) { background-color: #ff9a9a; }
+.entry-debt:hover { background-color: #f36767; transition: 90ms; }
+.entry-debt:is(.selected) { background-color: #b60000; color: #fff; transition: 90ms; }
+
+
+.btn-show-detail {
+    margin: 0; padding: 0; border: 0;
+    min-width: fit-content;
+    width: 40px;
+    height: 100%;
+    background-color: #0000;
 }
 
-.entry-type-debt:nth-child(odd):not(.selected) {
-    background-color: #ff9a9a;
+.btn-show-detail:hover {
+    color: #fff;
+    transition: 70ms;
 }
-
 
 .block-bg-elements {
     z-index: 0;
@@ -112,32 +213,17 @@ table {
     margin-right: 5px;
 }
 
-.table-row:hover:not(#header-row):not(.selected):is(.entry-type-debt) {
-    background-color: #ff7575;
-}
-
-.table-row:hover:not(#header-row):not(.selected):not(.entry-type-debt) {
-    background-color: #6eb2ff;
-}
-
-.selected:not(.entry-type-debt) {
-    color: #fff;
-    background-color: #0059be;
-}
-
-.selected {
-    color: #fff;
-    background-color: #b60000;
-}
 
 /* Caixas de Dialogo */
 
-pop-up {
+.pop-up-group {
     position: absolute;
-    width: 90%;
-    top: 80px;
+    top: 30px;
     right: 50%;
     transform: translate(50%, 0);
+
+    min-width: 350px;
+    z-index: 5;
 }
 
 
@@ -145,34 +231,27 @@ pop-up {
     width: 100%;
 }
 
-.add-entry-form,
+#add-entry-form,
 .edit-entry-form {
     text-align: left;
     border-bottom: 2px #aaa solid;
     padding-bottom: 20px;
 }
 
-#del-entry-window {
-    min-width: 350px;
-    height: 100px;
-    font-weight: bold;
-}
-
 .diag-box-button {
     background-color: #ECF0F3;
     color: #000;
-    font-size: 15px;
+    font-size: 1rem;
     font-weight: bold;
-    ;
 
-    border-radius: 5px;
-    margin: 20px 10px;
+    border-radius: 10px;
+    margin: 10px 5px;
     padding: 10px;
-    width: 100px;
+    min-width: 100px;
     border: 2px solid #0059be;
 }
 
-#confirm-del-button:hover {
+#button-confirm-del:hover {
     background-color: #ff0000;
     border: 2px solid #ff0000;
     color: #fff;
@@ -184,7 +263,7 @@ pop-up {
     color: #fff;
 }
 
-#cancel-button:hover {
+.cancel-button:hover {
     background-color: #0059be;
     color: #fff;
 }
@@ -197,16 +276,14 @@ h3 {
     margin-bottom: 20px;
 }
 
-.dialog-window {
+.pop-up {
     background-color: #ECF0F3;
     border-radius: 10px;
     padding: 20px 50px;
 
-
-
     text-align: center;
 
-    z-index: 10;
+    z-index: 5;
 }
 
 input {
@@ -255,4 +332,62 @@ select {
 #detail-popup td:last-child {
     width: 20%;
     text-align: left;
+}
+
+/* || MENSAGEM ALERTA */
+
+.alert-box {
+    background-color: #fff;
+    min-width: 250px;
+    max-width: 350px;
+
+    padding: 6px 9px 12px 9px;
+    position: absolute;
+    top: -600px;
+    right: 50%;
+    transform: translate( 50%, 0);
+
+    border: 1px #aaa solid;
+    box-shadow: 5px 10px 18px #888888;
+    border-radius: 10px;
+
+    animation-name: alertPopUp;
+    animation-duration: 7s;
+    animation-iteration-count: 1;
+    z-index: 10;
+}
+
+@keyframes alertPopUp {
+    0%   { top: -600px;}
+    5%  { top: 20px; }
+    95%  { top: 20px; }
+    100%  { top: -600px; }
+}
+
+#alert-title {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+#alert-message {
+    font-size: 1rem;
+    font-weight: 400;
+    padding: 8px 4px 0px;
+    margin: 0;
+}
+
+.alert-box button {
+    background-color: #0000;
+    color: #aaa;
+    font-size: 1.2rem;
+    border: 0;
+    border-radius: 10rem;
+}
+
+.alert-box button:hover {
+    color: #555;
+}
+
+.alert-box button:active {
+    color: #222;
 }

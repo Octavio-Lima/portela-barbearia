@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,7 +15,8 @@
 
     <!-- CSS JS -->
     <link rel="stylesheet" href="../css/financeTable.css">
-    <script src="../js/financeTable.js" defer></script>
+    <script src="../js/finance-table.js" type="module" defer></script>
+    <script src="../js/finance-page.js" type="module" defer></script>
 
     <!-- Fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,125 +29,195 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<body onload="updateTotalProfit();">
-    <header>
-        <div class="container-fluid">
-            <h1>fluxo de caixa</h1>
-            <div class="row">
-                <div class="col-5">
-                    <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-success" id="add-entry">Adicionar</button>
-                        <button type="button" class="btn btn-danger" id="del-entry">Remover</button>
-                        <button type="button" class="btn btn-secondary" id="edit-entry">Editar</button>
-                        <button type="button" class="btn btn-secondary" id="filter-entry">Filtrar</button>
-                    </div>
+<body>
+    <header class="d-flex px-3">
+        <div class="d-flex flex-column">
+            <h1>FLUXO DE CAIXA</h1>
+            <div class="flex-grow-1"></div>
+            <div>
+                <button type="button" class="btn-header" id="button-add-entry">Adicionar</button>
+                <button type="button" class="btn-header" id="button-del-entry">Remover</button>
+                <button type="button" class="btn-header" id="button-edit-entry">Editar</button>
+                <button type="button" class="btn-header" id="button-filter-entry">Filtrar</button>
+                <button type="button" class="btn-header d-block d-md-none mt-1" id="button-show-detail">Detalhes</button>
+            </div>
+        </div>
+
+
+        <div class="d-flex flex-grow-1 d-none" id="filter-container">
+            <div class="vr mx-3 mt-1"></div>
+            <div class="filter-date">
+                <h3>Filtrar</h3>
+                <div class="d-flex flex-row">
+                    <p class="d-inline my-auto"><i class="fa fa-calendar"></i> Data Inicial:</p>
+                    <input type="date" class="d-inline header-input" id="initial-date">
                 </div>
-                <div class="flex-column border border-2 border-dark rounded">
-                    <h3 class="d-inline">Filtrar</h3>
-
-                    <div class="d-inline">
-                        <i class="fa fa-calendar"></i>
-                        <p class="d-inline">Data Inicial:</p>
-                        <input type="date" class="header-input" id="initial-date">
-                    </div>
-
-                    <div class="d-inline">
-                        <i class="fa fa-calendar"></i>
-                        <p class="d-inline">Data Fim:</p>
-                        <input type="date" class="header-input" id="end-date">
-                    </div>
+    
+                <div class="d-flex flex-row">
+                    <p class="d-inline my-auto"><i class="fa fa-calendar"></i> Data Fim:</p>
+                    <input type="date" class="d-inline header-input" id="end-date">
                 </div>
             </div>
+        
+            <div class="vr mx-3 mt-1"></div>
             
+            <div class="filter-box">
+                <div class="filter-tag">
+                    <p>Trabalhador</p>
+                    <button class="fa-solid fa-xmark"></button>
+                </div>
+                <div class="">
+                    <button class="add-tag fa-solid fa-plus"></button>
+                </div>
+            </div>
+
+            <div class="d-flex flex-column">
+                <div class="flex-grow-1"></div>
+                <button type="button" class="btn-header">Aplicar Filtros</button>
+            </div>
         </div>
     </header>
     <hr>
     <main>
-        <!-- <div class="table-header">
-      <p class="table-data">Nome do Lançamento</p>
-      <p class="table-data show-on-desktop">Tipo de Lançamento</p>
-      <p class="table-data show-on-desktop">Dia Criado</p>
-      <p class="table-data">Dia Pago</p>
-      <p class="table-data show-on-desktop">Criado Por</p>
-      <p class="table-data">Valor</p>
-      <p class="table-data">Detalhes</p>
-    </div> -->
-        <table class="table table-striped table-hover">
+        <table class="table" id="entry-table">
             <thead>
                 <tr id="header-row">
-                    <th scope="col" colspan="3">Nome do Lançamento</th>
-                    <th scope="col">Tipo de Lançamento</th>
-                    <th scope="col">Dia Criado</th>
-                    <th scope="col">Dia Pago</th>
-                    <th scope="col">Criado Por</th>
-                    <th scope="col">Valor</th>
-                    <th scope="col">Detalhes</th>
+                    <th class="col-3" scope="col">Nome do Lançamento</th>
+                    <th class="col-1 d-none d-md-table-cell">Tipo de Lançamento</th>
+                    <th class="col-1 d-none d-md-table-cell">Dia Criado</th>
+                    <th class="col-1">Dia Pago</th>
+                    <th class="col-1 d-none d-md-table-cell">Criado Por</th>
+                    <th class="col-1">Valor</th>
+                    <th class="col-1 d-none d-md-table-cell">Detalhes</th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="table-primary">
-                    <td scope="row" colspan="3">Primeiro Lançamento</th>
-                    <td>Entrada</td>
-                    <td>28/11/2020</td>
+                <!-- <tr class="entry-credit">
+                    <td scope="row">Primeiro Lançamento</th>
+                    <td class="d-none d-md-table-cell">Entrada</td>
+                    <td class="d-none d-md-table-cell">28/11/2020</td>
                     <td>02/04/2024</td>
-                    <td>Administrador</td>
+                    <td class="d-none d-md-table-cell">Administrador</td>
                     <td>R$170,30</td>
-                    <td><i class="fa fa-bars"></i></td>
-                </tr>
-                <tr class="table-danger">
-                    <td scope="row" colspan="3">Primeiro Lançamento</th>
-                    <td>Entrada</td>
-                    <td>28/11/2020</td>
-                    <td>02/04/2024</td>
-                    <td>Administrador</td>
-                    <td>R$170,30</td>
-                    <td><button class="btn btn-link"><span class="fa fa-bars"></span></button></td>
-                </tr>
+                    <td><button class="btn-show-detail"><i class="fa fa-bars"></i></button></td>
+                </tr> -->
             </tbody>
         </table>
     </main>
     <footer>
-        <p id="total-profits">Total Mês Atual: R$0,00</p>
+        <div class="d-inline-flex">
+            <p>Total:&nbsp;</p>
+            <p id="total-profits" class="me-3">R$0,00</p>
+        </div>
+
+        <div class="d-inline-flex">
+            <p>Total (João):&nbsp;</p>
+            <p id="total-profits-worker-0" class="me-3">R$0,00</p>
+        </div>
+
+        <div class="d-inline-flex">
+            <p>Total (Lucio):&nbsp;</p>
+            <p id="total-profits-worker-1">R$0,00</p>
+        </div>
+
+        <div class="flex-grow-1"></div>
+
+        <div class="d-inline-flex">
+            <p>Usuário:&nbsp;</p>
+            <p id="active-user-name">Nome</p>
+        </div>
     </footer>
 
     <!-- Bloquear Elementos do Fundo -->
     <div class="block-bg-elements d-none"></div>
 
-    <pop-up>
-        <!-- Popup -->
-        <div class="dialog-window d-none" id="add-entry-diag-box">
-            <h3>Adicionar novo Lançamento</h3>
-            <form action="#" class="add-entry-form">
-                <label for="entry-name">nome do lançamento:</label>
-                <input type="text" name="entry-name" id="input-entry-name" class="text-input"><br>
-                <label for="entry-name">Data de Pagamento:</label>
-                <input type="date" name="" id="entry-date" class="text-input"><br>
-                <label for="entry-name">Valor do Lançamento:</label>
-                <input type="text" name="" id="entry-value" class="text-input"><br>
-                <label for="entry-type">Pagamento:</label>
+    <div class="pop-up-group">
+        <!-- Popup Adicionar Novo Lançamento -->
+        <div class="pop-up d-none" id="add-entry-diag-box">
+            <h3>ADICIONAR NOVO LANÇAMENTO</h3>
+            <form action="#" id="add-entry-form">
+                
+                <label for="entry-name">NOME DO LANÇAMENTO:</label>
+                <input type="text" name="entry-name" id="input-entry-name" class="text-input">
+
+                <label for="entry-name">DATA DE PAGAMENTO:</label>
+                <!-- <input type="date" name="" id="entry-date" class="text-input"> -->
+                <div class="d-flex flex-row mb-4">
+                    <div class="d-flex flex-column">
+                        <label for="day" class="d-inline">DIA:</label>
+                        <select name="" id="add-entry-day" class="d-inline">
+                        </select>
+                    </div>
+    
+                    <div class="d-flex flex-column">
+                        <label for="day" class="d-inline">MÊS:</label>
+                        <select name="" id="add-entry-month" class="d-inline">
+                        </select>
+                    </div>
+    
+                    <div class="d-flex flex-column">
+                        <label for="day" class="d-inline">ANO:</label>
+                        <select name="" id="add-entry-year" class="d-inline">
+                            <option value="0" selected>0000</option>
+                        </select>
+                    </div>
+                </div>
+
+                <label for="entry-name">VALOR DO LANÇAMENTO:</label>
+                <input type="text" name="" id="entry-value" class="text-input" value="0,00">
+
+                <label for="entry-type">FORMA DE PAGAMENTO:</label>
                 <select name="pay-type" id="pay-type">
-                    <option value='0'>Dinheiro</option>
-                    <option value='1'>C. Débito</option>
-                    <option value='2'>C. Crédito</option>
-                    <option value='3'>Pix</option>
+                    <option value='0' selected>SELECIONAR</option>
+                    <option value='DINHEIRO'>DINHEIRO</option>
+                    <option value='DEBITO'>C. DÉBITO</option>
+                    <option value='CREDITO'>C. CRÉDITO</option>
+                    <option value='PIX'>PIX</option>
                 </select>
-                <label for="entry-type">Tipo:</label>
+
+                <label for="entry-type">TIPO:</label>
                 <select name="entry-type" id="entry-type">
-                    <option value='true'>Entrada</option>
-                    <option value='false'>Saida</option>
+                    <option value='0'>SELECIONAR</option>
+                    <option value='true'>ENTRADA</option>
+                    <option value='false'>SAÍDA</option>
                 </select>
             </form>
             <button class="diag-box-button confirm-button" id="confirm-add-entry-button">Adicionar</button>
-            <button class="diag-box-button" id="cancel-button">Cancelar</button>
+            <button class="diag-box-button cancel-button">Cancelar</button>
         </div>
 
-        <div class="dialog-window d-none" id="edit-entry-diag-box">
+        <!-- Popup Editar Lançamento -->
+        <div class="pop-up d-none" id="edit-entry-diag-box">
             <h3>Editar Lançamento</h3>
             <form action="#" class="edit-entry-form">
                 <label for="entry-name">nome do lançamento:</label>
                 <input type="text" name="entry-name" id="edit-entry-name" class="text-input"><br>
-                <label for="entry-name">Data de Pagamento:</label>
-                <input type="date" name="" id="edit-entry-date" class="text-input"><br>
+
+                <label for="entry-name">DATA DE PAGAMENTO:</label>
+                <!-- <input type="date" name="" id="entry-date" class="text-input"> -->
+                <div class="d-flex flex-row mb-4">
+                    <div class="d-flex flex-column">
+                        <label for="day" class="d-inline">DIA:</label>
+                        <select name="" id="add-entry-day" class="d-inline">
+                        </select>
+                    </div>
+    
+                    <div class="d-flex flex-column">
+                        <label for="day" class="d-inline">MÊS:</label>
+                        <select name="" id="add-entry-month" class="d-inline">
+                        </select>
+                    </div>
+    
+                    <div class="d-flex flex-column">
+                        <label for="day" class="d-inline">ANO:</label>
+                        <select name="" id="add-entry-year" class="d-inline">
+                            <option value="0" selected>0000</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- <input type="date" name="" id="edit-entry-date" class="text-input"><br> -->
+
                 <label for="entry-name">Valor do Lançamento:</label>
                 <input type="text" name="" id="edit-entry-price" class="text-input"><br>
                 <label for="entry-type">Pagamento:</label>
@@ -163,19 +233,19 @@
                     <option value='false'>Saida</option>
                 </select>
             </form>
-            <button class="diag-box-button confirm-button" id="confirm-add-entry-button"
-                onclick="saveEditedEntry()">Salvar</button>
-            <button class="diag-box-button" id="cancel-button">Cancelar</button>
+            <button class="diag-box-button confirm-button" id="button-confirm-edit">Salvar</button>
+            <button class="diag-box-button cancel-button">Cancelar</button>
         </div>
 
-        <div class="dialog-window d-none" id="del-entry-window">
-            <p>Deseja apagar o lançamento selecionado?</p>
-            <button class="diag-box-button" id="confirm-del-button">Apagar</button>
-            <button class="diag-box-button" id="cancel-button">Cancelar</button>
+        <!-- Popup Apagar Lançamento -->
+        <div class="pop-up d-none">
+            <h5>DESEJA APAGAR O LANÇAMENTO SELECIONADO?</h5>
+            <button class="diag-box-button" id="button-confirm-del">APAGAR</button>
+            <button class="diag-box-button cancel-button">CANCELAR</button>
         </div>
 
         <!-- Detalhes do lançamento -->
-        <div class="dialog-window d-none" id="detail-popup">
+        <div class="pop-up d-none" id="detail-popup">
             <h3>Detalhes do Lançamento</h3>
             <h2>Nome/Cliente: <p id="det-name"></p>
             </h2>
@@ -199,26 +269,17 @@
                 </tbody>
             </table>
             <hr>
-            <h2>preço total: <p id="det-total-value"></p>
-            </h2>
+            <h2>preço total: <p id="det-total-value"></p></h2>
             <!-- <h2>troco: <p></p></h2> -->
-            <h2>Forma de pagamento: <p id="det-pay-type"></p>
-            </h2>
-            <h2>lançamento pago em: <p id="det-payed-in"></p>
-            </h2>
+            <h2>Forma de pagamento: <p id="det-pay-type"></p></h2>
+            <h2>lançamento pago em: <p id="det-payed-in"></p></h2>
             <hr>
-            <h2>lançamento criado em: <p id="det-created-in"></p>
-            </h2>
-            <h2>lançamento criado por: <p id="det-created-by"></p>
-            </h2>
-            <h2>lançamento alterado por: <p id="det-edited-by"></p>
-            </h2>
-            <button class="diag-box-button" id="cancel-button">Voltar</button>
+            <h2>lançamento criado em: <p id="det-created-in"></p></h2>
+            <h2>lançamento criado por: <p id="det-created-by"></p></h2>
+            <h2>lançamento alterado por: <p id="det-edited-by"></p></h2>
+            <button class="diag-box-button cancel-button">Voltar</button>
         </div>
-    </pop-up>
-
-    <!--  Display Size -->
-    <!-- <h5>Display Type</h5> -->
+    </div>
 </body>
 
 </html>

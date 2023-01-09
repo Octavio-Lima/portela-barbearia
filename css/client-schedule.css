@@ -10,26 +10,31 @@ body {
     background-color: #000;
     background-image: url("/resources/bg.png");
     background-size: cover;
-    height: 100vh;
-    
-    text-align: center;
-    
+}
+
+.main-container {
     display: flex;
     flex-direction: column;
+    text-align: center;
+    
+    margin: auto;
+    min-height: 100vh;
+    max-width: 500px;
 }
 
 main-pop-up,
 .selected-worker { /* Elementos que ficarão por cima do efeito blur */
-    z-index: 10;
+    z-index: 1;
 }
 
 .blur-overlay {
-    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    position: fixed;
     backdrop-filter: blur(6px);
+
     pointer-events: none;
     z-index: 0;
 }
@@ -47,13 +52,13 @@ main-pop-up,
 .slogan {
     color: #fff;
     font-weight: 100;
-    font-size: 1rem;
+    font-size: 1.2rem;
     margin-top: 30px;
 }
 
-h2 {
+.title-agendamento {
     /* Agendamento */
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     color: #fff;
     margin: 30px;
 }
@@ -69,13 +74,13 @@ h2 {
 
 .worker-img {
     margin: 0 10px 0;
-    width: 100px;
-    clip-path: circle(50px at center);
+    width: 120px;
+    clip-path: circle(60px at center);
     pointer-events: none;
 
 }
 
-h3 {
+.worker-name {
     /* Nome do Profissional */
     color: #fff;
     font-weight: bold;
@@ -101,6 +106,7 @@ h3 {
     justify-content: center;
     align-items: center;
     text-decoration: none;
+    user-select: none;
 }
 
 .menu-button:hover {
@@ -112,17 +118,29 @@ h3 {
     transition: 65ms;
 }
 
+.menu-button:active {
+    /* Botões de link da tela principal*/
+    border: 4px solid #018;
+    box-shadow: 0 0 5px #018, inset 0 0 8px #018;
+    color: #018;
+    text-shadow: 1px 1px 2px #000;
+    transition: 65ms;
+}
+
+/* || FOOTER */
+footer a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.6rem;
+    margin: 0px 0.3rem 40px;
+}
+
 footer a:hover {
-    /* Decoração do Texto do botão*/
     color: #16f;
     transition: 65ms;
 }
 
-/* || FOOTER AND LINKS */
-footer .fa {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 1% 10%;
-    font-size: 1.6rem;
-    margin: 0px 0.3rem 40px;
+footer a:active {
+    color: #018;
+    transition: 10ms;
 }

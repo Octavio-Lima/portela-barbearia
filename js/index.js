@@ -1,6 +1,7 @@
 const account = [
   {user:"joao", pass:"123", name:"joão pedro", access:'proprietario, barbeiro'},
-  {user:"lucio", pass:"321", name:"lúcio xavier", access:'barbeiro'}
+  {user:"lucio", pass:"321", name:"lúcio xavier", access:'barbeiro'},
+  {user:"gerencia", pass:"111", name:"Gerenciadores", access:'proprietario'}
 ]
 
 function checkCredentials(event) {
